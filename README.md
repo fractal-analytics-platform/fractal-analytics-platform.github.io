@@ -1,1 +1,1 @@
-Source code for [fractal-analytics-platform.github.io](fractal-analytics-platform.github.io).
+Source code for [https://fractal-analytics-platform.github.io](https://fractal-analytics-platform.github.io).
