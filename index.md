@@ -15,12 +15,15 @@ OME-Zarr files can be interactively visualizated in napari. Here is an example u
 
 # Fractal components
 
-|      **Component**     	|                                **GitHub Repository**                                	|                                  **Documentation**                                 	|                              **PyPI**                             	|
-|:----------------------:	|:-----------------------------------------------------------------------------------:	|:----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------:	|
-|   **fractal-server**   	| [fractal-server repo](https://github.com/fractal-analytics-platform/fractal-server) 	| [fractal-server docs](https://fractal-analytics-platform.github.io/fractal-server) 	| [fractal-server on PyPI](https://pypi.org/project/fractal-server) 	|
-|   **fractal-client**   	|                https://github.com/fractal-analytics-platform/fractal                	|                                     in progress                                    	|              https://pypi.org/project/fractal-client              	|
-|   **fractal-common**   	|             https://github.com/fractal-analytics-platform/fractal-common            	|                                          -                                         	|                                 -                                 	|
-| **fractal-tasks-core** 	|           https://github.com/fractal-analytics-platform/fractal-tasks-core          	|           https://fractal-analytics-platform.github.io/fractal-tasks-core          	|            https://pypi.org/project/fractal-tasks-core            	|
+
+|  **Component** 	|                                    **GitHub Repository**                                    	|                                      **Documentation**                                     	|                                  **PyPI**                                 	|
+|:--------------:	|:-------------------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------:	|:-------------------------------------------------------------------------:	|
+|   **server**   	|     [fractal-server repo](https://github.com/fractal-analytics-platform/fractal-server)     	|     [fractal-server docs](https://fractal-analytics-platform.github.io/fractal-server)     	|     [fractal-server on PyPI](https://pypi.org/project/fractal-server)     	|
+|   **client**   	|            [fractal repo](https://github.com/fractal-analytics-platform/fractal)            	|                                         in progress                                        	|     [fractal-client on PyPI](https://pypi.org/project/fractal-client)     	|
+|   **common**   	|                 https://github.com/fractal-analytics-platform/fractal-common                	|                                              -                                             	|                                     -                                     	|
+| **core tasks** 	| [fractal-tasks-core repo](https://github.com/fractal-analytics-platform/fractal-tasks-core) 	| [fractal-tasks-core docs](https://fractal-analytics-platform.github.io/fractal-tasks-core) 	| [fractal-tasks-core on PyPI](https://pypi.org/project/fractal-tasks-core) 	|
+
+
 
 Main Fractal components:
 * A server component, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal-server), [PyPI package](https://pypi.org/project/fractal-server) and [documentation](https://fractal-analytics-platform.github.io/fractal-server/).
