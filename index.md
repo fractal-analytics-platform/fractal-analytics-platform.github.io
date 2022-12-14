@@ -10,7 +10,7 @@ Fractal provides distributed workflows that convert TBs of image data into [OME-
 
 OME-Zarr files can be interactively visualizated in napari. Here is an example using the newly-proposed async loading in [NAP4](https://github.com/napari/napari/pull/4905) and the [napari-ome-zarr plugin](https://github.com/ome/napari-ome-zarr):
 
-![napari_plate_overview](https://user-images.githubusercontent.com/18033446/190983839-afb9743f-530c-4b00-bde7-23ad62404ee8.gif)
+![napari_plate_overview](assets/napari_plate_overview.gif)
 
 
 # Fractal components
