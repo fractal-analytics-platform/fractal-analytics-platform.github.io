@@ -15,27 +15,19 @@ OME-Zarr files can be interactively visualizated in napari. Here is an example u
 
 # Fractal components
 
+Fractal is made of different components, including a server/client architecture and a set of core tasks for image processing.
 
 |  **Component** 	|                                    **GitHub Repository**                                    	|                                      **Documentation**                                     	|                                  **PyPI**                                 	|
 |:--------------:	|:-------------------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------:	|:-------------------------------------------------------------------------:	|
 |   **server**   	|     [fractal-server repo](https://github.com/fractal-analytics-platform/fractal-server)     	|     [fractal-server docs](https://fractal-analytics-platform.github.io/fractal-server)     	|     [fractal-server on PyPI](https://pypi.org/project/fractal-server)     	|
 |   **client**   	|            [fractal repo](https://github.com/fractal-analytics-platform/fractal)            	|                                         in progress                                        	|     [fractal-client on PyPI](https://pypi.org/project/fractal-client)     	|
-|   **common**   	|                 https://github.com/fractal-analytics-platform/fractal-common                	|                                              -                                             	|                                     -                                     	|
+|   **common**   	|     [fractal-common repo](https://github.com/fractal-analytics-platform/fractal-common)     	|                                              -                                             	|                                     -                                     	|
 | **core tasks** 	| [fractal-tasks-core repo](https://github.com/fractal-analytics-platform/fractal-tasks-core) 	| [fractal-tasks-core docs](https://fractal-analytics-platform.github.io/fractal-tasks-core) 	| [fractal-tasks-core on PyPI](https://pypi.org/project/fractal-tasks-core) 	|
 
 
-
-Main Fractal components:
-* A server component, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal-server), [PyPI package](https://pypi.org/project/fractal-server) and [documentation](https://fractal-analytics-platform.github.io/fractal-server/).
-* A command-line client, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal), [PyPI package](https://pypi.org/project/fractal-client).
-* A set of core tasks for image processing, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal-tasks-core), [PyPI package](https://pypi.org/project/fractal-tasks-core) and [documentation](https://fractal-analytics-platform.github.io/fractal-tasks-core).
-
 # Contributors and license
 
-Copyright 2022 (C) Friedrich Miescher Institute for Biomedical Research and University of Zurich
-Unless otherwise stated in each individual module, all Fractal components are released according to a BSD 3-Clause License.
-
-Fractal was conceived in the Liberali Lab at the Friedrich Miescher Institute for Biomedical Research and in the Pelkmans Lab at the University of Zurich (both in Switzerland). The project lead is with [@gusqgm](https://github.com/gusqgm) & [@jluethi](https://github.com/jluethi).
-The core development is done under contract by [@mfranzon](https://github.com/mfranzon), [@tcompa](https://github.com/tcompa) & [jacopo-exact](https://github.com/jacopo-exact) from eXact lab S.r.l. <exact-lab.it>.
+Unless otherwise stated in each individual module, all Fractal components are released according to a BSD 3-Clause License, and Copyright is with Friedrich Miescher Institute for Biomedical Research and University of Zurich.
+Fractal was conceived in the Liberali Lab at the Friedrich Miescher Institute for Biomedical Research and in the Pelkmans Lab at the University of Zurich (both in Switzerland). The project lead is with [@gusqgm](https://github.com/gusqgm) & [@jluethi](https://github.com/jluethi). The core development is done under contract by [@mfranzon](https://github.com/mfranzon), [@tcompa](https://github.com/tcompa) & [jacopo-exact](https://github.com/jacopo-exact) from eXact lab S.r.l. <exact-lab.it>.
 
 
