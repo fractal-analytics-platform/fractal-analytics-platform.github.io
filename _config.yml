@@ -1,0 +1,8 @@
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: Fractal Analytics Platform
+description: Process high-content imaging data at scale and prepare it for interactive visualization
+
+show_downloads: false
