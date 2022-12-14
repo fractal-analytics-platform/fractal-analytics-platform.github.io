@@ -24,7 +24,13 @@ Fractal is made of different components, including a server/client architecture 
 |   **common**   	|     [fractal-common](https://github.com/fractal-analytics-platform/fractal-common)     	|                                              -                                             	|                                     -                                     	|
 | **core tasks** 	| [fractal-tasks-core](https://github.com/fractal-analytics-platform/fractal-tasks-core) 	| [fractal-tasks-core docs](https://fractal-analytics-platform.github.io/fractal-tasks-core) 	| [fractal-tasks-core on PyPI](https://pypi.org/project/fractal-tasks-core) 	|
 
-Additional examples and demos are available in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos).
+
+# Examples
+
+Some example datasets and workflows are publicly available:
+* Example input data for Fractal can be found here: [10.5281/zenodo.7057076](https://doi.org/10.5281/zenodo.7057076).
+* Example output data from Fractal in the OME-Zarr format can be found here: [10.5281/zenodo.7081622](https://doi.org/10.5281/zenodo.7081622).
+* Example workflows can be found in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos) in the `examples` folder, together with additional instructions for how to set up the server & client, download the test data and run workflows through Fractal.
 
 
 # Contributors and license
