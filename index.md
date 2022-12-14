@@ -18,7 +18,7 @@ OME-Zarr files can be interactively visualizated in napari. Here is an example u
 Main Fractal components:
 * A server component, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal-server), [PyPI package](https://pypi.org/project/fractal-server) and [documentation](https://fractal-analytics-platform.github.io/fractal-server/).
 * A command-line client, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal), [PyPI package](https://pypi.org/project/fractal-client).
-* A set of core tasks for image processing, see [GitHub repository](https://github.com/fractal-analytics-platform/fractali-tasks-core), [PyPI package](https://pypi.org/project/fractal-tasks-core) and [documentation](https://fractal-analytics-platform.github.io/fractal-tasks-core).
+* A set of core tasks for image processing, see [GitHub repository](https://github.com/fractal-analytics-platform/fractal-tasks-core), [PyPI package](https://pypi.org/project/fractal-tasks-core) and [documentation](https://fractal-analytics-platform.github.io/fractal-tasks-core).
 
 # Contributors and license
 
