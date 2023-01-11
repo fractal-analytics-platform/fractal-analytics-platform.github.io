@@ -12,6 +12,7 @@ OME-Zarr files can be interactively visualizated in napari. Here is an example u
 
 {% include youtube.html id="DfhRF1OW5CE" %}
 
+<br/>
   
 # Fractal components
 
