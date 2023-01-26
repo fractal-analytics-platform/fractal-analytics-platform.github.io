@@ -40,6 +40,8 @@ A video walk-through for how to get started is available here:
 
 {% include youtube.html id="wn9jo4hELSI" %}
 
+<br/>
+
 # Examples
 
 Additional example datasets and workflows are publicly available:
