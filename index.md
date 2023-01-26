@@ -36,6 +36,10 @@ Follow the [instructions here](https://github.com/fractal-analytics-platform/fra
 
 Once you have successfully installed and started the Fractal server, you can install a fractal-client environment and interact with the Fractal server from there. To do so, follow the [instructions for the 01_cardio_tiny_dataset example](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/01_cardio_tiny_dataset). This also includes a link to a tiny dataset and instructions on how to run a full Fractal workflow on this dataset (which should run in under a minute).
 
+A video walk-through for how to get started is available here:
+
+{% include youtube.html id="wn9jo4hELSI" %}
+
 # Examples
 
 Additional example datasets and workflows are publicly available:
