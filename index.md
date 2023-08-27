@@ -38,10 +38,12 @@ Fractal runs locally on a laptop (tested both Linux, macOS and Windows with subs
 Here is a video walk-through for how to set up a local Fractal server:
 
 {% include youtube.html id="mEDHh9Kkdmk" %}
+<br/>
 
 Once you have a Fractal server running, you can also access it via Fractal web. To do so, set up a Fractal web server as shown here:
 
 {% include youtube.html id="f_HaiOVH-ig" %}
+<br/>
 
 If you prefer to follow a written guide, follow the instructions in the [server folder](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/server) to set up Fractal server. Once you have successfully installed and started the Fractal server, you can [install a fractal-client environment](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/00_user_setup) and interact with the Fractal server from there. To do so, follow the [instructions for the 01_cardio_tiny_dataset example](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/01_cardio_tiny_dataset). This also includes a link to a tiny dataset and instructions on how to run a full Fractal workflow on this dataset (which should run in under a minute).
 To set up Fractal web, follow the instructions in the [Fractal web README](https://github.com/fractal-analytics-platform/fractal-web).
