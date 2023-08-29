@@ -4,7 +4,7 @@ layout: default
 
 Fractal is a framework to process high-content imaging data at scale and prepare it for interactive visualization.
 
-![Fractal_Overview](assets/Fractal_overview.png)
+![Fractal_Overview](assets/fractal_overview.jpg)
 
 Fractal enables distributed workflows that convert TBs of image data into [OME-Zarr](https://ngff.openmicroscopy.org) files. Tasks are modular and can be provided by users to apply image processing and measurements. We provide a pacakge of core processing tasks that can apply  illumination correction, maximum intensity projection, 3D segmentation using [cellpose](https://cellpose.readthedocs.io/en/latest/) and measurements using [napari workflows](https://github.com/haesleinhuepf/napari-workflows). All tasks can be orchestrated by Fractal to run locally or on clusters to scale the image analysis. The resulting pyramidal OME-Zarr files enable interactive visualization in different modern viewers like [MoBIE](https://imagej.net/plugins/mobie) and [napari](https://napari.org/stable/). 
 
