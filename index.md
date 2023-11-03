@@ -31,7 +31,10 @@ Fractal is made of different components, including a server/client architecture,
 Fractal is under active development. We have tasks in our core repository and in multiple other tasks repositories. Our core repository contains a converter for Yokogawa CV7000/CV8000 image data as well as different processing tasks for illumination correction, maximum intensity projection, cellpose segmentation.
 We're working with others to expand the number of compatible OME-Zarr converters (see e.g. [fractal-faim-hcs](https://github.com/jluethi/fractal-faim-hcs), which uses the faim-hcs converters for the MD Image Xpress) and additional processing tasks (e.g. the [scMultipleX package](https://github.com/fmi-basel/gliberal-scMultipleX), which contains a Fractal task to make many scikit-image based measurements in 2D and 3D). Follow along on the github repositories above and feel free to open issues.
 
-# How to Get Started
+# Build your own task
+You can easily add your own task to Fractal. Start with the task [templates](https://github.com/fractal-analytics-platform/fractal-tasks-template) or read up on the [task building documentation](https://fractal-analytics-platform.github.io/fractal-tasks-core/custom_task/).
+
+# Run your own Fractal server
 Fractal runs locally on a laptop (tested both Linux, macOS and Windows with subsystem Linux) or on a linux server that submits jobs to a SLURM cluster. The documentation above describes the preconditions and the different configurations that can be changed. Fractal can be used via a command line client, as well as via a web client. To get started with Fractal, you can follow the setup in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos).
 
 Here is a video walk-through for how to set up a local Fractal server:
