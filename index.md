@@ -55,7 +55,7 @@ To set up Fractal web, follow the instructions in the [Fractal web README](https
 
 Additional example datasets and workflows are publicly available:
 * Larger example input data for Fractal can be found here: [10.5281/zenodo.7057076](https://doi.org/10.5281/zenodo.7057076).
-* Example output data from Fractal in the OME-Zarr format can be found here: [Small dataset: 10.5281/zenodo.8091756](https://doi.org/10.5281/zenodo.8091756), [larger dataset: 10.5281/zenodo.8091910](https://doi.org/10.5281/zenodo.8091910)
+* Example output data from Fractal in the OME-Zarr format can be found here: [Small dataset: 10.5281/zenodo.10257149](https://doi.org/10.5281/zenodo.10257149), [larger dataset: 10.5281/zenodo.10257532](https://doi.org/10.5281/zenodo.10257532)
 * Additional example workflows can be found in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos) in the `examples` folder. 
 
 # Contributors and license
