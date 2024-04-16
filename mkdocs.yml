@@ -39,6 +39,8 @@ nav:
   - Home page: index.md
     # - Version 2: v2.md
 
+not_in_nav: v2.md
+
 extra_css:
   - extra.css
 
