@@ -1,0 +1,43 @@
+site_name: Fractal Analytics Platform
+
+repo_url: https://github.com/fractal-analytics-platform/
+repo_name: fractal-analytics-platform
+
+markdown_extensions:
+- admonition
+- pymdownx.details
+- pymdownx.magiclink
+- pymdownx.snippets:
+    check_paths: true
+- pymdownx.superfences
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.tasklist
+- toc:
+    permalink: true
+- attr_list
+- md_in_html
+
+theme:
+  name: "material"
+  custom_dir: "docs/overrides"
+  features:
+    - content.code.annotate
+    - content.code.copy
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: white
+    accent: light blue
+  icon:
+    repo: fontawesome/brands/github
+
+# Set plugins to [] to disable search bar
+plugins: []
+
+nav:
+  - Home page: index.md
+  - V2: v2.md
+
+extra_css:
+  - extra.css
