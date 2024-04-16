@@ -10,7 +10,8 @@ Fractal enables distributed workflows that convert TBs of image data into [OME-Z
 
 Here's an example of browsing a 23-well plate in napari:
 
-{% include youtube.html id="DfhRF1OW5CE" %}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DfhRF1OW5CE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 <br/>
   
@@ -39,12 +40,14 @@ Fractal runs locally on a laptop (tested both Linux, macOS and Windows with subs
 
 Here is a video walk-through for how to set up a local Fractal server:
 
-{% include youtube.html id="mEDHh9Kkdmk" %}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mEDHh9Kkdmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <br/>
 
 Once you have a Fractal server running, you can also access it via Fractal web. To do so, set up a Fractal web server as shown here:
 
-{% include youtube.html id="f_HaiOVH-ig" %}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f_HaiOVH-ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <br/>
 
 If you prefer to follow a written guide, follow the instructions in the [server folder](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/server) to set up Fractal server. Once you have successfully installed and started the Fractal server, you can [install a fractal-client environment](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/00_user_setup) and interact with the Fractal server from there. To do so, follow the [instructions for the 01_cardio_tiny_dataset example](https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/01_cardio_tiny_dataset). This also includes a link to a tiny dataset and instructions on how to run a full Fractal workflow on this dataset (which should run in under a minute).
