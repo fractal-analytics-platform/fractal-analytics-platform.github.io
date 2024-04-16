@@ -37,7 +37,7 @@ plugins: []
 
 nav:
   - Home page: index.md
-  - Version 2: v2.md
+    # - Version 2: v2.md
 
 extra_css:
   - extra.css
