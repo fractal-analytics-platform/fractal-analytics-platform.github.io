@@ -32,14 +32,19 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-# Set plugins to [] to disable search bar
-plugins: []
+plugins:
+  - search
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+
 
 nav:
   - Home page: index.md
-    # - Version 2: v2.md
-
-not_in_nav: v2.md
+  - Fractal V2: version_2/
+  
+# Include some page, without including them in the ToC
+# not_in_nav: something.md
 
 extra_css:
   - extra.css

@@ -2,11 +2,9 @@
 layout: default
 ---
 
-> **WARNING: This page is still in-progress, its contents may change based on the latest Fractal developments.**
+# Image list
 
-This page describes the main concepts introduced with the new Fractal version (version 2 of the `fractal-server` backend).
-
-## The Fractal image list
+> **WARNING: This page is still in-progress, its contents may change based on the latest developments.**
 
 While applying a processing workflow to a given dataset, Fractal keeps a list of all the OME-Zarr images it is processing.
 Each entry in this list is defined by a unique `zarr_url` property (the full path to the OME-Zarr image), and it may also include image types and image attributes.
