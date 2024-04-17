@@ -15,7 +15,7 @@ jobs:
     - uses: byrnereese/github-action-mkdocs-link-check@1.0
       with:
           recurse: 'true'
-          use-verbose-mode: 'yes'
+          verbose-mode: 'yes'
 
   docs:
     name: "Deploy docs"
