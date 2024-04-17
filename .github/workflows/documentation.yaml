@@ -8,6 +8,12 @@ on:
 
 jobs:
 
+  mkdocs-link-check:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@master
+    - uses: byrnereese/github-action-mkdocs-link-check@v1
+
   docs:
     name: "Deploy docs"
     runs-on: ubuntu-22.04
