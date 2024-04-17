@@ -9,7 +9,7 @@ layout: default
 While applying a processing workflow to a given dataset, Fractal keeps a list of all the OME-Zarr images it is processing.
 Each entry in this list is defined by a unique `zarr_url` property (the full path to the OME-Zarr image), and it may also include image types and image attributes.
 
-**Image types** are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section below](#dataset-filters) FIXME LINK) as well as from within an individual task (see [task-API/output](#output-api) section below FIXME LINK).
+**Image types** are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section below](#dataset-filters)) as well as from within an individual task (see [task-API/output](#output-api) section below).
 
 **Image attributes** are scalar properties (strings, integers, floats or booleans). They are always defined from within individual tasks, and never by the task manifest. They allow selecting subsets of your data (e.g. select a given well, a given plate or a given multiplexing acquisition).
 
