@@ -6,9 +6,9 @@ layout: default
 
 > **WARNING: This page is still in-progress, its contents may change based on the latest developments.**
 
-Fractal 2.0 brings a big refactor to the task architecture to make tasks more flexible and allow for building more complex workflows, while also simplifying the task API. This page is meant to give an overview over the different types of Fractal tasks, their input and output API and the elements that go into the Fractal task list. It also highlights some of the uses of the new Image List, where each OME-Zarr image can have types and attributes. The new Image List supports flexible filters set both in the task manifest as well as in Fractal workflows.
-Task Types
+Fractal 2 brings a big refactor to the task architecture to make tasks more flexible and allow for building more complex workflows, while also simplifying the task API. This page is meant to give an overview over the different types of Fractal tasks, their input and output API and the elements that go into the Fractal task list. It also highlights some of the uses of the new Image List, where each OME-Zarr image can have types and attributes. The new Image List supports flexible filters set both in the task manifest as well as in Fractal workflows.
 
+## Task Types
 
 There are 3 types of tasks in Fractal V2: parallel tasks, non-parallel tasks & compound tasks.
 
@@ -37,6 +37,7 @@ The init part has the same Input API as the non-parallel task (`zarr_urls` and `
 The compute part takes `zarr_url` and an extra `init_args` dictionary input argument (which is coming from the parallelization_list).
 
 ## Output API
+
 Tasks can optionally return updates to the image list (all tasks except the init phase of a Compound task) or a parallelization list (just the init phase of a compound task). The output of a task is always a task_output dictionary.
 
 Tasks that create new images or edit relevant image properties need to provide an image_list_updates list of dictionaries as part of the task_output so the server can update its metadata about that image.
@@ -65,24 +66,23 @@ Here’s an example of its structure:
 ```
 
 Parallelization lists provide the zarr_urls, as well as additional arbitrary arguments as an init_args dictionary. Parallelization lists are provided in the following structure:
-FIXME: format code
+```python
 {
-"parallelization_list" = [
-	{
-"zarr_url": "/path/to/my_zarr.zarr/B/03/0",
-"init_args": {
-	"arbitrary_arg": "value"
+    "parallelization_list": [
+        {
+            "zarr_url": "/path/to/my_zarr.zarr/B/03/0",
+            "init_args": {"some_arg": "some_value"},
+        }
+    ]
 }
-}
-]
-}
+```
 
+## Task list and manifest
 
-## Fractal Task List (=> Manifest)
 A package that provides Fractal tasks needs to contain a manifest that describes these tasks.
 Fractal-tasks-core and fractal-tasks-template offer a simplified way to generate this manifest, based on a task list written in Python.
 For instance if the task package `my-pkg` is based on the template, the task list is in `src/my-pkg/dev/task_list.py` and includes entries like
-```
+```python
 TASK_LIST = [
 	NonParallelTask(
     	name="My non-parallel task",
@@ -104,7 +104,7 @@ TASK_LIST = [
 ]
 ```
 where the different task models refer to the different task types (see above). Given such task list, running the following command
-``
+```bash
 python src/my-pkg/dev/create_manifest.py
 ```
 generates a JSON file with the up-to-date manifest. Note that advanced usage may require a small customization of the create-manifest script.
