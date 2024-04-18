@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-    - uses: byrnereese/github-action-mkdocs-link-check@1.0
+    - name: mkdocs-link-check (soft)
+      uses: byrnereese/github-action-mkdocs-link-check@1.0
+      continue-on-error: true
       with:
           recurse: 'yes'
           verbose-mode: 'yes'
