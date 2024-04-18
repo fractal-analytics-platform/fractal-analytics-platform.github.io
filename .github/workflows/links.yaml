@@ -1,0 +1,14 @@
+name: Check Markdown links
+
+on: push
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      # checks all markdown files from /docs including all subfolders
+      with:
+        use-verbose-mode: 'yes'
+        folder-path: 'docs/'
