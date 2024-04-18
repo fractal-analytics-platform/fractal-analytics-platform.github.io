@@ -4,7 +4,7 @@ layout: default
 
 > **WARNING: This page is still in-progress, its contents may change based on the latest developments.**
 
-While applying a processing workflow to a given dataset, Fractal keeps a list of all the OME-Zarr images it is processing.
+While applying a processing workflow to a given dataset, Fractal keeps a list of all the OME-Zarr images it is processing. In this page we describe the concepts of [images](#images) and [filters](#filters) - see also the [examples section](#examples).
 
 ## Images
 
@@ -12,23 +12,15 @@ Each entry in the image list is defined by a unique `zarr_url` property (the ful
 
 ### Image types
 
-Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section below](#dataset-filters)) as well as from within an individual task (see [task-API/output](#output-api) section below).
+Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section](#dataset-filters)) as well as from within an individual task (see [task-API/output section](#output-api)).
+
+Note: whenever applying filters to the image list, the absence of a type corresponds to false by default.
 
 ### Image attributes
 
 Image attributes are scalar properties (strings, integers, floats or booleans). They are always defined from within individual tasks, and never by the task manifest. They allow selecting subsets of your data (e.g. select a given well, a given plate or a given multiplexing acquisition).
 
 Fractal server uses the image list combined with filters (see [below](#dataset-filters)) to provide the right image URLs to tasks.
-
-### Examples
-
-* If one has an OME-Zarr HCS plate with 3 wells that contain an image each, the image list has 3 entries for those 3 images. Each image has attributes for plate & well, as well as a type `is_3D` (true or false).
-* If one has an OME-Zarr HCS plate with 3 wells and each well has 3 multiplexing acquisition, there are 9 OME-Zarr images present. Therefore, the image list has 9 entries and those entries should have the acquisition attribute set.
-
-
-![Fractal_Overview](../assets/tmp_image_list.png)
-
-FIXME: replace fractal-web screenshot
 
 
 ## Filters
@@ -71,4 +63,23 @@ Examples:
 * The illumination-correction task has `input_types={"illumination_corrected": False}`, which means it cannot run on images with type `illumination_correction=True`.
 * The Apply Registration to Image task has `input_types={"registered": False}`, which means it cannot run on images with type `registered=True`.
 
-> FIXME: Seeing applied filters during workflow submission & editing filters during submission - TBD
+
+> Note: as part of an [upcoming `fractal-web` update](https://github.com/fractal-analytics-platform/fractal-web/issues/442), it may become possible to see/edit the current filters upon job submission.
+
+
+## Examples
+
+After running a converter task, I may have an OME-Zarr HCS plate with 2 wells that contain one image each. In this case, the image list has 2 entries and each image has attributes for plate and well, as well as a true/fals `is_3D` type.
+
+![Image List 1](../assets/image_list_x_1_two_wells_two_images.png)
+
+ If I then run an illumination-correction task that does not overwrite its input images, the image list includes the two original images (without the `illumination_corrected` type) and two new ones (with `illumination_corrected` type set to true). Note that this task also sets the dataset type filters to `{"illumination_correction": True}`.
+
+![Image List 2](../assets/image_list_x_2_two_wells_four_images.png)
+
+If I then runs an MIP task, this will act on the two images with `illumination_corrected` set to true, due to the dataset filters. After the task has run, two new images are added to the list (with type `is_3D` set to false).
+
+![Image list 3](../assets/image_list_x_3_two_wells_six_images.png)
+
+
+Another example is that if I have an OME-Zarr HCS plate with 3 wells and each well has 3 multiplexing acquisition, then the image list includes 9 OME-Zarr images (and those entries should have the acquisition attribute set).
