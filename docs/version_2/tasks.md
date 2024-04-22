@@ -14,7 +14,7 @@ There are three types of tasks in Fractal V2: parallel tasks, non-parallel tasks
 
 1. A **parallel task** is written to process a single OME-Zarr image and meant to be run in parallel across many OME-Zarr images. This is the typical scenario for compute tasks that don't need special input handling or subset parallelization
 2. A **non-parallel task** processes a list of images, and it only runs as a single job. It is useful to handle image-list updates and validation of Zarr collections (like Import OME-Zarr).
-3. A **compound task** consists an initialization (non-parallel) task, that provides a custom parallelization list to a subsequent (parallel) compute task. An example are registration tasks that need to run across multiple Zarr images, but parallelize over wells of a multi-well plate. The init task is like a non-parallel task, but it provides the parallelization list as output. The compute task is like a parallel task, but it takes an extra `init_args` dictionary as input from the init task.
+3. A **compound task** consists of an initialization (non-parallel) task, that provides a custom parallelization list to a subsequent (parallel) compute task. An example are registration tasks that need to run across multiple Zarr images, but parallelize over wells of a multi-well plate. The init task is like a non-parallel task, but it provides the parallelization list as output. The compute task is like a parallel task, but it takes an extra `init_args` dictionary as input from the init task.
 
 ## Input API
 
