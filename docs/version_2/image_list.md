@@ -77,7 +77,7 @@ After running a converter task, I may have an OME-Zarr HCS plate with 2 wells th
 
 ![Image List 2](../assets/image_list_x_2_two_wells_four_images.png)
 
-If I then runs an MIP task, this will act on the two images with `illumination_corrected` set to true, due to the dataset filters. After the task has run, two new images are added to the list (with type `is_3D` set to false).
+If I then run an MIP task, this will act on the two images with `illumination_corrected` set to true, due to the dataset filters. After the task has run, two new images are added to the list (with type `is_3D` set to false).
 
 ![Image list 3](../assets/image_list_x_3_two_wells_six_images.png)
 

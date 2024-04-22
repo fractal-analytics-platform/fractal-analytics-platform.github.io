@@ -78,7 +78,7 @@ Parallelization lists are provided in the following structure:
 
 ## Task list and manifest
 
-A package that provides Fractal tasks must contain a manifest (stored as a `__FRACTAL_MANEST__.json` file within the package), that describes the metadata of these tasks. `fractal-tasks-core` and `fractal-tasks-template` offer a simplified way to generate this manifest, based on a task list written in Python.
+A package that provides Fractal tasks must contain a manifest (stored as a `__FRACTAL_MANIFEST__.json` file within the package), that describes the metadata of these tasks. `fractal-tasks-core` and `fractal-tasks-template` offer a simplified way to generate this manifest, based on a task list written in Python.
 
 For instance if the task package `my-pkg` was created based on the template, the task list is in `src/my-pkg/dev/task_list.py` and includes entries like
 ```python
