@@ -31,7 +31,7 @@ Fractal is under active development. We have tasks in our core repository and in
 We're working with others to expand the number of compatible OME-Zarr converters (see e.g. [fractal-faim-hcs](https://github.com/jluethi/fractal-faim-hcs), which uses the faim-hcs converters for the MD Image Xpress), additional image processing tasks (see e.g. [APx Fractal Task Collection](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection) for tasks centered around 2D image analysis and drug profiling) and additional processing tasks (e.g. the [scMultipleX package](https://github.com/fmi-basel/gliberal-scMultipleX), which contains a Fractal task to make many scikit-image based measurements in 2D and 3D, as well as organoid registration for multiplexed images). Follow along on the github repositories above and feel free to open issues.
 
 ## Build your own task
-You can easily add your own task to Fractal. Fractal can run Linux executables that follow its task API, as defined in the [task building documentation](https://fractal-analytics-platform.github.io/fractal-tasks-core/custom_task/). We primarily run Python-based tasks. You can find a full walk-through and templates in the [Build Your Own Fractal Task page](https://fractal-analytics-platform.github.io/build_your_own_fractal_task/).
+You can easily add your own task to Fractal. Fractal can run Linux executables that follow its task API, as defined in the [task building documentation](build_your_own_fractal_task.md). We primarily run Python-based tasks. You can find a full walk-through and templates in the [Build Your Own Fractal Task page](https://fractal-analytics-platform.github.io/build_your_own_fractal_task/).
 
 ## Examples
 

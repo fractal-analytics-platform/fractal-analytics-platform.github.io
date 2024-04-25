@@ -52,9 +52,8 @@ extra_css:
   - extra.css
 
 copyright: |
-  © Copyright 2022
-  Friedrich Miescher Institute for Biomedical Research and
-  University of Zurich
+  © Copyright 2024
+  BioVisionCenter
   (see <u><a href="https://github.com/fractal-analytics-platform/fractal-analytics-platform.github.io/blob/main/LICENSE">
   LICENSE
   </a></u>).
