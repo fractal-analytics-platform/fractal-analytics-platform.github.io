@@ -42,7 +42,7 @@ plugins:
 nav:
   - Home page: index.md
   - Fractal V2: version_2/
-  - Build Your Own Fractal Task: build_a_fractal_task.md
+  - Build Your Own Fractal Task: build_your_own_fractal_task.md
   - Run Fractal: run_fractal.md
   
 # Include some page, without including them in the ToC
