@@ -6,7 +6,11 @@ Fractal is a framework to process bioimaging data at scale in the OME-Zarr forma
 
 ![Fractal_Overview](assets/fractal_overview.jpg)
 
-Fractal enables distributed workflows that convert TBs of image data into [OME-Zarr](https://ngff.openmicroscopy.org) files. Tasks are modular and can be provided by users to apply image processing and measurements. We provide a pacakge of core processing tasks that can apply illumination correction, maximum intensity projection, 3D segmentation using [cellpose](https://cellpose.readthedocs.io/en/latest/) and measurements using [napari workflows](https://github.com/haesleinhuepf/napari-workflows). All tasks can be orchestrated by Fractal to run locally or on clusters to scale the image analysis. The resulting pyramidal OME-Zarr files enable interactive visualization in different modern viewers like [MoBIE](https://imagej.net/plugins/mobie) and [napari](https://napari.org/stable/). 
+Fractal enables distributed workflows that convert TBs of image data into [OME-Zarr](https://ngff.openmicroscopy.org) files. Tasks are modular and can be provided by users to apply image processing and measurements. We provide a pacakge of core processing tasks that can apply illumination correction, maximum intensity projection, 3D segmentation using [cellpose](https://cellpose.readthedocs.io/en/latest/) and measurements using [napari workflows](https://github.com/haesleinhuepf/napari-workflows). All tasks can be orchestrated by Fractal to run locally or on clusters to scale the image analysis. You can build & control Fractal workflows via the web client or the Fractal command line client.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f4mMT2g956k?si=k6ZbknI2G1RtdJI1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+The resulting pyramidal OME-Zarr files enable interactive visualization in different modern viewers like [MoBIE](https://imagej.net/plugins/mobie) and [napari](https://napari.org/stable/). 
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DfhRF1OW5CE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
