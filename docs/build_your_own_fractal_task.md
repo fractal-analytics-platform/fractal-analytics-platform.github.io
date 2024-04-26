@@ -17,9 +17,8 @@ This page is all about building your own Fractal task. It comes down to 5 steps:
 
 This video walks you through all those steps for how to implement a custom Fractal task that does image-labeling based on a user-defined threshold.
 
-TBD insert REAL video
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mEDHh9Kkdmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nVYyX8ZkQXc?si=JEj93pf2HiN_zB7y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br/>
 
