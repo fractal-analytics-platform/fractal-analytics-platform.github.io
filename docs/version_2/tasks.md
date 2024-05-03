@@ -4,8 +4,6 @@ layout: default
 
 # Tasks
 
-> **WARNING: This page is still in-progress, its contents may change based on the latest developments.**
-
 Fractal v2 brings a large refactor to the task architecture to make tasks more flexible and allow for building more complex workflows, while also simplifying the task API. This page gives an overview over the different types of Fractal tasks, their input and output API and the elements that go into the Fractal task list.
 
 ## Task Types
@@ -42,7 +40,9 @@ Tasks can optionally return updates to the image list and/or [new dataset filter
 
 For tasks that create new images or edit relevant image properties, `task_output` must include an `image_list_updates` property so the server can update its metadata about that image.
 
-Task_outputs with image list updates are returned as a dictionary that contains the `image_list_updates` key and a list containing the updates to individual images. The updates need to be for unique `zarr_url`s and each update needs to contain the `zarr_url` of the image it’s providing an update for. Additionally, they can provide an `origin` key, an `attributes` key and a `types` key. The `origin` key describes the `zarr_url` of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.
+> NOTE: if both `image_list_updates` and `image_list_removals` are empty, in the task output, then `fractal-server` includes all the filtered image list in `image_list_updates`, so that they are updated with the appropriate `types` (see also [the image-list page](./image_list.md#image-types)).
+
+Task outputs with image list updates are returned as a dictionary that contains the `image_list_updates` key and a list containing the updates to individual images. The updates need to be for unique `zarr_url`s and each update needs to contain the `zarr_url` of the image it’s providing an update for. Additionally, they can provide an `origin` key, an `attributes` key and a `types` key. The `origin` key describes the `zarr_url` of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.
 
 Here's an example of `task_output`:
 ```python
