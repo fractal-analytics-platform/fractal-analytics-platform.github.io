@@ -8,5 +8,3 @@ This section describes the main concepts introduced with the new Fractal version
 
 1. The [new dataset image list](./image_list.md);
 2. The [new definition of tasks](./tasks.md).
-
-> **WARNING: This page is still in-progress, its contents may change based on the latest developments.**
