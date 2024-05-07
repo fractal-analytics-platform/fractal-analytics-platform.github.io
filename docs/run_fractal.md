@@ -1,4 +1,4 @@
-# Run your own Fractal
+# Deploy Fractal Server & Fractal Web
 
 Fractal runs locally on a laptop (tested both Linux, macOS and Windows with subsystem Linux) or on a Linux server that submits jobs to a SLURM cluster. The [`fractal-server` documentation](https://fractal-analytics-platform.github.io/fractal-server/) describes the preconditions and the different configurations that can be changed.
 

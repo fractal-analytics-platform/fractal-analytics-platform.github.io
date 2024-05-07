@@ -40,10 +40,10 @@ plugins:
 
 
 nav:
-  - Home page: index.md
-  - Fractal V2: version_2/
+  - Fractal: index.md
+  - Fractal V2 Changes: version_2/
   - Build Your Own Fractal Task: build_your_own_fractal_task.md
-  - Run Fractal: run_fractal.md
+  - Deploy Fractal Server & Web: run_fractal.md
   
 # Include some page, without including them in the ToC
 # not_in_nav: something.md
