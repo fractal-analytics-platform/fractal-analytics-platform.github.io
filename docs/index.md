@@ -2,7 +2,7 @@
 layout: default
 ---
 
-Fractal is a framework to process bioimaging data at scale in the OME-Zarr format and prepare the images for interactive visualization.
+Fractal is a framework developed by the [BioVisionCenter](https://www.biovisioncenter.uzh.ch/en.html) to process bioimaging data at scale in the OME-Zarr format and prepare the images for interactive visualization.
 
 ![Fractal_Overview](assets/fractal_overview.jpg)
 
