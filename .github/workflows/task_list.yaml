@@ -1,0 +1,31 @@
+name: Task-list page
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+
+jobs:
+  retrieve-tasks-data:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+          cache: pip
+
+      - name: Install requirements
+        run: python3 -m pip install -r tasks/data_retrieval/requirements.txt
+
+      - name: Fetch tasks data
+        run: python3 -u tasks/data_retrieval/create_tasks_data.py
+
+      - run: cat tasks/data_retrieval/tasks_data.json
