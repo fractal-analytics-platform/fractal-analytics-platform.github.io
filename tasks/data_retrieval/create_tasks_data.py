@@ -2,7 +2,6 @@ import time
 from pathlib import Path
 import requests
 import json
-from os import environ
 from zipfile import ZipFile
 from typing import Any
 from pydantic import BaseModel
@@ -34,6 +33,12 @@ class TaskReadV2(BaseModel):
 
     class Config:
         extra = "forbid"
+
+
+class TaskGroupReadV2(BaseModel):
+    pkg_name: str
+    version: Optional[str] = None
+    task_list: list[TaskReadV2]
 
 
 def parse_wheel_filename(wheel_path: str) -> dict[str, str]:
@@ -210,12 +215,12 @@ sources = [
     if not (source.startswith("#") or source == "")
 ]
 
-TASKS = []
+TASK_GROUPS = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
     try:
-        new_tasks = []
+        task_list = []
         data = get_package_info(source)
         pkg_name = data["name"]
         pkg_version = data.get("version")
@@ -229,16 +234,26 @@ for source in sources:
             new_task["version"] = pkg_version
             new_task["type"] = _get_task_type(task)
             TaskReadV2(**new_task)
-            new_tasks.append(new_task)
+            task_list.append(new_task)
+
+        task_group = dict(
+            pkg_name=pkg_name,
+            version=pkg_version,
+            task_list=task_list,
+        )
     except Exception as e:
         print(f"ERROR, skip.\nOriginal error:\n{str(e)}")
-    TASKS.extend(new_tasks)
+
+    TaskGroupReadV2(**task_group)
+
+    TASK_GROUPS.append(task_group)
+
     t_end = time.perf_counter()
     print(f"END processing {source=} - elapsed {t_end-t_start:.3f} s.")
     print()
 
 output_file = Path(__file__).parent / "tasks_data.json"
 with output_file.open("w") as f:
-    json.dump(TASKS, f, indent=2)
+    json.dump(TASK_GROUPS, f, indent=2)
 
 DOWNLOAD_FOLDER.rmdir()
