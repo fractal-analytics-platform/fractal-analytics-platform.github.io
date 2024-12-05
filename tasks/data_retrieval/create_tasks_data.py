@@ -241,6 +241,7 @@ for source in sources:
             version=pkg_version,
             task_list=task_list,
         )
+        ntasks = len(task_list)
     except Exception as e:
         print(f"ERROR, skip.\nOriginal error:\n{str(e)}")
 
@@ -249,7 +250,7 @@ for source in sources:
     TASK_GROUPS.append(task_group)
 
     t_end = time.perf_counter()
-    print(f"END processing {source=} - elapsed {t_end-t_start:.3f} s.")
+    print(f"END processing {source=} - version={pkg_version}' - added {ntasks} tasks - elapsed {t_end-t_start:.3f} s.")
     print()
 
 output_file = Path(__file__).parent / "tasks_data.json"
