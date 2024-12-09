@@ -12,20 +12,19 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
 
-    - uses: actions/checkout@v4
-
-    - name: mkdocs-link-check (soft)
-      uses: byrnereese/github-action-mkdocs-link-check@1.0
-      continue-on-error: true
-      with:
+      - name: mkdocs-link-check (soft)
+        uses: byrnereese/github-action-mkdocs-link-check@1.0
+        continue-on-error: true
+        with:
           recurse: 'yes'
           verbose-mode: 'yes'
 
   tasklist:
 
     runs-on: ubuntu-24.04
-  
+
     steps:
 
       - uses: actions/setup-python@v4
@@ -79,7 +78,7 @@ jobs:
           npm install
 
       - name: Move tasks.json file to fractal-web/tasks-list/src
-      - run: mv tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
+        run: mv tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
 
       - name: Build tasks-list
         run: |
@@ -89,9 +88,9 @@ jobs:
       - name: Move tasks-list built files in docs site
         run: mv fractal-web/tasks-list/build/ site/fractal-tasks
 
-      # - name: Deploy docs
-      #   if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./site
+      - name: Deploy docs
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
