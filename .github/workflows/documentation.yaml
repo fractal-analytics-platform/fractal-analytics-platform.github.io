@@ -56,10 +56,9 @@ jobs:
         with:
           repository: fractal-analytics-platform/fractal-web
           ref: tasks-list-module  # FIXME
-          with:
-            sparse-checkout: |
-              components
-              tasks-list
+          sparse-checkout: |
+            components
+            tasks-list
 
       - uses: actions/setup-node@v4
         with:
