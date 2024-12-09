@@ -80,7 +80,7 @@ jobs:
       - run: ls -lh MAIN/site/ MAIN/site/*   # FIXME
 
       - name: Deploy docs
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  # FIXME
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
