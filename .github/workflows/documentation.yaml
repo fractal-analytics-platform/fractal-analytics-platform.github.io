@@ -56,6 +56,10 @@ jobs:
         with:
           repository: fractal-analytics-platform/fractal-web
           ref: tasks-list-module  # FIXME
+          with:
+          sparse-checkout: |
+            components
+            tasks-list
 
       - uses: actions/setup-node@v4
         with:
@@ -64,12 +68,12 @@ jobs:
 
       - name: Install components dependencies
         run: |
-          cd fractal-web/components
+          cd ../fractal-web/components
           npm install
 
       - name: Install tasks-list dependencies
         run: |
-          cd fractal-web/tasks-list
+          cd ../fractal-web/tasks-list
           npm install
 
       - name: Move tasks.json file to fractal-web/tasks-list/src
@@ -77,11 +81,11 @@ jobs:
 
       - name: Build tasks-list page
         run: |
-          cd fractal-web/tasks-list
+          cd ../fractal-web/tasks-list
           npm run build
 
       - name: Move tasks-list built files in docs site
-        run: mv fractal-web/tasks-list/build/ site/fractal-tasks
+        run: mv ../fractal-web/tasks-list/build/ ../site/fractal-tasks
 
       - name: Deploy docs
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
