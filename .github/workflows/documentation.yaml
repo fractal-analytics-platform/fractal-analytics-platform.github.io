@@ -15,9 +15,19 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
-        path: fractal-analytics-platform.github.io
+        with:
+          path: fractal-analytics-platform.github.io
     
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+        with:
+          repository: fractal-analytics-platform/fractal-web
+          ref: tasks-list-module  # FIXME
+          path: fractal-web
+          # sparse-checkout: |  # FIXME
+          #   components
+          #   tasks-list
+  
+        - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
@@ -43,14 +53,6 @@ jobs:
       - run: pwd  # FIXME
       - run: ls -lh * */* # FIXME
 
-      - uses: actions/checkout@v4
-        with:
-          repository: fractal-analytics-platform/fractal-web
-          ref: tasks-list-module  # FIXME
-          path: fractal-web
-          # sparse-checkout: |  # FIXME
-          #   components
-          #   tasks-list
 
       - uses: actions/setup-node@v4
         with:
