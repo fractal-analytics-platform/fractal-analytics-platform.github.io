@@ -1,0 +1,758 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../image_list/">
+      
+      
+        <link rel="next" href="../../build_your_own_fractal_task/">
+      
+      
+      <link rel="icon" href="../../assets/fractal_favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Tasks - Fractal Analytics Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tasks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fractal Analytics Platform" class="md-header__button md-logo" aria-label="Fractal Analytics Platform" data-md-component="logo">
+      
+  <img src="../../assets/fractal_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fractal Analytics Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fractal-analytics-platform/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fractal-analytics-platform
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fractal Analytics Platform" class="md-nav__button md-logo" aria-label="Fractal Analytics Platform" data-md-component="logo">
+      
+  <img src="../../assets/fractal_logo.png" alt="logo">
+
+    </a>
+    Fractal Analytics Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fractal-analytics-platform/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fractal-analytics-platform
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fractal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Fractal V2 Changes
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fractal V2 Changes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tasks
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tasks
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallel-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-parallel-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-parallel tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compound tasks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-list-and-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task list and manifest
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build_your_own_fractal_task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build Your Own Fractal Task
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run_fractal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Fractal Server & Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallel-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-parallel-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-parallel tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compound tasks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-list-and-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task list and manifest
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h1>
+<p>Fractal v2 brings a large refactor to the task architecture to make tasks more flexible and allow for building more complex workflows, while also simplifying the task API. This page gives an overview over the different types of Fractal tasks, their input and output API and the elements that go into the Fractal task list.</p>
+<h2 id="task-types">Task Types<a class="headerlink" href="#task-types" title="Permanent link">&para;</a></h2>
+<p>There are three types of tasks in Fractal V2: parallel tasks, non-parallel tasks &amp; compound tasks.</p>
+<ol>
+<li>A <strong>parallel task</strong> is written to process a single OME-Zarr image and meant to be run in parallel across many OME-Zarr images. This is the typical scenario for compute tasks that don't need special input handling or subset parallelization</li>
+<li>A <strong>non-parallel task</strong> processes a list of images, and it only runs as a single job. It is useful to handle image-list updates and validation of Zarr collections (like Import OME-Zarr).</li>
+<li>A <strong>compound task</strong> consists of an initialization (non-parallel) task, that provides a custom parallelization list to a subsequent (parallel) compute task. An example are registration tasks that need to run across multiple Zarr images, but parallelize over wells of a multi-well plate. The init task is like a non-parallel task, but it provides the parallelization list as output. The compute task is like a parallel task, but it takes an extra <code>init_args</code> dictionary as input from the init task.</li>
+</ol>
+<h2 id="input-api">Input API<a class="headerlink" href="#input-api" title="Permanent link">&para;</a></h2>
+<h3 id="parallel-tasks">Parallel tasks<a class="headerlink" href="#parallel-tasks" title="Permanent link">&para;</a></h3>
+<p>The input arguments of a Fractal parallel tasks must include a <code>zarr_url</code> string argument. The <code>zarr_url</code> contains the full path to the zarr file to be processed. Only filesystem paths are currently supported, not S3 urls.
+<code>zarr_url</code> is a reserved keyword argument: when running tasks through Fractal server, the server takes care to pass the correct <code>zarr_url</code> argument to the parallel task (based on filtering the image list).
+Tasks can also take an arbitrary list of additional arguments that are specific to the task function and that the user can set.</p>
+<h3 id="non-parallel-tasks">Non-parallel tasks<a class="headerlink" href="#non-parallel-tasks" title="Permanent link">&para;</a></h3>
+<p>The input arguments of a Fractal non-parallel task must include a <code>zarr_urls</code> arguments (a list of strings) and <code>zarr_dir</code> argument (a single string). <code>zarr_urls</code> contains the full paths to the OME-Zarr images to be processed. We currently just support paths on filesystems, not S3 urls. <code>zarr_dir</code> is typically the base directory into which OME-Zarr files will be written by tasks and it is mostly used by converters.
+Both <code>zarr_urls</code> and <code>zarr_dir</code> are reserved keyword arguments: when running tasks through Fractal server, the server takes care to pass the correct filtered list <code>zarr_urls</code> and the correct <code>zarr_dir</code> to the non-parallel task.
+Tasks can also take an arbitrary list of additional arguments that are specific to the task function and that the user can set.</p>
+<h3 id="compound-tasks">Compound tasks<a class="headerlink" href="#compound-tasks" title="Permanent link">&para;</a></h3>
+<p>Compound tasks consist of an init part (similar to the non-parallel task) and a compute part (similar to the parallel task).
+The init part has the same Input API as the non-parallel task (<code>zarr_urls</code> and <code>zarr_dir</code>), but it provides the parallelization list for the compute part as an output.
+The compute part takes the <code>zarr_url</code> argument and an extra <code>init_args</code> dictionary argument (which is coming from the <code>parallelization_list</code> provided by the init task).</p>
+<h2 id="output-api">Output API<a class="headerlink" href="#output-api" title="Permanent link">&para;</a></h2>
+<p>Tasks can optionally return updates to the image list and/or <a href="../image_list/#dataset-filters">new dataset filters</a> (this is true for all tasks except the init phase of a compound tasks) or a parallelization list (just the init phase of a compound task). The output of a task is always a <code>task_output</code> dictionary. Note that this dictionary must be JSON-serializable, since it will be written to disk so that <code>fractal-server</code> can access it.</p>
+<p>For tasks that create new images or edit relevant image properties, <code>task_output</code> must include an <code>image_list_updates</code> property so the server can update its metadata about that image.</p>
+<blockquote>
+<p>NOTE: if both <code>image_list_updates</code> and <code>image_list_removals</code> are empty, in the task output, then <code>fractal-server</code> includes all the filtered image list in <code>image_list_updates</code>, so that they are updated with the appropriate <code>types</code> (see also <a href="../image_list/#image-types">the image-list page</a>).</p>
+</blockquote>
+<p>Task outputs with image list updates are returned as a dictionary that contains the <code>image_list_updates</code> key and a list containing the updates to individual images. The updates need to be for unique <code>zarr_url</code>s and each update needs to contain the <code>zarr_url</code> of the image it’s providing an update for. Additionally, they can provide an <code>origin</code> key, an <code>attributes</code> key and a <code>types</code> key. The <code>origin</code> key describes the <code>zarr_url</code> of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.</p>
+<p>Here's an example of <code>task_output</code>:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;image_list_updates&quot;</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;zarr_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/my_zarr.zarr/B/03/0_processed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/origin_zarr.zarr/B/03/0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;plate&quot;</span><span class="p">:</span> <span class="s2">&quot;plate_name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;well&quot;</span><span class="p">:</span> <span class="s2">&quot;B03&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;is_3D&quot;</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The init part of a compound task must produe a parallelization lists, with elements having the <code>zarr_url</code> property as well as additional arbitrary arguments as an <code>init_args</code> dictionary.
+Parallelization lists are provided in the following structure:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;parallelization_list&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;zarr_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/my_zarr.zarr/B/03/0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;init_args&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;some_arg&quot;</span><span class="p">:</span> <span class="s2">&quot;some_value&quot;</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="task-list-and-manifest">Task list and manifest<a class="headerlink" href="#task-list-and-manifest" title="Permanent link">&para;</a></h2>
+<p>A package that provides Fractal tasks must contain a manifest (stored as a <code>__FRACTAL_MANIFEST__.json</code> file within the package), that describes the metadata of these tasks. <code>fractal-tasks-core</code> and <code>fractal-tasks-template</code> offer a simplified way to generate this manifest, based on a task list written in Python.</p>
+<p>For instance if the task package <code>my-pkg</code> was created based on the template, the task list is in <code>src/my-pkg/dev/task_list.py</code> and includes entries like
+<div class="highlight"><pre><span></span><code><span class="n">TASK_LIST</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">NonParallelTask</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My non-parallel task&quot;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;my_non_parallel_task.py&quot;</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cpus_per_task&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">},</span>
+    <span class="p">),</span>
+    <span class="n">ParallelTask</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My parallel task&quot;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;my_parallel_task.py&quot;</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cpus_per_task&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">},</span>
+    <span class="p">),</span>
+    <span class="n">CompoundTask</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My compound task&quot;</span><span class="p">,</span>
+        <span class="n">executable_init</span><span class="o">=</span><span class="s2">&quot;my_task_init.py&quot;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;my_actual_task.py&quot;</span><span class="p">,</span>
+        <span class="n">meta_init</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cpus_per_task&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">},</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cpus_per_task&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="mi">12000</span><span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+where the different task models refer to the <a href="#task-types">different task types</a>. Given such task list, running the following command
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/my-pkg/dev/create_manifest.py
+</code></pre></div>
+generates a JSON file with the up-to-date manifest. Note that advanced usage may require minor customizations of the create-manifest script.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Copyright 2024
+BioVisionCenter
+(see <u><a href="https://github.com/fractal-analytics-platform/fractal-analytics-platform.github.io/blob/main/LICENSE">
+LICENSE
+</a></u>).
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
