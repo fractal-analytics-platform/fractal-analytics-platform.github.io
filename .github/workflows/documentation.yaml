@@ -8,19 +8,6 @@ on:
 
 jobs:
 
-  mkdocs-link-check:
-
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: mkdocs-link-check (soft)
-        uses: byrnereese/github-action-mkdocs-link-check@1.0
-        continue-on-error: true
-        with:
-          recurse: 'yes'
-          verbose-mode: 'yes'
-
   tasklist:
 
     runs-on: ubuntu-24.04
@@ -52,6 +39,10 @@ jobs:
 
       - run: cat tasks/data_retrieval/tasks_data.json
 
+      - run: pwd  # FIXME
+
+      - run: ls -lh  # FIXME
+
       - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
@@ -65,7 +56,9 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: ls -lh # FIXME
+      - run: pwd  # FIXME
+
+      - run: ls -lh  # FIXME
 
       - name: Install components dependencies
         run: |
@@ -76,6 +69,12 @@ jobs:
         run: |
           cd tasks-list
           npm install
+
+      - run: pwd  # FIXME
+
+      - run: ls -lh  # FIXME
+      - run: ls -lh tasks # FIXME
+      - run: ls -lh tasks/data_retrieval/ # FIXME
 
       - name: Move tasks.json file to tasks-list/src
         run: mv tasks/data_retrieval/tasks_data.json tasks-list/src/tasks.json
