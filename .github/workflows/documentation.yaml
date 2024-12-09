@@ -42,21 +42,84 @@ jobs:
           REQUIREMENTS: docs/doc-requirements.txt
 
 
-  docs-build:
-    name: "Test docs build"
-    runs-on: ubuntu-22.04
-    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/main' }}
 
+
+
+  retrieve-tasks-data:
+    runs-on: ubuntu-latest
+  
     steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      # Build mkdocs
+
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
           cache: pip
 
-      - name: Install requirements
+      - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
       - name: MKDocs build
-        run: mkdocs build --config-file mkdocs.yml
+        run: mkdocs build --config-file mkdocs.yml --strict
+
+      # Fetch tasks data
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+          cache: pip
+
+      - name: Install requirements
+        run: python3 -m pip install -r tasks/data_retrieval/requirements.txt
+
+      - name: Fetch tasks data
+        run: python3 -u tasks/data_retrieval/create_tasks_data.py
+
+      - run: cat tasks/data_retrieval/tasks_data.json
+
+
+      # Build tasks-list page
+
+      - name: Get package source code
+        uses: actions/checkout@v4
+        with:
+          repository: fractal-analytics-platform/fractal-web
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install components dependencies
+        run: |
+          cd fractal-web/components
+          npm install
+
+      - name: Install tasks-list dependencies
+        run: |
+          cd fractal-web/tasks-list
+          npm install
+
+      - name: Move tasks.json file to fractal-web/tasks-list/src
+      - run: mv tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
+
+      - name: Build tasks-list
+        run: |
+          cd fractal-web/tasks-list
+          npm run build
+
+      - name: Move tasks-list built files in docs site
+        run: mv fractal-web/tasks-list/build/ site/fractal-tasks
+
+      - name: Deploy docs
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+
+      # Fetch data
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
@@ -29,3 +32,38 @@ jobs:
         run: python3 -u tasks/data_retrieval/create_tasks_data.py
 
       - run: cat tasks/data_retrieval/tasks_data.json
+
+      - run: cp tasks/data_retrieval/tasks_data.json tasks.json
+
+      # Build tasks-list page
+
+      - name: Get package source code
+        uses: actions/checkout@v4
+        with:
+          repository: fractal-analytics-platform/fractal-web
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install components dependencies
+        run: |
+          cd fractal-web/components
+          npm install
+
+      - name: Install task-list dependencies
+        run: |
+          cd fractal-web/task-list
+          npm install
+
+      - name: Move tasks.json file
+
+      - name: Build task-list
+        run: |
+          cd fractal-web/task-list
+          npm run build
+
+      - name: Move sandbox built files in docs site
+        run: mv fractal-web/task-list/build/ site/fractal-tasks
