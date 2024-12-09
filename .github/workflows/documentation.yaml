@@ -15,6 +15,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
+        path: fractal-analytics-platform.github.io
     
       - uses: actions/setup-python@v5
         with:
@@ -24,29 +25,29 @@ jobs:
       # MKDocs build
 
       - name: Install dependencies
-        run: python -m pip install -r requirements.txt
+        run: python -m pip install -r fractal-analytics-platform.github.io/requirements.txt
 
       - name: MKDocs build
-        run: mkdocs build --config-file mkdocs.yml --strict
+        run: mkdocs build --config-file fractal-analytics-platform.github.io/mkdocs.yml --strict
 
       # Retrieve remote task-list data
 
       - name: Install requirements
-        run: python3 -m pip install -r tasks/data_retrieval/requirements.txt
+        run: python3 -m pip install -r fractal-analytics-platform.github.io/tasks/data_retrieval/requirements.txt
 
       - name: Fetch tasks data
-        run: python3 -u tasks/data_retrieval/create_tasks_data.py
+        run: python3 -u fractal-analytics-platform.github.io/tasks/data_retrieval/create_tasks_data.py
 
-      - run: cat tasks/data_retrieval/tasks_data.json
+      - run: cat fractal-analytics-platform.github.io/tasks/data_retrieval/tasks_data.json
 
       - run: pwd  # FIXME
-
-      - run: ls -lh  # FIXME
+      - run: ls -lh * */* # FIXME
 
       - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
           ref: tasks-list-module  # FIXME
+          path: fractal-web
           # sparse-checkout: |  # FIXME
           #   components
           #   tasks-list
@@ -55,37 +56,34 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          node-version-file: fractal-web/package.json
 
       - run: pwd  # FIXME
-
-      - run: ls -lh  # FIXME
+      - run: ls -lh * */* # FIXME
 
       - name: Install components dependencies
         run: |
-          cd components
+          cd fractal-web/components
           npm install
 
       - name: Install tasks-list dependencies
         run: |
-          cd tasks-list
+          cd fractal-web/tasks-list
           npm install
 
       - run: pwd  # FIXME
-
-      - run: ls -lh  # FIXME
-      - run: ls -lh tasks # FIXME
-      - run: ls -lh tasks/data_retrieval/ # FIXME
+      - run: ls -lh * */* # FIXME
 
       - name: Move tasks.json file to tasks-list/src
-        run: mv tasks/data_retrieval/tasks_data.json tasks-list/src/tasks.json
+        run: mv fractal-analytics-platform.github.io/tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
 
       - name: Build tasks-list page
         run: |
-          cd tasks-list
+          cd fractal-web/tasks-list
           npm run build
 
       - name: Move tasks-list built files in docs site
-        run: mv tasks-list/build/ site/fractal-tasks
+        run: mv fractal-web/tasks-list/build/ fractal-analytics-platform.github.io/site/fractal-tasks
 
       - name: Deploy docs
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
