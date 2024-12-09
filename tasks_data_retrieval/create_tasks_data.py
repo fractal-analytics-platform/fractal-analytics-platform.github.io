@@ -196,6 +196,7 @@ COLUMN_NAMES = [
     "input_types",
     "output_types",
     "docs_link",
+    "docs_info",
 ]
 COLUMN_DEFAULTS = {
     "input_types": {},
