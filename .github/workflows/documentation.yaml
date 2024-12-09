@@ -89,6 +89,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
+          ref: tasks-list-module
 
       - name: Set up node
         uses: actions/setup-node@v4
