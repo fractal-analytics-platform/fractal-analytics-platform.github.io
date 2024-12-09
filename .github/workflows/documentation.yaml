@@ -27,10 +27,14 @@ jobs:
 
     steps:
 
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+    
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
+
+      # MKDocs build
 
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
@@ -38,14 +42,7 @@ jobs:
       - name: MKDocs build
         run: mkdocs build --config-file mkdocs.yml --strict
 
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-          cache: pip
+      # Retrieve remote task-list data
 
       - name: Install requirements
         run: python3 -m pip install -r tasks/data_retrieval/requirements.txt
@@ -55,14 +52,12 @@ jobs:
 
       - run: cat tasks/data_retrieval/tasks_data.json
 
-      - name: Get package source code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
-          ref: tasks-list-module
+          ref: tasks-list-module  # FIXME
 
-      - name: Set up node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
@@ -80,7 +75,7 @@ jobs:
       - name: Move tasks.json file to fractal-web/tasks-list/src
         run: mv tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
 
-      - name: Build tasks-list
+      - name: Build tasks-list page
         run: |
           cd fractal-web/tasks-list
           npm run build
