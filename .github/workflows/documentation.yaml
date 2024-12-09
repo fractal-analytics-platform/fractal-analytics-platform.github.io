@@ -65,6 +65,10 @@ jobs:
           node-version: 20
           cache: npm
 
+      - run: pwd
+
+      - run: ls -lh
+
       - name: Install components dependencies
         run: |
           cd ../fractal-web/components
