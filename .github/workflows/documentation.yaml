@@ -57,12 +57,11 @@ jobs:
       - run: pwd  # FIXME
       - run: ls -lh * */* # FIXME
 
-
       - uses: actions/setup-node@v4
         with:
-          # node-version: 20
+          node-version: 20
           cache: npm
-          node-version-file: fractal-web/package-lock.json
+          # node-version-file: fractal-web/package-lock.json
 
       - run: pwd  # FIXME
       - run: ls -lh * */* # FIXME
