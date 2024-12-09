@@ -40,6 +40,11 @@ jobs:
       - name: MKDocs build
         run: mkdocs build --config-file MAIN/mkdocs.yml --strict --site-dir ./site
 
+      - run: pwd
+      - run: ls -lh ./site
+      - run: ls -lh MAIN/site
+
+
       # Retrieve remote task-list data
 
       - name: Install requirements
@@ -77,10 +82,12 @@ jobs:
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ MAIN/site/fractal-tasks
 
+      - run: mv MAIN/site ./site
       - run: ls -lh MAIN/site/ MAIN/site/*   # FIXME
 
+
       - name: Deploy docs
-        # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  # FIXME
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  # FIXME
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
