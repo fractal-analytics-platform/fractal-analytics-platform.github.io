@@ -68,7 +68,7 @@ jobs:
 
       - run: pwd
 
-      - run: ls -lh
+      - run: ls -lh fractal-web
 
       - name: Install components dependencies
         run: |
