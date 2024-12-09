@@ -80,7 +80,7 @@ jobs:
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ site/fractal-tasks
 
-      - run: ls -lh site/*   # FIXME
+      - run: ls -lh site/*
 
       - name: Deploy docs
         # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  # FIXME
