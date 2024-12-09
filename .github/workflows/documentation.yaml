@@ -21,16 +21,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
-          ref: tasks-list-module  # FIXME
-          path: fractal-web
+          ref: tasks-list-module  # FIXME: replace with main (or latest tag?)
+          path: WEB
           sparse-checkout: |
             components
             tasks-list
  
-
-      - run: pwd  # FIXME
-      - run: ls -lh * */* # FIXME
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -42,44 +38,44 @@ jobs:
         run: python -m pip install -r MAIN/requirements.txt
 
       - name: MKDocs build
-        run: mkdocs build --config-file MAIN/mkdocs.yml --strict
+        run: mkdocs build --config-file MAIN/mkdocs.yml --strict --site-dir ./site
 
       # Retrieve remote task-list data
 
       - name: Install requirements
-        run: python3 -m pip install -r MAIN/tasks/data_retrieval/requirements.txt
+        run: python3 -m pip install -r MAIN/tasks_data_retrieval/requirements.txt
 
       - name: Fetch tasks data
-        run: python3 -u MAIN/tasks/data_retrieval/create_tasks_data.py
+        run: python3 -u MAIN/tasks_data_retrieval/create_tasks_data.py
 
-      - run: cat MAIN/tasks/data_retrieval/tasks_data.json
+      - run: cat MAIN/tasks_data_retrieval/tasks.json
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: fractal-web/package-lock.json
+          cache-dependency-path: WEB/package-lock.json
 
       - name: Install components dependencies
         run: |
-          cd fractal-web/components
+          cd WEB/components
           npm install
 
       - name: Install tasks-list dependencies
         run: |
-          cd fractal-web/tasks-list
+          cd WEB/tasks-list
           npm install
 
       - name: Move tasks.json file to tasks-list/src
-        run: mv MAIN/tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
+        run: mv MAIN/tasks_data_retrieval/tasks.json WEB/tasks-list/src/
 
       - name: Build tasks-list page
         run: |
-          cd fractal-web/tasks-list
+          cd WEB/tasks-list
           npm run build
 
       - name: Move tasks-list built files in docs site
-        run: mv fractal-web/tasks-list/build/ MAIN/site/fractal-tasks
+        run: mv WEB/tasks-list/build/ MAIN/site/fractal-tasks
 
       - name: Deploy docs
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
