@@ -23,9 +23,9 @@ jobs:
           repository: fractal-analytics-platform/fractal-web
           ref: tasks-list-module  # FIXME
           path: fractal-web
-          # sparse-checkout: |  # FIXME
-          #   components
-          #   tasks-list
+          sparse-checkout: |
+            components
+            tasks-list
  
 
       - run: pwd  # FIXME
@@ -54,17 +54,11 @@ jobs:
 
       - run: cat MAIN/tasks/data_retrieval/tasks_data.json
 
-      - run: pwd  # FIXME
-      - run: ls -lh * */* # FIXME
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
           cache-dependency-path: fractal-web/package-lock.json
-
-      - run: pwd  # FIXME
-      - run: ls -lh * */* # FIXME
 
       - name: Install components dependencies
         run: |
@@ -76,9 +70,6 @@ jobs:
           cd fractal-web/tasks-list
           npm install
 
-      - run: pwd  # FIXME
-      - run: ls -lh * */* # FIXME
-
       - name: Move tasks.json file to tasks-list/src
         run: mv MAIN/tasks/data_retrieval/tasks_data.json fractal-web/tasks-list/src/tasks.json
 
@@ -86,9 +77,6 @@ jobs:
         run: |
           cd fractal-web/tasks-list
           npm run build
-
-      - run: pwd  # FIXME
-      - run: ls -lh * */* */*/* # FIXME
 
       - name: Move tasks-list built files in docs site
         run: mv fractal-web/tasks-list/build/ MAIN/site/fractal-tasks
