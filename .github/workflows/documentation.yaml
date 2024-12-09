@@ -1,4 +1,4 @@
-name: docs
+name: Build and deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  tasklist:
+  build-and-deploy:
 
     runs-on: ubuntu-24.04
 
@@ -27,6 +27,10 @@ jobs:
           #   components
           #   tasks-list
  
+
+      - run: pwd  # FIXME
+      - run: ls -lh * */* # FIXME
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
