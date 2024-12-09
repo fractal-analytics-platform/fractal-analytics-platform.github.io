@@ -77,6 +77,8 @@ jobs:
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ MAIN/site/fractal-tasks
 
+      - run: ls -lh MAIN/site/ MAIN/site/*   # FIXME
+
       - name: Deploy docs
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v4
