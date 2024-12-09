@@ -62,7 +62,7 @@ jobs:
         with:
           # node-version: 20
           cache: npm
-          node-version-file: fractal-web/package.json
+          node-version-file: fractal-web/package-lock.json
 
       - run: pwd  # FIXME
       - run: ls -lh * */* # FIXME
