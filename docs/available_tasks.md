@@ -1,3 +1,17 @@
-# Fractal tasks
+---
+hide:
+  - navigation
+  - toc
+  - title
+---
 
-A list of Fractal-compatible tasks is available at https://fractal-analytics-platform.github.io/fractal-tasks/ (warning: this page is still a work in progress).
+<style>
+.tasks-iframe{
+    width: 100%;
+    height: 900px;
+    border: 0;
+}
+</style>
+
+<iframe src="../fractal-tasks/" class="tasks-iframe">
+</iframe>
