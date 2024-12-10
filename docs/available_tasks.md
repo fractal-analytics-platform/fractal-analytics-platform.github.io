@@ -20,7 +20,7 @@ hide:
 }
 </style>
 
-<iframe src="../fractal-tasks/" class="tasks-iframe">
+<iframe src="../task-table/" class="tasks-iframe">
 </iframe>
 
 

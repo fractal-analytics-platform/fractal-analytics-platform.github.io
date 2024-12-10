@@ -91,7 +91,7 @@ jobs:
           npm run build
 
       - name: Move tasks-list built files in docs site
-        run: mv WEB/tasks-list/build/ site/fractal-tasks
+        run: mv WEB/tasks-list/build/ site/tasks-table
 
       - name: Set last-updated timestamp
         run: |
