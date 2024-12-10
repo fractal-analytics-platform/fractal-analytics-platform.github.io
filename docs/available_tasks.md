@@ -24,4 +24,4 @@ hide:
 </iframe>
 
 
-(last updated: LASTUPDATEDPLACEHOLDER)
+(last build on LASTUPDATEDPLACEHOLDER, with `fractal-web` FRACTALWEBREFERENCEPLACEHOLDER)

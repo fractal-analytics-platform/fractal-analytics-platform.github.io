@@ -4,8 +4,7 @@ set -e
 
 date
 
-FRACTAL_WEB_REF=b044c44a7b3acd01f5b91b295eac0b97516ad74d
-
+FRACTAL_WEB_REFERENCE=$(cat fractal-web-reference.txt)
 
 CURRENT_DIR=$(pwd)
 WEBDIR="/tmp/WEB"
@@ -26,7 +25,7 @@ ls -lh tasks_data_retrieval/tasks.json
 # Build
 git clone git@github.com:fractal-analytics-platform/fractal-web "$WEBDIR"
 cd "$WEBDIR"
-git checkout "$FRACTAL_WEB_REF"
+git checkout "$FRACTAL_WEB_REFERENCE"
 cd "$WEBDIR/components/"
 npm install
 cd "$WEBDIR/tasks-list"
@@ -36,8 +35,10 @@ npm run build
 cp -r build "$CURRENT_DIR/site/fractal-tasks"
 
 CURRENT_DATE=$(date)
-sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/available_tasks/index.html"
-rm "$CURRENT_DIR/site/available_tasks/index.html.bak"
+sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/available_tasks/index.html"
+sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/$FRACTAL_WEB_REFERENCE/" "$CURRENT_DIR/site/available_tasks/index.html"
+rm "$CURRENT_DIR/site/available_tasks/index.html.bak1"
+rm "$CURRENT_DIR/site/available_tasks/index.html.bak2"
 
 
 deactivate
