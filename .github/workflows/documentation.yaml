@@ -95,7 +95,7 @@ jobs:
 
       - name: Set last-updated timestamp
         run: |
-          CURRENT_DATE=$(date)
+          CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
           echo "$CURRENT_DATE"
           sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
           rm site/available_tasks/index.html.bak
