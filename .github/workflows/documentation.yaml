@@ -27,7 +27,7 @@ jobs:
 
       - name: Set fractal-web reference
         run: |
-          FRACTAL_WEB_REFERENCE=$(cat fractal-web-reference.txt)
+          FRACTAL_WEB_REFERENCE=$(cat MAIN/fractal-web-reference.txt)
           echo "FRACTAL_WEB_REFERENCE=$FRACTAL_WEB_REFERENCE" >> $GITHUB_ENV
   
       - uses: actions/checkout@v4
