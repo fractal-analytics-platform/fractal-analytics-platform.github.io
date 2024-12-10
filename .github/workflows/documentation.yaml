@@ -99,8 +99,7 @@ jobs:
           echo "$CURRENT_DATE"
           sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
           sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${{ env.FRACTAL_WEB_REFERENCE }}/" site/available_tasks/index.html
-          rm site/available_tasks/index.html.bak1
-          rm site/available_tasks/index.html.bak2
+          rm site/available_tasks/index.html.bak1 site/available_tasks/index.html.bak2
 
       - run: ls -lh site/*
 
