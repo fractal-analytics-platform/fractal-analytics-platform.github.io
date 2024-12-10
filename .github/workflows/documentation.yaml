@@ -29,7 +29,8 @@ jobs:
         run: |
           FRACTAL_WEB_REFERENCE=$(cat MAIN/fractal-web-reference.txt)
           echo "FRACTAL_WEB_REFERENCE=$FRACTAL_WEB_REFERENCE" >> $GITHUB_ENV
-          echo ${{ env.FRACTAL_WEB_REFERENCE }}
+          
+      -run: echo ${{ env.FRACTAL_WEB_REFERENCE }}
   
       - uses: actions/checkout@v4
         with:
