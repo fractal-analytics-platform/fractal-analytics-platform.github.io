@@ -97,7 +97,7 @@ jobs:
         run: |
           CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
           echo "$CURRENT_DATE"
-          sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
+          sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
           sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${{ env.FRACTAL_WEB_REFERENCE }}/" site/available_tasks/index.html
           rm site/available_tasks/index.html.bak1
           rm site/available_tasks/index.html.bak2
