@@ -23,7 +23,7 @@ ls -lh tasks_data_retrieval/tasks.json
 # Build
 git clone git@github.com:fractal-analytics-platform/fractal-web "$WEBDIR"
 cd "$WEBDIR"
-git switch tasks-list-module
+git checkout b044c44a7b3acd01f5b91b295eac0b97516ad74d
 cd "$WEBDIR/components/"
 npm install
 cd "$WEBDIR/tasks-list"
