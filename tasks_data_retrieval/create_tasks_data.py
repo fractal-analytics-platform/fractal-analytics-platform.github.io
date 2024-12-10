@@ -196,6 +196,7 @@ COLUMN_NAMES = [
     "input_types",
     "output_types",
     "docs_link",
+    "docs_info",
 ]
 COLUMN_DEFAULTS = {
     "input_types": {},
@@ -253,7 +254,7 @@ for source in sources:
     print(f"END processing {source=} - version={pkg_version}' - added {ntasks} tasks - elapsed {t_end-t_start:.3f} s.")
     print()
 
-output_file = Path(__file__).parent / "tasks_data.json"
+output_file = Path(__file__).parent / "tasks.json"
 with output_file.open("w") as f:
     json.dump(TASK_GROUPS, f, indent=2)
 
