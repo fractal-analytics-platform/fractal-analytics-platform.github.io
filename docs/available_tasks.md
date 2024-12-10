@@ -6,6 +6,13 @@ hide:
 ---
 
 <style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+<style>
 .tasks-iframe{
     width: 100%;
     height: 900px;
