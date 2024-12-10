@@ -4,6 +4,9 @@ set -e
 
 date
 
+FRACTAL_WEB_REF=b044c44a7b3acd01f5b91b295eac0b97516ad74d
+
+
 CURRENT_DIR=$(pwd)
 WEBDIR="/tmp/WEB"
 VENVDIR="/tmp/venv-for-landing-page"
@@ -23,7 +26,7 @@ ls -lh tasks_data_retrieval/tasks.json
 # Build
 git clone git@github.com:fractal-analytics-platform/fractal-web "$WEBDIR"
 cd "$WEBDIR"
-git checkout b044c44a7b3acd01f5b91b295eac0b97516ad74d
+git checkout "$FRACTAL_WEB_REF"
 cd "$WEBDIR/components/"
 npm install
 cd "$WEBDIR/tasks-list"
