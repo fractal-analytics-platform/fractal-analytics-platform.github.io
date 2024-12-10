@@ -98,12 +98,14 @@ jobs:
           CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
           echo "$CURRENT_DATE"
           sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
-          rm site/available_tasks/index.html.bak
+          sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${{ env.FRACTAL_WEB_REFERENCE }}/" site/available_tasks/index.html
+          rm site/available_tasks/index.html.bak1
+          rm site/available_tasks/index.html.bak2
 
       - run: ls -lh site/*
 
       - name: Deploy docs
-        if: ${{ ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && github.event.ref == 'refs/heads/main' }}
+        # if: ${{ ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && github.event.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
