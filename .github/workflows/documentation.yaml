@@ -79,6 +79,13 @@ jobs:
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ site/fractal-tasks
 
+      - name: Set last-updated timestamp
+      - run: |
+          CURRENT_DATE=$(date)
+          echo "$CURRENT_DATE"
+          sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/available_tasks/index.html
+          rm site/available_tasks/index.html.bak
+
       - run: ls -lh site/*
 
       - name: Deploy docs

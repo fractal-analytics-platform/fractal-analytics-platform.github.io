@@ -32,6 +32,11 @@ cp "$CURRENT_DIR/tasks_data_retrieval/tasks.json" ./src/
 npm run build
 cp -r build "$CURRENT_DIR/site/fractal-tasks"
 
+CURRENT_DATE=$(date)
+sed -i'.bak' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/available_tasks/index.html"
+rm "$CURRENT_DIR/site/available_tasks/index.html.bak"
+
+
 deactivate
 rm -r "$VENVDIR"
 rm -rf "$WEBDIR"
