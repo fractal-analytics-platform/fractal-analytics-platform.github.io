@@ -26,13 +26,15 @@ ls -lh tasks_data_retrieval/tasks.json
 git clone git@github.com:fractal-analytics-platform/fractal-web "$WEBDIR"
 cd "$WEBDIR"
 git checkout "$FRACTAL_WEB_REFERENCE"
+cd "$WEBDIR"
+npm install
 cd "$WEBDIR/components/"
 npm install
 cd "$WEBDIR/tasks-list"
 npm install
 cp "$CURRENT_DIR/tasks_data_retrieval/tasks.json" ./src/
 npm run build
-cp -r build "$CURRENT_DIR/site/tasks-table"
+cp -r build "$CURRENT_DIR/site/task-table"
 
 CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
 sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/available_tasks/index.html"

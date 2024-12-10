@@ -72,6 +72,11 @@ jobs:
           cache: npm
           cache-dependency-path: WEB/package-lock.json
 
+      - name: Install main fractal-web dependencies
+        run: |
+          cd WEB
+          npm install
+
       - name: Install components dependencies
         run: |
           cd WEB/components
@@ -91,7 +96,7 @@ jobs:
           npm run build
 
       - name: Move tasks-list built files in docs site
-        run: mv WEB/tasks-list/build/ site/tasks-table
+        run: mv WEB/tasks-list/build/ site/task-table
 
       - name: Set last-updated timestamp
         run: |
