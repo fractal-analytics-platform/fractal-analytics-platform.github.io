@@ -570,6 +570,13 @@
 
   <h1>Fractal</h1>
 
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
 <p>Fractal is a framework developed at the <a href="https://www.biovisioncenter.uzh.ch/en.html">BioVisionCenter</a> to process bioimaging data at scale in the OME-Zarr format and prepare the images for interactive visualization.</p>
 <p><img alt="Fractal overview" src="https://github.com/user-attachments/assets/666c8797-2594-4b8e-b1d2-b43fca66d1df" /></p>
 <p>Fractal enables distributed workflows that convert TBs of image data into <a href="https://ngff.openmicroscopy.org">OME-Zarr</a> files. Tasks are modular and can be provided by users to apply image processing and measurements. We provide a package of core processing tasks that include registration, segmentation and measurements. All tasks can be orchestrated by Fractal to run locally or on clusters to scale the image analysis. You can build &amp; control Fractal workflows via the web client or the Fractal command line client.</p>
