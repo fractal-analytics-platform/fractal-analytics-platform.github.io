@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
-          ref: b044c44a7b3acd01f5b91b295eac0b97516ad74d  # FIXME: replace with a tag
+          ref: tasks-list-module  # FIXME: replace with main (or latest tag?)
           path: WEB
           sparse-checkout: |
             components
@@ -39,6 +39,9 @@ jobs:
 
       - name: MKDocs build
         run: mkdocs build --config-file MAIN/mkdocs.yml --strict --site-dir ./site
+
+      - run: mv MAIN/site ./site
+      - run: ls -lh ./site
 
       # Retrieve remote task-list data
 
@@ -80,7 +83,7 @@ jobs:
       - run: ls -lh site/*
 
       - name: Deploy docs
-        # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
