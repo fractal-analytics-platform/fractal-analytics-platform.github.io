@@ -46,7 +46,7 @@ nav:
   - Fractal V2 Changes: version_2/
   - Build Your Own Fractal Task: build_your_own_fractal_task.md
   - Deploy Fractal Server & Web: run_fractal.md
-  - Fractal tasks: available_tasks.md
+  - Fractal tasks: fractal_tasks.md
   
 # Include some page, without including them in the ToC
 # not_in_nav: something.md
