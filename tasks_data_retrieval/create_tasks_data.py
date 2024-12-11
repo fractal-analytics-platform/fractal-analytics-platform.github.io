@@ -5,7 +5,14 @@ import json
 from zipfile import ZipFile
 from typing import Any
 from pydantic import BaseModel
-from typing import Optional, Literal
+from typing import Optional
+from typing import Literal
+
+import sys
+
+sys.path.append(Path(__file__).parent)
+from install_instructions import get_github_install_instructions
+from install_instructions import get_pypi_install_instructions
 
 
 DOWNLOAD_FOLDER = Path(__file__).parent / "downloads"
@@ -14,7 +21,7 @@ DOWNLOAD_FOLDER.mkdir(exist_ok=True)
 
 class TaskReadV2(BaseModel):
     """
-    Based on
+    Customization of
     https://github.com/fractal-analytics-platform/fractal-server/blob/main/fractal_server/app/schemas/v2/task.py
     """
 
@@ -30,6 +37,7 @@ class TaskReadV2(BaseModel):
     modality: Optional[str] = None
     authors: Optional[str] = None
     tags: list[str]
+    install_instructions: Optional[str] = None
 
     class Config:
         extra = "forbid"
@@ -117,7 +125,16 @@ def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
     manifest = load_manifest_from_zip(wheel_path)
     Path(wheel_path).unlink()
 
-    return dict(manifest=manifest, **info)
+    install_instructions = get_pypi_install_instructions(
+        project_name=project_name,
+        version=info["version"],
+    )
+
+    return dict(
+        manifest=manifest,
+        install_instructions=install_instructions,
+        **info,
+    )
 
 
 def handle_github_repository(github_url: str) -> dict[str, Any]:
@@ -160,7 +177,16 @@ def handle_github_repository(github_url: str) -> dict[str, Any]:
     manifest = load_manifest_from_zip(wheel_path)
     Path(wheel_path).unlink()
 
-    return dict(manifest=manifest, **info)
+    install_instructions = get_github_install_instructions(
+        wheel_name=Path(wheel_path).name,
+        wheel_url=wheel_asset_browser_download_url,
+    )
+
+    return dict(
+        manifest=manifest,
+        install_instructions=install_instructions,
+        **info,
+    )
 
 
 def get_package_info(source: str) -> dict[str, Any]:
@@ -210,11 +236,7 @@ COLUMN_TITLES = list(map(str.title, COLUMN_NAMES))
 sources_file = Path(__file__).parent / "sources.txt"
 with sources_file.open("r") as f:
     sources = f.read().splitlines()
-sources = [
-    source
-    for source in sources
-    if not (source.startswith("#") or source == "")
-]
+sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
 TASK_GROUPS = []
 for source in sources:
@@ -226,6 +248,7 @@ for source in sources:
         pkg_name = data["name"]
         pkg_version = data.get("version")
         authors = data["manifest"].get("authors")
+        install_instructions = data.get("install_instructions")
         pkg_task_list = data["manifest"]["task_list"]
         for task in pkg_task_list:
             new_task = dict()
@@ -236,6 +259,7 @@ for source in sources:
             new_task["version"] = pkg_version
             new_task["type"] = _get_task_type(task)
             new_task["authors"] = authors
+            new_task["install_instructions"] = install_instructions
             TaskReadV2(**new_task)
             task_list.append(new_task)
 
@@ -253,7 +277,12 @@ for source in sources:
     TASK_GROUPS.append(task_group)
 
     t_end = time.perf_counter()
-    print(f"END processing {source=} - version={pkg_version}' - added {ntasks} tasks - elapsed {t_end-t_start:.3f} s.")
+    print(
+        f"END processing {source=} - "
+        f"version={pkg_version}' - "
+        f"added {ntasks} tasks - "
+        f"elapsed {t_end-t_start:.3f} s."
+    )
     print()
 
 output_file = Path(__file__).parent / "tasks.json"
