@@ -1,11 +1,6 @@
-https://pypi.org/project/fractal-tasks-core/
+https://pypi.org/project/fractal-tasks-core
 https://pypi.org/project/fractal-faim-ipa
 https://pypi.org/project/fractal-lif-converters
 https://pypi.org/project/operetta-compose
 https://github.com/fractal-analytics-platform/fractal-helper-tasks
 https://github.com/fmi-basel/gliberal-scMultipleX
-
-# https://github.com/Apricot-Therapeutics/APx_fractal_task_collection
-# https://github.com/fractal-analytics-platform/fractal-plantseg-tasks
-# https://github.com/m-albert/fractal-ome-zarr-hcs-stitching/archive
-# https://github.com/fractal-analytics-platform/fractal-ilastik-tasksC/archive/refs/tags/0.1.1.zip
