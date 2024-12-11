@@ -20,6 +20,8 @@ hide:
 }
 </style>
 
+Here is a list of task packages which can be used in Fractal (note that not all existing packages are currently listed).
+
 <iframe src="../task-table/" class="tasks-iframe">
 </iframe>
 

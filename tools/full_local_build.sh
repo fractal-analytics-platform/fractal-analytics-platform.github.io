@@ -37,10 +37,10 @@ npm run build
 cp -r build "$CURRENT_DIR/site/task-table"
 
 CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
-sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/available_tasks/index.html"
-sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/$FRACTAL_WEB_REFERENCE/" "$CURRENT_DIR/site/available_tasks/index.html"
-rm "$CURRENT_DIR/site/available_tasks/index.html.bak1"
-rm "$CURRENT_DIR/site/available_tasks/index.html.bak2"
+sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/fractal_tasks/index.html"
+sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/$FRACTAL_WEB_REFERENCE/" "$CURRENT_DIR/site/fractal_tasks/index.html"
+rm "$CURRENT_DIR/site/fractal_tasks/index.html.bak1"
+rm "$CURRENT_DIR/site/fractal_tasks/index.html.bak2"
 
 
 deactivate
