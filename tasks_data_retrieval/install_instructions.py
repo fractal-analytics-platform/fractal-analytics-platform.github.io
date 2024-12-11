@@ -1,5 +1,5 @@
-INSTALL_INSTRUCTIONS_TITLE_1 = "## How to add this task to a Fractal instance"
-INSTALL_INSTRUCTIONS_TITLE_2 = "## How to install in a Python environment"
+INSTALL_INSTRUCTIONS_TITLE_1 = "## How to add this task to a Fractal instance\n"
+INSTALL_INSTRUCTIONS_TITLE_2 = "## How to install this task in a Python environment\n"
 
 
 def _get_default_template_pypi() -> str:
