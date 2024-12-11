@@ -225,6 +225,7 @@ for source in sources:
         data = get_package_info(source)
         pkg_name = data["name"]
         pkg_version = data.get("version")
+        authors = data["manifest"].get("authors")
         pkg_task_list = data["manifest"]["task_list"]
         for task in pkg_task_list:
             new_task = dict()
@@ -234,6 +235,7 @@ for source in sources:
                 )
             new_task["version"] = pkg_version
             new_task["type"] = _get_task_type(task)
+            new_task["authors"] = authors
             TaskReadV2(**new_task)
             task_list.append(new_task)
 
