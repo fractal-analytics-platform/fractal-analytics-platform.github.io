@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Tasks
+# Fractal Tasks Specification
 
 Fractal tasks are modular and interoperable processing units that handle data in OME-Zarr containers. Each task is an executable that runs on a single OME-Zarr image or a collection of OME-Zarr images. In Fractal, we the OME-Zarrs to be processed by giving the tasks the zarr_urls(s), the paths to a given OME-Zarr image on disk or in the cloud. All tasks load data from an OME-Zarr on disk and store their processing results in an OME-Zarr (the same or a new one) on disk again. The parameters and metadata of tasks are described in a [Fractal manifest in json form](#task-list-and-manifest). This page contains an overview of the Fractal task specification, the [types of Fractal tasks](#task-types), the [manifest](#task-list-and-manifest) that specifies task metadata as well as their [input](#input-api) & [output](#output-api) API.
 

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Image List
+# Fractal Image List
 
 While applying a processing workflow to a given dataset, Fractal keeps a list of all the OME-Zarr images it is processing and their metadata. In this page we describe the concepts of [images](#images) and [filters](#filters) - see also the [examples section](#examples).
 
