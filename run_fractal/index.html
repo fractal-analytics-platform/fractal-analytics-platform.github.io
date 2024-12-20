@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../build_your_own_fractal_task/">
+        <link rel="prev" href="../image_list/">
       
-      
-        <link rel="next" href="../fractal_tasks/">
       
       
       <link rel="icon" href="../assets/fractal_favicon.png">
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploy-fractal-server-fractal-web" class="md-skip">
+        <a href="#deploy-fractal" class="md-skip">
           Skip to content
         </a>
       
@@ -256,55 +254,12 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../version_2/" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Fractal V2 Changes
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Fractal V2 Changes
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../version_2/image_list/" class="md-nav__link">
+      <a href="../fractal_tasks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Image list
+    Fractal tasks
   </span>
   
 
@@ -312,32 +267,23 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../version_2/tasks/" class="md-nav__link">
+      <a href="../tasks_spec/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tasks
+    Fractal task spec
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -353,7 +299,27 @@
         
   
   <span class="md-ellipsis">
-    Build Your Own Fractal Task
+    Create a Fractal Task
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fractal Image List
   </span>
   
 
@@ -388,26 +354,6 @@
 
       </a>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fractal_tasks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Fractal tasks
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -448,20 +394,15 @@
   
 
 
-<h1 id="deploy-fractal-server-fractal-web">Deploy Fractal Server &amp; Fractal Web<a class="headerlink" href="#deploy-fractal-server-fractal-web" title="Permanent link">&para;</a></h1>
-<p>Fractal runs locally on a laptop (tested both Linux, macOS and Windows with subsystem Linux) or on a Linux server that submits jobs to a SLURM cluster. The <a href="https://fractal-analytics-platform.github.io/fractal-server/"><code>fractal-server</code> documentation</a> describes the preconditions and the different configurations that can be changed.</p>
-<p>Fractal can be used via a command line client, as well as via a web client. To get started with Fractal, you can follow the setup in the <a href="https://github.com/fractal-analytics-platform/fractal-demos">fractal-demos repository</a>.</p>
-<p>Here is a video walk-through for how to set up a local Fractal server:</p>
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mEDHh9Kkdmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h1 id="deploy-fractal">Deploy Fractal<a class="headerlink" href="#deploy-fractal" title="Permanent link">&para;</a></h1>
+<p>Fractal is meant to be deployed to manage workflows on large cluster and currently has support for different modes of running on slurm clusters. It is deployed on Linux servers and also runs on macOS or Windows (by using Windows Subsystem Linux).
+You can run a fully containerized local example that is useful for demos and testing purposes by following the instructions in the <a href="https://github.com/fractal-analytics-platform/fractal-containers/tree/main/examples/full-stack">fractal containers repository</a> or by following along this walkthrough:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g0s0a1F-2K4?si=-nE51acRS1Vnn2Vk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <p><br/></p>
-<p>Once you have a Fractal server running, you can also access it via Fractal web. To do so, set up a Fractal web server as shown here:</p>
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f_HaiOVH-ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<p><br/></p>
-<p>If you prefer to follow a written guide, follow the instructions in the <a href="https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/server">server folder</a> to set up Fractal server. Once you have successfully installed and started the Fractal server, you can <a href="https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/00_user_setup">install a fractal-client environment</a> and interact with the Fractal server from there. To do so, follow the <a href="https://github.com/fractal-analytics-platform/fractal-demos/tree/main/examples/01_cardio_tiny_dataset">instructions for the 01_cardio_tiny_dataset example</a>. This also includes a link to a tiny dataset and instructions on how to run a full Fractal workflow on this dataset (which should run in under a minute).
-To set up Fractal web, follow the instructions in the <a href="https://github.com/fractal-analytics-platform/fractal-web">Fractal web README</a>.
-<br/></p>
+<p>More detailed documentation about the configuration of the different Fractal components can be found in the <a href="https://fractal-analytics-platform.github.io/fractal-server/"><code>fractal-server</code> documentation</a> and the <a href="https://fractal-analytics-platform.github.io/fractal-web/"><code>fractal web</code> documentation</a>.</p>
+<hr />
+<p>Fractal can also be deployed by manually setting up the server in a Python environment, configuring your own postgres database &amp; setting up Fractal web from source. You can find some helpful material for this in the  <a href="https://github.com/fractal-analytics-platform/fractal-demos">fractal-demos repository</a> (especially the examples/server section). We also have older video walkthroughs on manual setups available for both the <a href="https://www.youtube.com/watch?v=mEDHh9Kkdmk">fractal-server</a> as well as <a href="https://www.youtube.com/watch?v=f_HaiOVH-ig">fractal-web</a>.</p>
 
 
 

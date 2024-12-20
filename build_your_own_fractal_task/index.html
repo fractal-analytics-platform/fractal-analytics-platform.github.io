@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../version_2/tasks/">
+        <link rel="prev" href="../tasks_spec/">
       
       
-        <link rel="next" href="../run_fractal/">
+        <link rel="next" href="../image_list/">
       
       
       <link rel="icon" href="../assets/fractal_favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Build Your Own Fractal Task - Fractal Analytics Platform</title>
+        <title>Create a Fractal Task - Fractal Analytics Platform</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-a-fractal-task" class="md-skip">
+        <a href="#create-a-fractal-task" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build Your Own Fractal Task
+              Create a Fractal Task
             
           </span>
         </div>
@@ -256,55 +256,12 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../version_2/" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Fractal V2 Changes
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Fractal V2 Changes
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../version_2/image_list/" class="md-nav__link">
+      <a href="../fractal_tasks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Image list
+    Fractal tasks
   </span>
   
 
@@ -312,32 +269,23 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../version_2/tasks/" class="md-nav__link">
+      <a href="../tasks_spec/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tasks
+    Fractal task spec
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -362,12 +310,32 @@
         
   
   <span class="md-ellipsis">
-    Build Your Own Fractal Task
+    Create a Fractal Task
   </span>
   
 
       </a>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fractal Image List
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -384,26 +352,6 @@
   
   <span class="md-ellipsis">
     Deploy Fractal Server & Web
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fractal_tasks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Fractal tasks
   </span>
   
 
@@ -448,7 +396,7 @@
   
 
 
-<h1 id="build-a-fractal-task">Build a Fractal task<a class="headerlink" href="#build-a-fractal-task" title="Permanent link">&para;</a></h1>
+<h1 id="create-a-fractal-task">Create a Fractal task<a class="headerlink" href="#create-a-fractal-task" title="Permanent link">&para;</a></h1>
 <p>Fractal tasks are the core processing units of to build your workflows. Each Fractal task loads the data from one (or many) OME-Zarr(s) and applies processing to them. Fractal tasks are Linux command line executables. For the purpose of this demo, we will look at the Python implementation. You can think of a Fractal task as a Python function that knows how to process an OME-Zarr image and save the results back into that OME-Zarr image. With a bit of syntax sugar, this becomes a Fractal task you can then run from the web interface. To understand the types of tasks, their API &amp; how they provide information to Fractal server, check out the <a href="https://fractal-analytics-platform.github.io/version_2/tasks/">V2 Tasks page</a>. </p>
 <p>This page is all about building your own Fractal task. It comes down to 5 steps:  </p>
 <ol>
