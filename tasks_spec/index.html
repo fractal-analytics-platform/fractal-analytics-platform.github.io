@@ -20,7 +20,7 @@
     
     
       
-        <title>Fractal task spec - Fractal Analytics Platform</title>
+        <title>Fractal Task Spec - Fractal Analytics Platform</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tasks" class="md-skip">
+        <a href="#fractal-tasks-specification" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fractal task spec
+              Fractal Task Spec
             
           </span>
         </div>
@@ -261,7 +261,7 @@
         
   
   <span class="md-ellipsis">
-    Fractal tasks
+    Fractal Tasks
   </span>
   
 
@@ -290,7 +290,7 @@
           
   
   <span class="md-ellipsis">
-    Fractal task spec
+    Fractal Task Spec
   </span>
   
 
@@ -301,7 +301,7 @@
         
   
   <span class="md-ellipsis">
-    Fractal task spec
+    Fractal Task Spec
   </span>
   
 
@@ -534,7 +534,7 @@
         
   
   <span class="md-ellipsis">
-    Deploy Fractal Server & Web
+    Deploy Fractal
   </span>
   
 
@@ -740,7 +740,7 @@
   
 
 
-<h1 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h1>
+<h1 id="fractal-tasks-specification">Fractal Tasks Specification<a class="headerlink" href="#fractal-tasks-specification" title="Permanent link">&para;</a></h1>
 <p>Fractal tasks are modular and interoperable processing units that handle data in OME-Zarr containers. Each task is an executable that runs on a single OME-Zarr image or a collection of OME-Zarr images. In Fractal, we the OME-Zarrs to be processed by giving the tasks the zarr_urls(s), the paths to a given OME-Zarr image on disk or in the cloud. All tasks load data from an OME-Zarr on disk and store their processing results in an OME-Zarr (the same or a new one) on disk again. The parameters and metadata of tasks are described in a <a href="#task-list-and-manifest">Fractal manifest in json form</a>. This page contains an overview of the Fractal task specification, the <a href="#task-types">types of Fractal tasks</a>, the <a href="#task-list-and-manifest">manifest</a> that specifies task metadata as well as their <a href="#input-api">input</a> &amp; <a href="#output-api">output</a> API.</p>
 <p><img alt="Fractal task model" src="../assets/fractal_tasks_model.png" /></p>
 <h2 id="task-types">Task Types<a class="headerlink" href="#task-types" title="Permanent link">&para;</a></h2>
