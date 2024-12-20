@@ -44,7 +44,7 @@ plugins:
 nav:
   - Fractal: index.md
   - Fractal tasks: fractal_tasks.md
-  - Fractal task spec: task_spec.md
+  - Fractal task spec: tasks_spec.md
   - Create a Fractal Task: build_your_own_fractal_task.md
   - Fractal Image List: image_list.md
   - Deploy Fractal Server & Web: run_fractal.md
