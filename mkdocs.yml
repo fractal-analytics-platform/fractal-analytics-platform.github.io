@@ -43,10 +43,12 @@ plugins:
 
 nav:
   - Fractal: index.md
-  - Fractal V2 Changes: version_2/
-  - Build Your Own Fractal Task: build_your_own_fractal_task.md
-  - Deploy Fractal Server & Web: run_fractal.md
   - Fractal tasks: fractal_tasks.md
+  - Fractal task spec: task_spec.md
+  - Create a Fractal Task: build_your_own_fractal_task.md
+  - Fractal Image List: image_list.md
+  - Deploy Fractal Server & Web: run_fractal.md
+  
   
 # Include some page, without including them in the ToC
 # not_in_nav: something.md
