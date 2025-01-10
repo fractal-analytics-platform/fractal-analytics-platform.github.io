@@ -5,3 +5,4 @@ https://pypi.org/project/operetta-compose
 https://github.com/fractal-analytics-platform/fractal-helper-tasks
 https://github.com/fmi-basel/gliberal-scMultipleX
 https://github.com/m-albert/fractal-ome-zarr-hcs-stitching
+https://github.com/pelkmanslab/abbott
