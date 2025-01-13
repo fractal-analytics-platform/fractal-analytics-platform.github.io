@@ -24,14 +24,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: MAIN
+          persist-credentials: false
 
       - name: Set fractal-web reference
         run: |
           FRACTAL_WEB_REFERENCE=$(cat MAIN/fractal-web-reference.txt)
           echo "FRACTAL_WEB_REFERENCE=$FRACTAL_WEB_REFERENCE" >> $GITHUB_ENV
 
-      - run: echo ${{ env.FRACTAL_WEB_REFERENCE }}
-  
+ 
       - uses: actions/checkout@v4
         with:
           repository: fractal-analytics-platform/fractal-web
@@ -40,6 +40,7 @@ jobs:
           sparse-checkout: |
             components
             tasks-list
+          persist-credentials: false
  
       - uses: actions/setup-python@v5
         with:
@@ -99,11 +100,13 @@ jobs:
         run: mv WEB/tasks-list/build/ site/task-table
 
       - name: Set last-updated timestamp
+        env:
+          FRACTAL_WEB_REFERENCE: ${{ env.FRACTAL_WEB_REFERENCE }}
         run: |
           CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
           echo "$CURRENT_DATE"
           sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/fractal_tasks/index.html
-          sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${{ env.FRACTAL_WEB_REFERENCE }}/" site/fractal_tasks/index.html
+          sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" site/fractal_tasks/index.html
           rm site/fractal_tasks/index.html.bak1 site/fractal_tasks/index.html.bak2
 
       - run: ls -lh site/*
