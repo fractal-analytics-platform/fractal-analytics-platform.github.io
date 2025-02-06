@@ -12,7 +12,7 @@ Each entry in the image list is defined by a unique `zarr_url` property (the ful
 
 ### Image types
 
-Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section](#dataset-filters)) as well as from within an individual task (see [task-API/output section](./tasks_spec.md#output-api)).
+Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both [through the task manifest](#output-filters) (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False`) as well as from within an individual task (see [task-API/output section](./tasks_spec.md#output-api)).
 
 Note: when applying filters to the image list, the absence of a type corresponds to false by default.
 
@@ -20,54 +20,46 @@ Note: when applying filters to the image list, the absence of a type corresponds
 
 Image attributes are scalar properties (strings, integers, floats or booleans). They are always defined from within individual tasks, and never by the task manifest. They allow selecting subsets of your data (e.g. select a given well, a given plate or a given multiplexing acquisition).
 
-Fractal server uses the image list combined with filters (see [below](#dataset-filters)) to provide the right image URLs to tasks.
+Fractal server uses the image list combined with filters (see [below](#filters)) to provide the right image URLs to each task during execution.
 
 
 ## Filters
 
-Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters (that is, a set of specific values assigned to image types and/or image attributes). Filters can be defined for a dataset and/or for a workflow task. If a specific filter is set both for the dataset and for the workflow task, the workflow-task filter takes priority.
+Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters. Filters can refer both to image types or image attributes and they may come from different sources.
 
+### Type filters
 
-### Dataset filters
+#### Input filters
 
-There are multiple ways a dataset may have a given filter set:
+The set of type filters to be applied before running a task is obtained by combining these sources:
 
-1. I manually set it, by modifying the dataset `filters` property.
-2. While writing the Fractal manifest for a task package, I include the `output_types` attribute for a given task. These types are automatically included in the dataset filters after the task is run. 
-Examples:
-    * An MIP task would set `output_types = {"is_3D": False}` in its output arguments: from this task onwards, the 2D images are processed (not the raw 3D images).
-    * An illumination-correction task would set `output_types = {"illumination_corrected": True}`: from this task onwards, the registered images are processed (not the raw images).
-3. When writing the code for a specific task, the task output can include a `filters` property, for either image attributes and/or types - see the [section on task outputs](./tasks_spec.md#output-api).
+1. The dataset may have `type_filters` set - this is the source with lowest priority.
+    * Example: A prior workflow ran and set [output filters](#output-filters) of `type_filters = {"is_3D": False}"`. These output filters were added to the dataset when the prior workflow finished.
+    * Example: I manually set `type_filters = {"illumination_corrected": False}"` through Fractal, by modifying the dataset, because I want to process raw images.
+2. The manifest of a tasks package may specify that a task has some required `input_types`, which are used as filters.
+    * Example: An "Project Image (HCS Plate)" task with `input_types={"is_3D": True}`, meaning that it cannot run on images with type `is_3D=False`.
+    * Example: An "Illumination correction" task with `input_types={"illumination_corrected": False}`, meaning that it cannot run on images with type `illumination_correction=True`.
+    * Example: An "Apply Registration to Image" task with `input_types={"registered": False}`, meaning that it cannot run on images with type `registered=True`.
+3. For a task within a workflow, it is possible to specify some additional `type_filters`.
+    * Example: I may need a workflow that includes a 3D->2D projection task but then switches back to 3D images in a later task. I can achieve this by setting `type_filters = {"is_3D": True}` for the relevant task, so that from this task onwards the 3D images are processed (and not the 2D ones).
 
-Examples:
+#### Output filters
 
-* My dataset currently has the type filter `{"is_3D": False}`, because I previously ran an MIP task. Subsequent tasks in the workflow will run on 2D images by default.
-* My dataset currently has the attribute filter `{"well": "B03"}`, because I manually added it to the dataset (I just want to process a single well for the time being).
-* My dataset currently has the attribute filter `{"acquisition": 1}`, because I manually added it to the dataset (I just want to process a single multiplexing acquisition).
-
-
-### Workflow-task filters
-
-I can manually set an additional input filter by modifying the workflow-task `input_filters` property. 
+The task manifest may include the `output_types` property for a specific task. If this is the case, then these types are both applied to all output images and they are included in the dataset `type_filters`.
 
 Examples:
 
-* I may need a workflow that includes the MIP task but then switches back to 3D images in a later task. I can achieve this by setting `input_filters = {"is_3D": True}` for the relevant task, so that from this task onwards the 3D images is processed (and not the 2D ones).
+* A 3D->2D projection task typically has `output_types = {"is_3D": False}`: from this task onwards, the 2D images are processed (not the raw 3D images). And the images generated by this task have their type set to `"is_3D": False`.
+* An illumination-correction task would have `output_types = {"illumination_corrected": True}`: from this task onwards, the illumination corrected images are processed (not the raw images). And the images generated by this task have their type set to `"illumination_corrected": True`.
 
-### Additional validation
+### Attribute filters
 
-Task manifest may also specify the `input_types` of a given task. These are not used for filtering the image list, but rather to validate that the filtered image list is valid. If some images of the filtered list do not comply with `input_types`, the Fractal runner raises an error.
-
-Examples:
-
-* The illumination-correction task has `input_types={"illumination_corrected": False}`, which means it cannot run on images with type `illumination_correction=True`.
-* The Apply Registration to Image task has `input_types={"registered": False}`, which means it cannot run on images with type `registered=True`.
-
+The set of attribute filters to be applied before running a task is defined upon submission of a job, and they do not change during the job execution. These filters offer a way to process a subset of the whole dataset (e.g. only a few wells rather than the whole plate, or only a given multiplexing acquisition cycle). In Fractal web, the "Continue Workflow" dialogue is prepopulated with the attribute filters from the dataset (if any are set), but users are able to change the attribute filters to any setting they want.
 
 
 ## Examples
 
-After running a converter task, I may have an OME-Zarr HCS plate with 2 wells that contain one image each. In this case, the image list has 2 entries and each image has attributes for plate and well, as well as a true/fals `is_3D` type.
+After running a converter task, I may have an OME-Zarr HCS plate with 2 wells that contain one image each. In this case, the image list has 2 entries and each image has attributes for plate and well, as well as a true/false `is_3D` type.
 
 ![Image List 1](assets/image_list_x_1_two_wells_two_images.png)
 
