@@ -825,10 +825,10 @@ Tasks can also take an arbitrary list of additional arguments that are specific 
 The init part has the same Input API as the non-parallel task (<code>zarr_urls</code> and <code>zarr_dir</code>), but it provides the parallelization list for the compute part as an output.
 The compute part takes the <code>zarr_url</code> argument and an extra <code>init_args</code> dictionary argument (which is coming from the <code>parallelization_list</code> provided by the init task).</p>
 <h2 id="output-api">Output API<a class="headerlink" href="#output-api" title="Permanent link">&para;</a></h2>
-<p>Tasks can optionally return updates to the image list and/or <a href="../image_list/#dataset-filters">new dataset filters</a> (this is true for all tasks except the init phase of a compound tasks) or a parallelization list (just the init phase of a compound task). The output of a task is always a <code>task_output</code> dictionary. Note that this dictionary must be JSON-serializable, since it will be written to disk so that <code>fractal-server</code> can access it.</p>
+<p>Tasks can optionally return updates to the image list (this is true for all tasks except the init phase of a compound tasks) or a parallelization list (just the init phase of a compound task). The output of a task is always a <code>task_output</code> dictionary. Note that this dictionary must be JSON-serializable, since it will be written to disk so that <code>fractal-server</code> can access it.</p>
 <p>For tasks that create new images or edit relevant image properties, <code>task_output</code> must include an <code>image_list_updates</code> property so the server can update its metadata about that image.</p>
 <blockquote>
-<p>NOTE: if new filters are set, but both <code>image_list_updates</code> and <code>image_list_removals</code> are empty, in the task output, then <code>fractal-server</code> includes all the filtered image list in <code>image_list_updates</code>, so that they are updated with the appropriate <code>types</code> (see also <a href="../image_list/#image-types">the image-list page</a>).</p>
+<p>NOTE: if both <code>image_list_updates</code> and <code>image_list_removals</code> are empty in the task output, then <code>fractal-server</code> includes all the filtered image list into <code>image_list_updates</code>, so that they are updated with the appropriate <code>types</code> (see also <a href="../image_list/#image-types">the image-list page</a>).</p>
 </blockquote>
 <p>Task outputs with image list updates are returned as a dictionary that contains the <code>image_list_updates</code> key and a list containing the updates to individual images. The updates need to be for unique <code>zarr_url</code>s and each update needs to contain the <code>zarr_url</code> of the image it’s providing an update for. Additionally, they can provide an <code>origin</code> key, an <code>attributes</code> key and a <code>types</code> key. The <code>origin</code> key describes the <code>zarr_url</code> of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.</p>
 <p>Here's an example of <code>task_output</code>:
@@ -846,15 +846,6 @@ The compute part takes the <code>zarr_url</code> argument and an extra <code>ini
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p>Here is an example of a task that provides new filter updates without changing the image list. This task sets the <code>is_3D</code> filter to True:
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;filters&quot;</span> <span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;is_3D&quot;</span><span class="p">:</span> <span class="kc">True</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p>The init part of a compound task must produe a parallelization lists, with elements having the <code>zarr_url</code> property as well as additional arbitrary arguments as an <code>init_args</code> dictionary.

@@ -406,27 +406,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataset-filters" class="md-nav__link">
+  <a href="#type-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataset filters
+      Type filters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input filters
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#workflow-task-filters" class="md-nav__link">
+  <a href="#output-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Workflow-task filters
+      Output filters
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#additional-validation" class="md-nav__link">
+  <a href="#attribute-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional validation
+      Attribute filters
     </span>
   </a>
   
@@ -544,27 +559,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataset-filters" class="md-nav__link">
+  <a href="#type-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataset filters
+      Type filters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input filters
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#workflow-task-filters" class="md-nav__link">
+  <a href="#output-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Workflow-task filters
+      Output filters
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#additional-validation" class="md-nav__link">
+  <a href="#attribute-filters" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional validation
+      Attribute filters
     </span>
   </a>
   
@@ -607,46 +637,44 @@
 <h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h2>
 <p>Each entry in the image list is defined by a unique <code>zarr_url</code> property (the full path to the OME-Zarr image), and it may also include image types and image attributes.</p>
 <h3 id="image-types">Image types<a class="headerlink" href="#image-types" title="Permanent link">&para;</a></h3>
-<p>Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the <code>is_3D</code> type for 3D/2D images, or the <code>illumination_corrected</code> type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type <code>is_3D</code> set to <code>False</code> - see <a href="#dataset-filters">task-manifest section</a>) as well as from within an individual task (see <a href="../tasks_spec/#output-api">task-API/output section</a>).</p>
+<p>Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the <code>is_3D</code> type for 3D/2D images, or the <code>illumination_corrected</code> type for raw/corrected images when illumination correction was not run in-place). Types can be set both <a href="#output-filters">through the task manifest</a> (e.g. after an MIP task, the resulting images always have the type <code>is_3D</code> set to <code>False</code>) as well as from within an individual task (see <a href="../tasks_spec/#output-api">task-API/output section</a>).</p>
 <p>Note: when applying filters to the image list, the absence of a type corresponds to false by default.</p>
 <h3 id="image-attributes">Image attributes<a class="headerlink" href="#image-attributes" title="Permanent link">&para;</a></h3>
 <p>Image attributes are scalar properties (strings, integers, floats or booleans). They are always defined from within individual tasks, and never by the task manifest. They allow selecting subsets of your data (e.g. select a given well, a given plate or a given multiplexing acquisition).</p>
-<p>Fractal server uses the image list combined with filters (see <a href="#dataset-filters">below</a>) to provide the right image URLs to tasks.</p>
+<p>Fractal server uses the image list combined with filters (see <a href="#filters">below</a>) to provide the right image URLs to each task during execution.</p>
 <h2 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h2>
-<p>Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters (that is, a set of specific values assigned to image types and/or image attributes). Filters can be defined for a dataset and/or for a workflow task. If a specific filter is set both for the dataset and for the workflow task, the workflow-task filter takes priority.</p>
-<h3 id="dataset-filters">Dataset filters<a class="headerlink" href="#dataset-filters" title="Permanent link">&para;</a></h3>
-<p>There are multiple ways a dataset may have a given filter set:</p>
+<p>Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters. Filters can refer both to image types or image attributes and they may come from different sources.</p>
+<h3 id="type-filters">Type filters<a class="headerlink" href="#type-filters" title="Permanent link">&para;</a></h3>
+<h4 id="input-filters">Input filters<a class="headerlink" href="#input-filters" title="Permanent link">&para;</a></h4>
+<p>The set of type filters to be applied before running a task is obtained by combining these sources:</p>
 <ol>
-<li>I manually set it, by modifying the dataset <code>filters</code> property.</li>
-<li>While writing the Fractal manifest for a task package, I include the <code>output_types</code> attribute for a given task. These types are automatically included in the dataset filters after the task is run. 
-Examples:<ul>
-<li>An MIP task would set <code>output_types = {"is_3D": False}</code> in its output arguments: from this task onwards, the 2D images are processed (not the raw 3D images).</li>
-<li>An illumination-correction task would set <code>output_types = {"illumination_corrected": True}</code>: from this task onwards, the registered images are processed (not the raw images).</li>
+<li>The dataset may have <code>type_filters</code> set - this is the source with lowest priority.<ul>
+<li>Example: A prior workflow ran and set <a href="#output-filters">output filters</a> of <code>type_filters = {"is_3D": False}"</code>. These output filters were added to the dataset when the prior workflow finished.</li>
+<li>Example: I manually set <code>type_filters = {"illumination_corrected": False}"</code> through Fractal, by modifying the dataset, because I want to process raw images.</li>
 </ul>
 </li>
-<li>When writing the code for a specific task, the task output can include a <code>filters</code> property, for either image attributes and/or types - see the <a href="../tasks_spec/#output-api">section on task outputs</a>.</li>
+<li>The manifest of a tasks package may specify that a task has some required <code>input_types</code>, which are used as filters.<ul>
+<li>Example: An "Project Image (HCS Plate)" task with <code>input_types={"is_3D": True}</code>, meaning that it cannot run on images with type <code>is_3D=False</code>.</li>
+<li>Example: An "Illumination correction" task with <code>input_types={"illumination_corrected": False}</code>, meaning that it cannot run on images with type <code>illumination_correction=True</code>.</li>
+<li>Example: An "Apply Registration to Image" task with <code>input_types={"registered": False}</code>, meaning that it cannot run on images with type <code>registered=True</code>.</li>
+</ul>
+</li>
+<li>For a task within a workflow, it is possible to specify some additional <code>type_filters</code>.<ul>
+<li>Example: I may need a workflow that includes a 3D-&gt;2D projection task but then switches back to 3D images in a later task. I can achieve this by setting <code>type_filters = {"is_3D": True}</code> for the relevant task, so that from this task onwards the 3D images are processed (and not the 2D ones).</li>
+</ul>
+</li>
 </ol>
+<h4 id="output-filters">Output filters<a class="headerlink" href="#output-filters" title="Permanent link">&para;</a></h4>
+<p>The task manifest may include the <code>output_types</code> property for a specific task. If this is the case, then these types are both applied to all output images and they are included in the dataset <code>type_filters</code>.</p>
 <p>Examples:</p>
 <ul>
-<li>My dataset currently has the type filter <code>{"is_3D": False}</code>, because I previously ran an MIP task. Subsequent tasks in the workflow will run on 2D images by default.</li>
-<li>My dataset currently has the attribute filter <code>{"well": "B03"}</code>, because I manually added it to the dataset (I just want to process a single well for the time being).</li>
-<li>My dataset currently has the attribute filter <code>{"acquisition": 1}</code>, because I manually added it to the dataset (I just want to process a single multiplexing acquisition).</li>
+<li>A 3D-&gt;2D projection task typically has <code>output_types = {"is_3D": False}</code>: from this task onwards, the 2D images are processed (not the raw 3D images). And the images generated by this task have their type set to <code>"is_3D": False</code>.</li>
+<li>An illumination-correction task would have <code>output_types = {"illumination_corrected": True}</code>: from this task onwards, the illumination corrected images are processed (not the raw images). And the images generated by this task have their type set to <code>"illumination_corrected": True</code>.</li>
 </ul>
-<h3 id="workflow-task-filters">Workflow-task filters<a class="headerlink" href="#workflow-task-filters" title="Permanent link">&para;</a></h3>
-<p>I can manually set an additional input filter by modifying the workflow-task <code>input_filters</code> property. </p>
-<p>Examples:</p>
-<ul>
-<li>I may need a workflow that includes the MIP task but then switches back to 3D images in a later task. I can achieve this by setting <code>input_filters = {"is_3D": True}</code> for the relevant task, so that from this task onwards the 3D images is processed (and not the 2D ones).</li>
-</ul>
-<h3 id="additional-validation">Additional validation<a class="headerlink" href="#additional-validation" title="Permanent link">&para;</a></h3>
-<p>Task manifest may also specify the <code>input_types</code> of a given task. These are not used for filtering the image list, but rather to validate that the filtered image list is valid. If some images of the filtered list do not comply with <code>input_types</code>, the Fractal runner raises an error.</p>
-<p>Examples:</p>
-<ul>
-<li>The illumination-correction task has <code>input_types={"illumination_corrected": False}</code>, which means it cannot run on images with type <code>illumination_correction=True</code>.</li>
-<li>The Apply Registration to Image task has <code>input_types={"registered": False}</code>, which means it cannot run on images with type <code>registered=True</code>.</li>
-</ul>
+<h3 id="attribute-filters">Attribute filters<a class="headerlink" href="#attribute-filters" title="Permanent link">&para;</a></h3>
+<p>The set of attribute filters to be applied before running a task is defined upon submission of a job, and they do not change during the job execution. These filters offer a way to process a subset of the whole dataset (e.g. only a few wells rather than the whole plate, or only a given multiplexing acquisition cycle). In Fractal web, the "Continue Workflow" dialogue is prepopulated with the attribute filters from the dataset (if any are set), but users are able to change the attribute filters to any setting they want.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<p>After running a converter task, I may have an OME-Zarr HCS plate with 2 wells that contain one image each. In this case, the image list has 2 entries and each image has attributes for plate and well, as well as a true/fals <code>is_3D</code> type.</p>
+<p>After running a converter task, I may have an OME-Zarr HCS plate with 2 wells that contain one image each. In this case, the image list has 2 entries and each image has attributes for plate and well, as well as a true/false <code>is_3D</code> type.</p>
 <p><img alt="Image List 1" src="../assets/image_list_x_1_two_wells_two_images.png" /></p>
 <p>If I then run an illumination-correction task that does not overwrite its input images, the image list includes the two original images (without the <code>illumination_corrected</code> type) and two new ones (with <code>illumination_corrected</code> type set to true). Note that this task also sets the dataset type filters to <code>{"illumination_correction": True}</code>.</p>
 <p><img alt="Image List 2" src="../assets/image_list_x_2_two_wells_four_images.png" /></p>
