@@ -12,7 +12,7 @@ Each entry in the image list is defined by a unique `zarr_url` property (the ful
 
 ### Image types
 
-Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both by the task manifest (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False` - see [task-manifest section](#dataset-filters)) as well as from within an individual task (see [task-API/output section](./tasks_spec.md#output-api)).
+Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both [through the task manifest](#output-filters) (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False`) as well as from within an individual task (see [task-API/output section](./tasks_spec.md#output-api)).
 
 Note: when applying filters to the image list, the absence of a type corresponds to false by default.
 
@@ -25,27 +25,25 @@ Fractal server uses the image list combined with filters (see [below](#filters))
 
 ## Filters
 
-Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters (that is, a set of specific values assigned to image types and/or image attributes). Filters can refer both to image types or image attributes and they may come from different sources.
+Before running a given task, Fractal prepares an appropriate image list by extracting the images that match with a given set of filters. Filters can refer both to image types or image attributes and they may come from different sources.
 
 ### Type filters
 
 #### Input filters
 
-Before executing a given task, Fractal checks which type filters should be applied to obtain the right list of images to be processed.
-The set of type filters is obtained by combining these sources:
+The set of type filters to be applied before running a task is obtained by combining these sources:
 
 1. The dataset may have `type_filters` set - this is the source with lowest priority.
-    * Example: I manually set `type_filters = {"is_3D": True}"` through Fractal, by modifying the dataset, since I want to only work on the 3D images.
-2. The manifest of a tasks package may specify that a task has some required `input_types` (e.g. a projection task may have `input_types = {"is_3D": True}`), which count as filters.
+    * Example: I manually set `type_filters = {"illumination_corrected": False}"` through Fractal, by modifying the dataset, because I want to process raw images.
+2. The manifest of a tasks package may specify that a task has some required `input_types` (e.g. a projection task may have `input_types = {"is_3D": True}`), which are used as filters.
     * Example: An "Illumination correction" task with `input_types={"illumination_corrected": False}`, meaning that it cannot run on images with type `illumination_correction=True`.
     * Example: Am "Apply Registration to Image" task with `input_types={"registered": False}`, meaning that it cannot run on images with type `registered=True`.
-3. For a task within a workflow, it is possible to specify some additional `type_filters` (see [example below](#workflow-task-filters)).
+3. For a task within a workflow, it is possible to specify some additional `type_filters`.
     * Example: I may need a workflow that includes a 3D->2D projection task but then switches back to 3D images in a later task. I can achieve this by setting `type_filters = {"is_3D": True}` for the relevant task, so that from this task onwards the 3D images are processed (and not the 2D ones).
 
 #### Output filters
 
-After executing a given task, Fractal may update the dataset `type_filters` property.
-This happend when the task manifest includes an `output_types` property for this specific task. These types are automatically included in the dataset filters after the task is run. 
+The task manifest may include the `output_types` property for a specific task. If this is the case, then these types are both applied to all output images and they are included in the dataset `type_filters`.
 
 Examples:
 
@@ -54,9 +52,7 @@ Examples:
 
 ### Attribute filters
 
-Before executing a given task, Fractal also checks which attribute filters should be applied to obtain the right list of images to be processed. These filters offer a way to process a subset of the whole dataset (e.g. only a few wells, rather than the whole plate).
-
-Attribute filters are defined upon submission of a job, and they do not change during the job execution.
+The set of attribute filters to be applied before running a task is defined upon submission of a job, and they do not change during the job execution. These filters offer a way to process a subset of the whole dataset (e.g. only a few wells rather than the whole plate, or only a given multiplexing acquisition cycle).
 
 
 ## Examples
