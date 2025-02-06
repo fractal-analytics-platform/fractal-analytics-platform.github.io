@@ -107,11 +107,11 @@ The compute part takes the `zarr_url` argument and an extra `init_args` dictiona
 
 ## Output API
 
-Tasks can optionally return updates to the image list and/or [new dataset filters](./image_list.md#dataset-filters) (this is true for all tasks except the init phase of a compound tasks) or a parallelization list (just the init phase of a compound task). The output of a task is always a `task_output` dictionary. Note that this dictionary must be JSON-serializable, since it will be written to disk so that `fractal-server` can access it.
+Tasks can optionally return updates to the image list (this is true for all tasks except the init phase of a compound tasks) or a parallelization list (just the init phase of a compound task). The output of a task is always a `task_output` dictionary. Note that this dictionary must be JSON-serializable, since it will be written to disk so that `fractal-server` can access it.
 
 For tasks that create new images or edit relevant image properties, `task_output` must include an `image_list_updates` property so the server can update its metadata about that image.
 
-> NOTE: if new filters are set, but both `image_list_updates` and `image_list_removals` are empty, in the task output, then `fractal-server` includes all the filtered image list in `image_list_updates`, so that they are updated with the appropriate `types` (see also [the image-list page](./image_list.md#image-types)).
+> NOTE: if both `image_list_updates` and `image_list_removals` are empty, in the task output, then `fractal-server` includes all the filtered image list into `image_list_updates`, so that they are updated with the appropriate `types` (see also [the image-list page](./image_list.md#image-types)).
 
 Task outputs with image list updates are returned as a dictionary that contains the `image_list_updates` key and a list containing the updates to individual images. The updates need to be for unique `zarr_url`s and each update needs to contain the `zarr_url` of the image it’s providing an update for. Additionally, they can provide an `origin` key, an `attributes` key and a `types` key. The `origin` key describes the `zarr_url` of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.
 
@@ -131,17 +131,6 @@ Here's an example of `task_output`:
 			}
 		}
 	]
-}
-```
-
-Here is an example of a task that provides new filter updates without changing the image list. This task sets the `is_3D` filter to True:
-```python
-{
-	"filters" ={
-		"types": {
-			"is_3D": True
-		}
-	}
 }
 ```
 
