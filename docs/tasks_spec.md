@@ -111,7 +111,7 @@ Tasks can optionally return updates to the image list (this is true for all task
 
 For tasks that create new images or edit relevant image properties, `task_output` must include an `image_list_updates` property so the server can update its metadata about that image.
 
-> NOTE: if both `image_list_updates` and `image_list_removals` are empty, in the task output, then `fractal-server` includes all the filtered image list into `image_list_updates`, so that they are updated with the appropriate `types` (see also [the image-list page](./image_list.md#image-types)).
+> NOTE: if both `image_list_updates` and `image_list_removals` are empty in the task output, then `fractal-server` includes all the filtered image list into `image_list_updates`, so that they are updated with the appropriate `types` (see also [the image-list page](./image_list.md#image-types)).
 
 Task outputs with image list updates are returned as a dictionary that contains the `image_list_updates` key and a list containing the updates to individual images. The updates need to be for unique `zarr_url`s and each update needs to contain the `zarr_url` of the image it’s providing an update for. Additionally, they can provide an `origin` key, an `attributes` key and a `types` key. The `origin` key describes the `zarr_url` of another image already in the image list and will take the existing attributes and types from that image. Attributes and types can also be directly set by a task.
 
