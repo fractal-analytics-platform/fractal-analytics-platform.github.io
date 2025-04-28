@@ -55,11 +55,14 @@ While flexible submission is great, it’s only as useful as our ability to moni
 ![Fractal monitoring](../assets/blogs/fractal_flexibility/fractal_monitoring.png)
 
 With this newly added flexibility, Fractal makes it easier to manage complex workflows, test parameters on small subsets and find specific images that had issues during processing. This update lays the groundwork for more improvements to come in the future. Among the key features still on our roadmap, we want to highlight 3 relevant ones:  
+  
 1. **Improved visibility into the processing status of compound tasks:** Compound tasks in Fractal combine a non parallel initialization phase that decides on the parallelisation of processing with running these parallel compute jobs. Because images can be processed in multiple compute tasks or even skipped completely from compute tasks based on the initialization, we only track the image status aggregated on all images that were run at once. Future refactors of the compound tasks may allow us to define a subset of compound tasks for which we’ll be able to show more granular processing status, without having to remove the flexibility for complex compound tasks that are not run on individual images.  
+  
 2. **More granular live status updates**: While the new history data structure allows granular tracking of statuses, our current slurm runners only update them in batches. We run multiple images within the same slurm job (this batching has large performance gains) and only update the status of all images once the slurm job is done. Future work on refactoring the runners may enable us to make the status update more granular.  
+  
 3. **Rerun workflows based on status**: While we can now track processing status per image, we haven’t exposed a submission mode that allows rerunning a workflow only on failed images or running a workflow on all the images that were not run yet. This feature is high on our priority list and will be tackled after this release.  
 
-You can follow along with our ongoing Fractal developments by keeping an eye on this newly created [news section on the Fractal page](../news/) or by following the development process on our Github repositories.  
+You can follow along with our ongoing Fractal developments by keeping an eye on this newly created [news section on the Fractal page](../) or by following the development process on our Github repositories.  
 
 
 
