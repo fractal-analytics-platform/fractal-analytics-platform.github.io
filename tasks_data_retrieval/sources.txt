@@ -7,4 +7,4 @@ https://github.com/fmi-basel/gliberal-scMultipleX
 https://github.com/m-albert/fractal-ome-zarr-hcs-stitching
 https://github.com/pelkmanslab/abbott
 https://github.com/Apricot-Therapeutics/APx_fractal_task_collection
-https://github.com/fractal-analytics-platform/fractal-hcs-converters
+https://github.com/fractal-analytics-platform/fractal-uzh-converters
