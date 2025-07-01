@@ -238,7 +238,7 @@ with sources_file.open("r") as f:
     sources = f.read().splitlines()
 sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
-TASK_GROUPS = []
+task_groups = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
@@ -274,7 +274,7 @@ for source in sources:
 
     TaskGroupReadV2(**task_group)
 
-    TASK_GROUPS.append(task_group)
+    task_groups.append(task_group)
 
     t_end = time.perf_counter()
     print(
@@ -285,8 +285,20 @@ for source in sources:
     )
     print()
 
+# grouping results
+GROUPED_RESULT = []
+
+for task_group in task_groups:
+    if any(existing_pkg_name == task_group["pkg_name"] for existing_pkg_name, _ in GROUPED_RESULT):
+        raise ValueError(f"Duplicate package name found: {task_group['pkg_name']}")
+
+    GROUPED_RESULT.append((task_group["pkg_name"], [task_group]))
+
+# sort by package name
+GROUPED_RESULT.sort(key=lambda x: x[0].lower())
+
 output_file = Path(__file__).parent / "tasks.json"
 with output_file.open("w") as f:
-    json.dump(TASK_GROUPS, f, indent=2)
+    json.dump(GROUPED_RESULT, f, indent=2)
 
 DOWNLOAD_FOLDER.rmdir()
