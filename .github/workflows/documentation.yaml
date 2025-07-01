@@ -8,7 +8,7 @@ on:
 
   # Re-run every day at 4PM
   schedule:
-    - cron: "* 16 * * *"
+    - cron: "43 16 * * *"
 
   # Re-run on demand:
   workflow_dispatch:
