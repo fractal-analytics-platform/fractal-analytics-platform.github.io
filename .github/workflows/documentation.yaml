@@ -6,9 +6,9 @@ on:
   pull_request:
     branches: ["main"]
 
-  # Re-run every day at 4PM
+  # Re-run on a regular schedule
   schedule:
-    - cron: "43 16 * * *"
+    - cron: "21 * * * *"
 
   # Re-run on demand:
   workflow_dispatch:
