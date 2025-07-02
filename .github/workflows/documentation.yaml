@@ -111,7 +111,7 @@ jobs:
 
       - run: ls -lh site/*
 
-      - run: echo "event_name=${{github.event_name}} event_ref=${{github.event_ref}}"
+      - run: echo "event_name=${{github.event_name}} event_ref=${{github.event.ref}}"
 
       - name: Deploy docs
         if: ${{ ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' ) && ( github.event.ref == 'refs/heads/main' ) }}
