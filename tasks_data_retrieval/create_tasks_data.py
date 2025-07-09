@@ -242,36 +242,32 @@ task_groups = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
-    try:
-        task_list = []
-        data = get_package_info(source)
-        pkg_name = data["name"]
-        pkg_version = data.get("version")
-        authors = data["manifest"].get("authors")
-        install_instructions = data.get("install_instructions")
-        pkg_task_list = data["manifest"]["task_list"]
-        for task in pkg_task_list:
-            new_task = dict()
-            for column_name in COLUMN_NAMES:
-                new_task[column_name] = task.get(
-                    column_name, COLUMN_DEFAULTS.get(column_name, None)
-                )
-            new_task["version"] = pkg_version
-            new_task["type"] = _get_task_type(task)
-            new_task["authors"] = authors
-            new_task["install_instructions"] = install_instructions
-            TaskReadV2(**new_task)
-            task_list.append(new_task)
+    task_list = []
+    data = get_package_info(source)
+    pkg_name = data["name"]
+    pkg_version = data.get("version")
+    authors = data["manifest"].get("authors")
+    install_instructions = data.get("install_instructions")
+    pkg_task_list = data["manifest"]["task_list"]
+    for task in pkg_task_list:
+        new_task = dict()
+        for column_name in COLUMN_NAMES:
+            new_task[column_name] = task.get(
+                column_name, COLUMN_DEFAULTS.get(column_name, None)
+            )
+        new_task["version"] = pkg_version
+        new_task["type"] = _get_task_type(task)
+        new_task["authors"] = authors
+        new_task["install_instructions"] = install_instructions
+        TaskReadV2(**new_task)
+        task_list.append(new_task)
 
-        task_group = dict(
-            pkg_name=pkg_name,
-            version=pkg_version,
-            task_list=task_list,
-        )
-        ntasks = len(task_list)
-    except Exception as e:
-        print(f"ERROR, skip.\nOriginal error:\n{str(e)}")
-
+    task_group = dict(
+        pkg_name=pkg_name,
+        version=pkg_version,
+        task_list=task_list,
+    )
+    ntasks = len(task_list)
     TaskGroupReadV2(**task_group)
 
     task_groups.append(task_group)
@@ -284,6 +280,7 @@ for source in sources:
         f"elapsed {t_end-t_start:.3f} s."
     )
     print()
+
 
 # grouping results
 GROUPED_RESULT = []
