@@ -219,7 +219,7 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 
 1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott/releases/download/v0.3.2/abbott-0.3.2-py3-none-any.whl)
 2. Run \`pip install abbott-0.3.2-py3-none-any.whl\`
-`}]}]],["abbott_features",[{pkg_name:"abbott_features",version:"0.0.9.1",task_list:[{version:"0.0.9.1",name:"Measure Features",category:"Measurement",modality:null,tags:["3D","Morphology","Intensity","Distance","Colocalization","regionprops","itk","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:`### Purpose
+`}]}]],["abbott_features",[{pkg_name:"abbott_features",version:"0.1.0",task_list:[{version:"0.1.0",name:"Measure Features",category:"Measurement",modality:null,tags:["3D","Morphology","Intensity","Distance","Colocalization","regionprops","itk","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:`### Purpose
 - Calculates **morphology**, **intensity**, **distance**, and **colocalization features** for objects in a 3D label image.
 - Supports **2D (not tested) and 3D measurements** across multiple regions of interest (ROIs).
 
@@ -233,14 +233,14 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 ### Limitations
 - Does not support measurements for label images that do not have the same resolution as the intensity images.`,type:"parallel",authors:"Ruth Hornbachner, Maks Hess",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
-2. Run \`pip install abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl\`
-`},{version:"0.0.9.1",name:"Get Cellvoyager Time Decay",category:"Measurement",modality:"HCS",tags:["3D","Yokogawa","Intensity Correction","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
+2. Run \`pip install abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl\`
+`},{version:"0.1.0",name:"Get Cellvoyager Time Decay",category:"Measurement",modality:"HCS",tags:["3D","Yokogawa","Intensity Correction","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:`### Purpose
 - Calculates time-decay correction factors per ROI, channel and acquisition to correct for acquisition bias dependent intensity decay (aka imaging snake).
 - Time decay models can be of type Exp, ExpNoOffset, Linear and LogLinear calculated with linear loss.
 - Supports **2D (not tested) and 3D measurements** across multiple regions of interest (ROIs).
@@ -254,22 +254,22 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 ### Limitations
 - This task only supports time-decay correction for images from CellVoyager microscopes.`,type:"non_parallel",authors:"Ruth Hornbachner, Maks Hess",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
-2. Run \`pip install abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl\`
-`},{version:"0.0.9.1",name:"Get Z Decay Models",category:"Measurement",modality:"HCS",tags:["3D","Intensity Correction","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:"### Purpose\n- Calculates z-decay correction models per channel label to correct intensity decay across z.\n- Z decay models can be of type Exp, Linear and LogLinear calculated with linear or huber loss. For each type, z decay bias is corrected either 1D or 2D (by partioning light path into medium and sample path).\n- Z decay models are available in three types: Exponential (Exp), Linear, and LogLinear, each computed using either linear or Huber loss. For all model types, z-decay bias correction models are saved as 1D (uniform correction across the entire light path) and 2D mode (with light path divided into medium path and sample path).\n\n### Outputs\n- Z-decay models saved in the OME-Zarr plate /path_to_ome_zarr_fld/models/z_decay/ \n- Plots saved in /path_to_ome_zarr_fld/models/__plots containing overview of \n1. `overview__one_step` / `overview__two_step` - 1D & 2D decay models fit to channels.\n2. `equivalent_spherical_radius_cutoff` - adjustable via the `spherical_radius_cutoff` parameter used for outlier removal.\n3. `roundness_cutoff` - adjustable via the `roundness_cutoff` parameter used for outlier removal.\n",type:"non_parallel",authors:"Ruth Hornbachner, Maks Hess",install_instructions:`**How to add this task to a Fractal instance:**
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
+2. Run \`pip install abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl\`
+`},{version:"0.1.0",name:"Get Z Decay Models",category:"Measurement",modality:"HCS",tags:["3D","Intensity Correction","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/pelkmanslab/abbott-features",docs_info:"### Purpose\n- Calculates z-decay correction models per channel label to correct intensity decay across z.\n- Z decay models can be of type Exp, Linear and LogLinear calculated with linear or huber loss. For each type, z decay bias is corrected either 1D or 2D (by partioning light path into medium and sample path).\n- Z decay models are available in three types: Exponential (Exp), Linear, and LogLinear, each computed using either linear or Huber loss. For all model types, z-decay bias correction models are saved as 1D (uniform correction across the entire light path) and 2D mode (with light path divided into medium path and sample path).\n\n### Outputs\n- Z-decay models saved in the OME-Zarr plate /path_to_ome_zarr_fld/models/z_decay/ \n- Plots saved in /path_to_ome_zarr_fld/models/__plots containing overview of \n1. `overview__one_step` / `overview__two_step` - 1D & 2D decay models fit to channels.\n2. `equivalent_spherical_radius_cutoff` - adjustable via the `spherical_radius_cutoff` parameter used for outlier removal.\n3. `roundness_cutoff` - adjustable via the `roundness_cutoff` parameter used for outlier removal.\n",type:"non_parallel",authors:"Ruth Hornbachner, Maks Hess",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.0.9.1/abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl)
-2. Run \`pip install abbott_features-0.0.9.1-cp311-cp311-linux_x86_64.whl\`
+1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.0/abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl)
+2. Run \`pip install abbott_features-0.1.0-cp311-cp311-linux_x86_64.whl\`
 `}]}]],["apx_fractal_task_collection",[{pkg_name:"apx_fractal_task_collection",version:"0.4.8",task_list:[{version:"0.4.8",name:"Measure Features",category:"Measurement",modality:null,tags:["Textures","Intensity","Morphology","scikit-image","regionprops"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
 - Calculates **morphology**, **intensity**, **texture**, and **population features** for objects in a label image.
 - Supports **2D and 3D measurements** across multiple regions of interest (ROIs).
