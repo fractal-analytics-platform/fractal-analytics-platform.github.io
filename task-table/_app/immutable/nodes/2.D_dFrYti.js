@@ -702,40 +702,7 @@ Other acquisition patterns may be supported in the future.
 
 ### Limitations
 - The \`image_dir\` needs to be set to the the parent folder containing the following sub-folders: YYYY-MM-DD / Project_ID / Actual image files (potentially in ZStep folders). If it is run directly from the folder containing the images, it will fail.
-`,type:"non_parallel",authors:null,install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-faim-ipa` and package version `0.6.2`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-faim-ipa==0.6.2"`\n```\n'}]}]],["fractal_hcs_converters",[{pkg_name:"fractal_hcs_converters",version:"0.3.2",task_list:[{version:"0.3.2",name:"Convert Olympus ScanR Plate to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Olympus","ScanR","Plate converter"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-hcs-converters",docs_info:`### Purpose
-
-- Convert images acquired with an Olympus ScanR microscope to a OME-Zarr Plate.
-
-### Outputs
-
-- A OME-Zarr Plate.
-
-### Limitations
-
-- This task has been tested on a limited set of acquisitions. It may not work on all Olympus ScanR acquisitions.
-
-### Expected inputs
-
-The following directory structure is expected:
-
-\`\`\`text
-/plate_dir/
-----/data/
---------/metadata.ome.xml
---------/B2--W00014--P00001--Z00000--T00000--DAPi.tif
---------/B2--W00014--P00001--Z00000--T00000--TRITC.tif
---------/...
-\`\`\`
-`,type:"compound",authors:"Fractal Core Team",install_instructions:`**How to add this task to a Fractal instance:**
-
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.2/fractal_hcs_converters-0.3.2-py3-none-any.whl)
-2. Trigger a local task collection by uploading the wheel file
-
-**How to install this task in a Python environment:**
-
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.2/fractal_hcs_converters-0.3.2-py3-none-any.whl)
-2. Run \`pip install fractal_hcs_converters-0.3.2-py3-none-any.whl\`
-`}]}]],["fractal_helper_tasks",[{pkg_name:"fractal_helper_tasks",version:"0.3.3",task_list:[{version:"0.3.3",name:"Drop T Dimension",category:null,modality:null,tags:["Singleton time dimension"],input_types:{},output_types:{has_t:!1},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+`,type:"non_parallel",authors:null,install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-faim-ipa` and package version `0.6.2`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-faim-ipa==0.6.2"`\n```\n'}]}]],["fractal_helper_tasks",[{pkg_name:"fractal_helper_tasks",version:"0.3.3",task_list:[{version:"0.3.3",name:"Drop T Dimension",category:null,modality:null,tags:["Singleton time dimension"],input_types:{},output_types:{has_t:!1},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Removes a **singleton time (T) dimension** from an OME-Zarr image.  
 - Creates a new OME-Zarr image with updated metadata and dimensions.
 - Optionally overwrites the input image if \`overwrite_input\` is set to True.
@@ -1063,7 +1030,73 @@ Example of valid \`output_specs\`:
     "out_2": {"type": "dataframe", "table_name": "measurements"},
 }
 \`\`\`
-`,type:"parallel",authors:"Fractal Core Team",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection for package `fractal-tasks-core`, package version `1.5.4` and package extras `fractal-tasks`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-tasks-core[fractal-tasks]==1.5.4"`\n'}]}]],["operetta_compose",[{pkg_name:"operetta_compose",version:"0.2.13",task_list:[{version:"0.2.13",name:"Harmony to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Opera","Operetta","Perkin Elmer"],input_types:{},output_types:{},docs_link:"https://leukemia-kispi.github.io/operetta-compose/",docs_info:`## harmony_to_ome_zarr
+`,type:"parallel",authors:"Fractal Core Team",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection for package `fractal-tasks-core`, package version `1.5.4` and package extras `fractal-tasks`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-tasks-core[fractal-tasks]==1.5.4"`\n'}]}]],["fractal_uzh_converters",[{pkg_name:"fractal_uzh_converters",version:"0.3.3",task_list:[{version:"0.3.3",name:"Convert Olympus ScanR Plate to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Olympus","ScanR","Plate converter"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-uzh-converters",docs_info:`### Purpose
+
+- Convert images acquired with an Olympus ScanR microscope to a OME-Zarr Plate.
+
+### Outputs
+
+- A OME-Zarr Plate.
+
+### Limitations
+
+- This task has been tested on a limited set of acquisitions. It may not work on all Olympus ScanR acquisitions.
+
+### Expected inputs
+
+The following directory structure is expected:
+
+\`\`\`text
+/plate_dir/
+----/data/
+--------/metadata.ome.xml
+--------/B2--W00014--P00001--Z00000--T00000--DAPi.tif
+--------/B2--W00014--P00001--Z00000--T00000--TRITC.tif
+--------/...
+\`\`\`
+`,type:"compound",authors:"Fractal Core Team",install_instructions:`**How to add this task to a Fractal instance:**
+
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.3/fractal_uzh_converters-0.3.3-py3-none-any.whl)
+2. Trigger a local task collection by uploading the wheel file
+
+**How to install this task in a Python environment:**
+
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.3/fractal_uzh_converters-0.3.3-py3-none-any.whl)
+2. Run \`pip install fractal_uzh_converters-0.3.3-py3-none-any.whl\`
+`},{version:"0.3.3",name:"Convert Yokogawa CQ3K Plate to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Yokogawa","CQ3K","Plate converter"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-uzh-converters",docs_info:`### Purpose
+
+- Convert images acquired with a Yokogawa CQ3K microscope to a OME-Zarr Plate.
+
+### Outputs
+
+- A OME-Zarr Plate.
+
+### Limitations
+
+- This task has been tested on a limited set of acquisitions. It may not work on all Yokogawa CQ3K acquisitions.
+
+### Expected inputs
+
+The following directory structure is expected:
+
+\`\`\`text
+/plate_dir/
+----/MeasurementData.mlf
+----/MeasurementDetail.mrf
+----/Image/
+--------/W0000F0001T0001Z000C1.tif
+----/Projection/ (optional)
+--------/W0000F0001T0001Z000C1.tif
+\`\`\``,type:"compound",authors:"Fractal Core Team",install_instructions:`**How to add this task to a Fractal instance:**
+
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.3/fractal_uzh_converters-0.3.3-py3-none-any.whl)
+2. Trigger a local task collection by uploading the wheel file
+
+**How to install this task in a Python environment:**
+
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.3/fractal_uzh_converters-0.3.3-py3-none-any.whl)
+2. Run \`pip install fractal_uzh_converters-0.3.3-py3-none-any.whl\`
+`}]}]],["operetta_compose",[{pkg_name:"operetta_compose",version:"0.2.13",task_list:[{version:"0.2.13",name:"Harmony to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Opera","Operetta","Perkin Elmer"],input_types:{},output_types:{},docs_link:"https://leukemia-kispi.github.io/operetta-compose/",docs_info:`## harmony_to_ome_zarr
 Convert TIFFs which were exported from Harmony (Operetta/Opera, Perkin-Elmer) to OME-ZARR
 `,type:"non_parallel",authors:"Fabio Steffen",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `operetta-compose` and package version `0.2.13`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "operetta-compose==0.2.13"`\n```\n'},{version:"0.2.13",name:"Stardist segmentation",category:"Segmentation",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://leukemia-kispi.github.io/operetta-compose/",docs_info:`## stardist_segmentation
 Segment cells with Stardist
