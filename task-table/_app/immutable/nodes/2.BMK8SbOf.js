@@ -702,7 +702,7 @@ Other acquisition patterns may be supported in the future.
 
 ### Limitations
 - The \`image_dir\` needs to be set to the the parent folder containing the following sub-folders: YYYY-MM-DD / Project_ID / Actual image files (potentially in ZStep folders). If it is run directly from the folder containing the images, it will fail.
-`,type:"non_parallel",authors:null,install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-faim-ipa` and package version `0.6.2`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-faim-ipa==0.6.2"`\n```\n'}]}]],["fractal_helper_tasks",[{pkg_name:"fractal_helper_tasks",version:"0.4.0",task_list:[{version:"0.4.0",name:"Drop T Dimension",category:null,modality:null,tags:["Singleton time dimension"],input_types:{},output_types:{has_t:!1},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+`,type:"non_parallel",authors:null,install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-faim-ipa` and package version `0.6.2`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-faim-ipa==0.6.2"`\n```\n'}]}]],["fractal_helper_tasks",[{pkg_name:"fractal_helper_tasks",version:"0.4.1",task_list:[{version:"0.4.1",name:"Drop T Dimension",category:null,modality:null,tags:["Singleton time dimension"],input_types:{},output_types:{has_t:!1},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Removes a **singleton time (T) dimension** from an OME-Zarr image.  
 - Creates a new OME-Zarr image with updated metadata and dimensions.
 - Optionally overwrites the input image if \`overwrite_input\` is set to True.
@@ -715,14 +715,14 @@ Other acquisition patterns may be supported in the future.
 - Assumes the T-dimension is **singleton**; does not process non-singleton time axes.  
 - Does not copy associated **label images** to the new Zarr structure.  `,type:"parallel",authors:"Joel Luethi",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
-2. Run \`pip install fractal_helper_tasks-0.4.0-py3-none-any.whl\`
-`},{version:"0.4.0",name:"Convert 2D segmentation to 3D",category:null,modality:null,tags:["Mixed modality","2D to 3D workflows"],input_types:{is_3D:!1},output_types:{is_3D:!0},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
+2. Run \`pip install fractal_helper_tasks-0.4.1-py3-none-any.whl\`
+`},{version:"0.4.1",name:"Convert 2D segmentation to 3D",category:null,modality:null,tags:["Mixed modality","2D to 3D workflows"],input_types:{is_3D:!1},output_types:{is_3D:!0},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Converts a **2D segmentation** image into a **3D segmentation** by replicating the 2D segmentation across Z-slices.  
 - Supports OME-Zarr datasets where **2D and 3D images** share the same base name but differ by suffixes.  
 - Optionally copies associated ROI tables and adjusts them to align with the replicated Z-dimensions.  
@@ -736,14 +736,14 @@ Other acquisition patterns may be supported in the future.
 - Assumes **2D OME-Zarr images** and corresponding 3D images are stored in the same base folder and just differ with a suffix before the .zarr.  
 `,type:"parallel",authors:"Joel Luethi",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
-2. Run \`pip install fractal_helper_tasks-0.4.0-py3-none-any.whl\`
-`},{version:"0.4.0",name:"Rechunk OME-Zarr",category:null,modality:null,tags:["Rechunking","Many files"],input_types:{},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
+2. Run \`pip install fractal_helper_tasks-0.4.1-py3-none-any.whl\`
+`},{version:"0.4.1",name:"Rechunk OME-Zarr",category:null,modality:null,tags:["Rechunking","Many files"],input_types:{},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Rechunks OME-Zarr to new chunking parameters: Changes whether the array is stored as many small files or few larger files.
 - Optionally applies the same rechunking to label images.
 
@@ -751,14 +751,14 @@ Other acquisition patterns may be supported in the future.
 - A **new Zarr image** that is rechunked.
 `,type:"parallel",authors:"Joel Luethi",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
-2. Run \`pip install fractal_helper_tasks-0.4.0-py3-none-any.whl\`
-`},{version:"0.4.0",name:"Add Z Singleton Dimension",category:null,modality:null,tags:["Singleton Z dimension"],input_types:{is_3D:!1},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
+2. Run \`pip install fractal_helper_tasks-0.4.1-py3-none-any.whl\`
+`},{version:"0.4.1",name:"Add Z Singleton Dimension",category:null,modality:null,tags:["Singleton Z dimension"],input_types:{is_3D:!1},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Removes a **singleton time (T) dimension** from an OME-Zarr image.  
 - Creates a new OME-Zarr image with updated metadata and dimensions.
 - Optionally overwrites the input image if \`overwrite_input\` is set to True.
@@ -771,14 +771,14 @@ Other acquisition patterns may be supported in the future.
 - Assumes the T-dimension is **singleton**; does not process non-singleton time axes.  
 - Does not copy associated **label images** to the new Zarr structure.  `,type:"parallel",authors:"Joel Luethi",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
-2. Run \`pip install fractal_helper_tasks-0.4.0-py3-none-any.whl\`
-`},{version:"0.4.0",name:"Assign Label by Overlap",category:null,modality:null,tags:["Label assignment","Label processing"],input_types:{},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
+2. Run \`pip install fractal_helper_tasks-0.4.1-py3-none-any.whl\`
+`},{version:"0.4.1",name:"Assign Label by Overlap",category:null,modality:null,tags:["Label assignment","Label processing"],input_types:{},output_types:{},docs_link:"https://github.com/jluethi/fractal-helper-tasks",docs_info:`### Purpose
 - Assigns labels of child label to the parent label based on overlap.
 - Uses a threshold and fills NA for labels with no sufficient overlap.
 - When multiple parent labels overlap with a child label, assigns the parent label with the maximum overlap.
@@ -789,13 +789,13 @@ Other acquisition patterns may be supported in the future.
 ### Limitations
 - Only processes OME-Zarrs where both parent and child label are in the same OME-Zarr image (in some multiplexing scenarios, those labels are in different images).`,type:"parallel",authors:"Joel Luethi",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.0/fractal_helper_tasks-0.4.0-py3-none-any.whl)
-2. Run \`pip install fractal_helper_tasks-0.4.0-py3-none-any.whl\`
+1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-helper-tasks/releases/download/v0.4.1/fractal_helper_tasks-0.4.1-py3-none-any.whl)
+2. Run \`pip install fractal_helper_tasks-0.4.1-py3-none-any.whl\`
 `}]}]],["fractal_lif_converters",[{pkg_name:"fractal_lif_converters",version:"0.5.0",task_list:[{version:"0.5.0",name:"Convert Lif Plate to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Leica","Plate converter"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-lif-converters",docs_info:`### Purpose
 
 - Convert a Leica LIF plate to a OME-Zarr Plate.
