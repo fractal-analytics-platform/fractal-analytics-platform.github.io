@@ -107,7 +107,7 @@ def get_github_install_instructions(*, wheel_name: str, wheel_url: str) -> str:
         instructions = _get_default_template_wheel_url_with_extra(extra="fractal-tasks")
     instructions = instructions.replace("__WHEEL_NAME__", wheel_name)
     instructions = instructions.replace("__WHEEL_URL__", wheel_url)
-    if wheel_name.startswith("fractal-cellpose-sam") or wheel_name.startswith("fractal-ilastik"):
+    if wheel_name.startswith("fractal_cellpose_sam") or wheel_name.startswith("ilastik"):
         instructions = _get_default_pixi_installation_instructions(wheel_url)
     print(instructions)
     return instructions
