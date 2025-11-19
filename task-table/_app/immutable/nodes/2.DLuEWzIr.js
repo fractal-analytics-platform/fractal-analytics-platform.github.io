@@ -699,13 +699,14 @@ Other acquisition patterns may be supported in the future.
 ### Limitations
 - List known limitations of the task (e.g. only works for certain data types).`,type:"parallel",authors:"Lorenzo Cerrone",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task/releases/download/v0.1.0/fractal_cellpose_sam_task-0.1.0-py3-none-any.whl)
-2. Trigger a local task collection by uploading the wheel file
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task/releases/download/v0.1.0/fractal_cellpose_sam_task-0.1.0.tar.gz)
+2. Trigger a pixi task collection by uploading the tar.gz file to the pixi collection mode
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task/releases/download/v0.1.0/fractal_cellpose_sam_task-0.1.0-py3-none-any.whl)
-2. Run \`pip install fractal_cellpose_sam_task-0.1.0-py3-none-any.whl\`
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task/releases/download/v0.1.0/fractal_cellpose_sam_task-0.1.0.tar.gz)
+2. Unpack the tar.gz archive
+3. Run the task from the archive via pixi
 `}]}]],["fractal_faim_ipa",[{pkg_name:"fractal_faim_ipa",version:"0.6.2",task_list:[{version:"0.6.2",name:"Convert MD to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Molecular Devices","Image Xpress","MD"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-faim-ipa",docs_info:`### Purpose
 - Converts **2D and 3D images from MD Molecular Devices** systems into OME-Zarr format, creating OME-Zarr HCS plates and combining all fields of view in a well into a single image.
 - Saves Fractal **region-of-interest (ROI) tables** for both individual fields of view and the entire well.
@@ -1198,13 +1199,14 @@ This task is used to apply a ilastik pixel classifier to an image.
 
 - The task can only be used with single and dual channels pixel classifiers models.`,type:"parallel",authors:"Lorenzo Cerrone",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.2.8/ilastik_tasks-0.2.8-py3-none-any.whl)
-2. Trigger a local task collection by uploading the wheel file
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.2.8/ilastik_tasks-0.2.8.tar.gz)
+2. Trigger a pixi task collection by uploading the tar.gz file to the pixi collection mode
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.2.8/ilastik_tasks-0.2.8-py3-none-any.whl)
-2. Run \`pip install ilastik_tasks-0.2.8-py3-none-any.whl\`
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.2.8/ilastik_tasks-0.2.8.tar.gz)
+2. Unpack the tar.gz archive
+3. Run the task from the archive via pixi
 `}]}]],["operetta_compose",[{pkg_name:"operetta_compose",version:"0.2.13",task_list:[{version:"0.2.13",name:"Harmony to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Opera","Operetta","Perkin Elmer"],input_types:{},output_types:{},docs_link:"https://leukemia-kispi.github.io/operetta-compose/",docs_info:`## harmony_to_ome_zarr
 Convert TIFFs which were exported from Harmony (Operetta/Opera, Perkin-Elmer) to OME-ZARR
 `,type:"non_parallel",authors:"Fabio Steffen",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `operetta-compose` and package version `0.2.13`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "operetta-compose==0.2.13"`\n```\n'},{version:"0.2.13",name:"Stardist segmentation",category:"Segmentation",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://leukemia-kispi.github.io/operetta-compose/",docs_info:`## stardist_segmentation
