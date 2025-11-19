@@ -1,3 +1,6 @@
+import os
+from urllib.parse import urlparse
+
 INSTALL_INSTRUCTIONS_TITLE_1 = "**How to add this task to a Fractal instance:**\n"
 INSTALL_INSTRUCTIONS_TITLE_2 = "**How to install this task in a Python environment:**\n"
 
@@ -54,6 +57,39 @@ def _get_default_template_wheel_url_with_extra(extra: str) -> str:
     template = "\n".join(lines) + "\n"
     return template
 
+def wheel_to_targz(url: str) -> str:
+    parsed = urlparse(url)
+    dirname, filename = os.path.split(parsed.path)
+
+    # Replace .whl (and any wheel tags) with .tar.gz
+    if filename.endswith(".whl"):
+        base = filename.split("-py")[0]  # remove wheel-specific suffix
+        version = base.split("-")[-1]
+        pkg_name = "-".join(base.split("-")[:-1])
+        new_filename = f"{pkg_name}-{version}.tar.gz"
+    else:
+        raise ValueError("URL does not point to a .whl file")
+
+    new_path = f"{dirname}/{new_filename}"
+    return parsed._replace(path=new_path).geturl()
+
+
+def _get_default_pixi_installation_instructions(wheel_url: str) -> str:
+    targz_url = wheel_to_targz(wheel_url)
+    lines = [
+        INSTALL_INSTRUCTIONS_TITLE_1,
+        f"1. Download the tar.gz file from [this link]({targz_url})",
+        "2. Trigger a pixi task collection by uploading the tar.gz file to "
+        "the pixi collection mode",
+        "",
+        INSTALL_INSTRUCTIONS_TITLE_2,
+        f"1. Download the tar.gz file from [this link]({targz_url})",
+        "2. Unpack the tar.gz archive",
+        "3. Run the task from the archive via pixi",
+    ]
+    template = "\n".join(lines) + "\n"
+    return template
+
 
 def get_pypi_install_instructions(*, project_name: str, version: str) -> str:
     instructions = _get_default_template_pypi()
@@ -71,5 +107,7 @@ def get_github_install_instructions(*, wheel_name: str, wheel_url: str) -> str:
         instructions = _get_default_template_wheel_url_with_extra(extra="fractal-tasks")
     instructions = instructions.replace("__WHEEL_NAME__", wheel_name)
     instructions = instructions.replace("__WHEEL_URL__", wheel_url)
+    if wheel_name.startswith("fractal-cellpose-sam") or wheel_name.startswith("fractal-ilastik"):
+        instructions = _get_default_pixi_installation_instructions(wheel_url)
     print(instructions)
     return instructions
