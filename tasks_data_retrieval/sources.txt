@@ -9,3 +9,6 @@ https://github.com/pelkmanslab/abbott
 https://github.com/Apricot-Therapeutics/APx_fractal_task_collection
 https://github.com/fractal-analytics-platform/fractal-uzh-converters
 https://github.com/pelkmanslab/abbott-features
+https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task
+https://github.com/fractal-analytics-platform/fractal-ilastik-tasks
+https://github.com/fractal-analytics-platform/fractal-tasks-template
