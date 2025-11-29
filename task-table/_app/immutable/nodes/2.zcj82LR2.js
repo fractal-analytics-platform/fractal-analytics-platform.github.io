@@ -289,7 +289,7 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 
 1. Download the wheel file from [this link](https://github.com/pelkmanslab/abbott-features/releases/download/v0.1.2/abbott_features-0.1.2-cp311-cp311-linux_x86_64.whl)
 2. Run \`pip install abbott_features-0.1.2-cp311-cp311-linux_x86_64.whl\`
-`}]}]],["apx_fractal_task_collection",[{pkg_name:"apx_fractal_task_collection",version:"0.4.8",task_list:[{version:"0.4.8",name:"Measure Features",category:"Measurement",modality:null,tags:["Textures","Intensity","Morphology","scikit-image","regionprops"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
+`}]}]],["apx_fractal_task_collection",[{pkg_name:"apx_fractal_task_collection",version:"0.4.9",task_list:[{version:"0.4.9",name:"Measure Features",category:"Measurement",modality:null,tags:["Textures","Intensity","Morphology","scikit-image","regionprops"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
 - Calculates **morphology**, **intensity**, **texture**, and **population features** for objects in a label image.
 - Supports **2D and 3D measurements** across multiple regions of interest (ROIs).
 - Extracts features for intensity images using configurable channel inclusion/exclusion.
@@ -305,14 +305,14 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 ### Limitations
 - Does not support measurements for label images that do not have the same resolution as the intensity images.`,type:"parallel",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Calculate Pixel Intensity Correlation",category:"Measurement",modality:null,tags:["Correlation","Intensity","QC"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Calculate Pixel Intensity Correlation",category:"Measurement",modality:null,tags:["Correlation","Intensity","QC"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
 - Calculates pixel intensity correlation between two channels for each object in a label image.  
 - Supports loading channels from different multiplexing acquisitions.  
 - Handles multiple channel pairs per well and large datasets efficiently.  
@@ -325,14 +325,14 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 - Assumes NGFF-compatible metadata.  
 - Only validated for **level 0 resolution**.`,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Segment Secondary Objects",category:"Segmentation",modality:"HCS",tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Segment Secondary Objects",category:"Segmentation",modality:"HCS",tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`### Purpose
 - Segments secondary objects based on primary labels and intensity images using watershed segmentation.  
 - Supports multiplexed and non-multiplexed acquisitions.  
 - Optional parameters allow for flexible handling of thresholds, blurring, and masking.  
@@ -342,14 +342,14 @@ Please report this to https://github.com/markedjs/marked.`,e){const o="<p>An err
 - Assumes NGFF-compatible metadata.  
 - Only tested for **level 0 resolution**.  `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Expand Labels",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_expand_labels
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Expand Labels",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_expand_labels
 Initialized secondary segmentation task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -361,14 +361,14 @@ Takes a primary label image and expands it by a certain distance. Direct
 implementation of skimage.segmentation.expand_labels.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Convert IC6000 to OME-Zarr",category:"Conversion",modality:"HCS",tags:["IC6000","IC6K","IN Cell"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_convert_IC6000_to_ome_zarr
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Convert IC6000 to OME-Zarr",category:"Conversion",modality:"HCS",tags:["IC6000","IC6K","IN Cell"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_convert_IC6000_to_ome_zarr
 Create OME-NGFF structure and metadata to host a multiplexing dataset.
 
 This task takes a set of image folders (i.e. different acquisition cycles)
@@ -383,14 +383,14 @@ This task is run after "init_convert_IC6000_to_ome_zarr"
 and populates the empty OME-Zarr files that were prepared.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Add Multiplexing Cycle IC6000",category:"Conversion",modality:"HCS",tags:["IC6000","IC6K","IN Cell"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_add_multiplexing_cycle_IC6000
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Add Multiplexing Cycle IC6000",category:"Conversion",modality:"HCS",tags:["IC6000","IC6K","IN Cell"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_add_multiplexing_cycle_IC6000
 Create OME-NGFF structure and metadata to host a multiplexing dataset.
 
 This task takes an existing zarr file and a set of image folders
@@ -406,14 +406,14 @@ This task is run after "init_convert_IC6000_to_ome_zarr"
 and populates the empty OME-Zarr files that were prepared.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Label Assignment by Overlap",category:"Measurement",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_label_assignment_by_overlap
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Label Assignment by Overlap",category:"Measurement",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_label_assignment_by_overlap
 Initialized label assignment by overlap task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -426,14 +426,14 @@ overlaps between their labels. Child labels will be assigned to parent
 labels based on an overlap threshold.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Clip Label Image",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_clip_label_image
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Clip Label Image",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_clip_label_image
 Initialized clip label image task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -446,14 +446,14 @@ all values in the first label image with 0 where the second label image has
 values > 0.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Mask Label Image",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_mask_label_image
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Mask Label Image",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_mask_label_image
 Initialized apply mask task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -466,14 +466,14 @@ all values in the first label image with 0 where the second label image has
 values = 0.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Filter Label by Size",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_filter_label_by_size
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Filter Label by Size",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_filter_label_by_size
 Initialized Filter Label by Size task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -482,14 +482,14 @@ used to perform label filtering by size.
 Filter objects in a label image by size.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Calculate BaSiCPy Illumination Models",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_calculate_basicpy_illumination_models
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Calculate BaSiCPy Illumination Models",category:"Image Processing",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_calculate_basicpy_illumination_models
 Initialized BaSiCPy illumination correction task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -499,25 +499,25 @@ Calculates illumination correction profiles based on a random sample
 of images for each channel_label or wavelength.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Apply BaSiCPy Illumination Models",category:"Image Processing",modality:null,tags:[],input_types:{illumination_corrected:!1},output_types:{illumination_corrected:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## apply_basicpy_illumination_models
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Apply BaSiCPy Illumination Models",category:"Image Processing",modality:null,tags:[],input_types:{illumination_corrected:!1},output_types:{illumination_corrected:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## apply_basicpy_illumination_models
 Applies illumination correction to the images in the OME-Zarr.
 `,type:"parallel",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Aggregate Feature Tables",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_aggregate_feature_tables
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Aggregate Feature Tables",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_aggregate_feature_tables
 Initialized clip label image task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -527,39 +527,39 @@ Aggregate feature tables that were calculated per zarr-image to one
 Anndata table containing feature measurements across all zarr-images.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Stitch FOVs with Overlap",category:"Image Processing",modality:null,tags:["Stitching","FOV","Overlap"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## stitch_fovs_with_overlap
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Stitch FOVs with Overlap",category:"Image Processing",modality:null,tags:["Stitching","FOV","Overlap"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## stitch_fovs_with_overlap
 Stitches FOVs with overlap using ASHLAR (https://github.com/labsyspharm/ashlar).
 `,type:"parallel",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Multiplexed Pixel Clustering",category:"Measurement",modality:null,tags:["Multiplex","Clustering","Pixel","MCU"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## multiplexed_pixel_clustering
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Multiplexed Pixel Clustering",category:"Measurement",modality:null,tags:["Multiplex","Clustering","Pixel","MCU"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## multiplexed_pixel_clustering
 Perform multiplexed cell unit (MCU) analysis on a label image. Inspired by
 Gabriele Gut et al., Multiplexed protein maps link subcellular
 organization to cellular states. Science (2018)
 DOI: 10.1126/science.aar7042
 `,type:"non_parallel",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Correct Chromatic Shift",category:"Image Processing",modality:null,tags:[],input_types:{chromatic_shift_corrected:!1},output_types:{chromatic_shift_corrected:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_correct_chromatic_shift
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Correct Chromatic Shift",category:"Image Processing",modality:null,tags:[],input_types:{chromatic_shift_corrected:!1},output_types:{chromatic_shift_corrected:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_correct_chromatic_shift
 Initialized Correct Chromatic Shift task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -570,14 +570,14 @@ Correct chromatic shift based on reference images (for example fluorescent
 beads) and apply it to all images.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Convert Channel to Label",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_convert_channel_to_label
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Convert Channel to Label",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_convert_channel_to_label
 Initialized Filter Label by Size task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -594,14 +594,14 @@ Args:
     overwrite: If True, overwrite existing label image with same name.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Detect Blob Centroids",category:"Segmentation",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_detect_blob_centroids
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Detect Blob Centroids",category:"Segmentation",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_detect_blob_centroids
 Initialized Filter Label by Size task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -611,14 +611,14 @@ Detects blob centroids in an intensity image and stores the result as a
 label image..
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Ashlar Stitching and Registration",category:"Image Processing",modality:null,tags:["Stitching","Registration"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_ashlar_stitching_and_registration
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Ashlar Stitching and Registration",category:"Image Processing",modality:null,tags:["Stitching","Registration"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_ashlar_stitching_and_registration
 Initializes ashlar stitching and registration task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -628,14 +628,14 @@ Stitches FOVs with overlap using ASHLAR (https://github.com/labsyspharm/ashlar)
 and register the stitched image to the reference cycle.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Merge Plate Metadata",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## merge_plate_metadata
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Merge Plate Metadata",category:"Other",modality:null,tags:[],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## merge_plate_metadata
 Merge a metadata csv file with a Fractal feature table.
 
 Takes a csv file containing metadata and merges it into a Fractal
@@ -643,14 +643,14 @@ feature table. The metadata columns will appear in the obs of the
 feature table.
 `,type:"parallel",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Normalize Feature Table",category:"Feature Table Processing",modality:null,tags:["Normalization","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_normalize_feature_table
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Normalize Feature Table",category:"Feature Table Processing",modality:null,tags:["Normalization","Feature Table"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_normalize_feature_table
 Initializes normalize feature table task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -660,14 +660,14 @@ Normalize measurements in the feature table with selected method
 and the selected control condition.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
-`},{version:"0.4.8",name:"Correct 4i Bleaching Artifacts",category:"Feature Table Processing",modality:null,tags:["Correction","Feature Table","4i","Bleaching"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_correct_4i_bleaching_artifacts
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
+`},{version:"0.4.9",name:"Correct 4i Bleaching Artifacts",category:"Feature Table Processing",modality:null,tags:["Correction","Feature Table","4i","Bleaching"],input_types:{},output_types:{},docs_link:"https://github.com/Apricot-Therapeutics/APx_fractal_task_collection",docs_info:`## init_correct_4i_bleaching_artifacts
 Initializes normalize feature table task
 
 This task prepares a parallelization list of all zarr_urls that need to be
@@ -681,13 +681,13 @@ is applied assuming a zig-zag (starting left-to-right) acquisition pattern.
 Other acquisition patterns may be supported in the future.
 `,type:"compound",authors:"Adrian Tschan",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.8/apx_fractal_task_collection-0.4.8-py3-none-any.whl)
-2. Run \`pip install apx_fractal_task_collection-0.4.8-py3-none-any.whl\`
+1. Download the wheel file from [this link](https://github.com/Apricot-Therapeutics/APx_fractal_task_collection/releases/download/0.4.9/apx_fractal_task_collection-0.4.9-py3-none-any.whl)
+2. Run \`pip install apx_fractal_task_collection-0.4.9-py3-none-any.whl\`
 `}]}]],["fractal_cellpose_sam_task",[{pkg_name:"fractal_cellpose_sam_task",version:"0.1.0",task_list:[{version:"0.1.0",name:"Cellpose SAM Segmentation",category:"Segmentation",modality:null,tags:["Deep Learning","Convolutional Neural Network","Instance Segmentation","2D","3D","Cellpose","SAM"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task",docs_info:`### Purpose
 - Description and documentation of the Task functionality
 - Bullet points that cover main features of the tasks.
