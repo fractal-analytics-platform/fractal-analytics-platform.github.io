@@ -2,6 +2,7 @@ https://pypi.org/project/fractal-tasks-core
 https://pypi.org/project/fractal-faim-ipa
 https://pypi.org/project/fractal-lif-converters
 https://pypi.org/project/operetta-compose
+https://pypi.org/project/zmb-fractal-tasks
 https://github.com/fractal-analytics-platform/fractal-helper-tasks
 https://github.com/fmi-basel/gliberal-scMultipleX
 https://github.com/m-albert/fractal-ome-zarr-hcs-stitching
@@ -12,5 +13,4 @@ https://github.com/pelkmanslab/abbott-features
 https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task
 https://github.com/fractal-analytics-platform/fractal-ilastik-tasks
 https://github.com/fractal-analytics-platform/fractal-tasks-template
-https://pypi.org/project/zmb-fractal-tasks/
 https://github.com/ZMB-UZH/nd2-omezarr-converter
