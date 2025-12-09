@@ -12,5 +12,5 @@ https://github.com/pelkmanslab/abbott-features
 https://github.com/fractal-analytics-platform/fractal-cellpose-sam-task
 https://github.com/fractal-analytics-platform/fractal-ilastik-tasks
 https://github.com/fractal-analytics-platform/fractal-tasks-template
-https://github.com/ZMB-UZH/zmb-fractal-tasks
+https://pypi.org/project/zmb-fractal-tasks/
 https://github.com/ZMB-UZH/nd2-omezarr-converter
