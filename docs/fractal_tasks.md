@@ -20,8 +20,6 @@ hide:
 }
 </style>
 
-Here is a list of task packages which can be used in Fractal. Note that not all existing packages are currently listed, see https://fractal-analytics-platform.github.io/fractal-tasks-core/all_tasks for a more complete list.
-
 <iframe src="../task-table/" class="tasks-iframe">
 </iframe>
 
