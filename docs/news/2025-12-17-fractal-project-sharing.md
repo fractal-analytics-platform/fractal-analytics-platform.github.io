@@ -16,12 +16,12 @@ Project sharing allows users within a given Fractal server to collaborate granul
 
 The ability for project sharing comes together with an **improved [fractal-data](https://github.com/fractal-analytics-platform/fractal-data) service**. Fractal-data allows authenticated streaming of OME-Zarrs to viewers like [ViZarr](https://github.com/hms-dbmi/vizarr) and analysis environments like the [Fractal feature explorer](https://github.com/fractal-analytics-platform/fractal-feature-explorer). As part of this effort, we have simplified the authentication logic to follow project directories & dataset Zarr directories. This allowed us to add support for data streaming of any datasets in shared projects: If your colleague processed OME-Zarrs in a project shared with you, you now also have access to visualise the images directly in a web viewer like ViZarr or browse the measurements in the Fractal feature explorer.
 
-![Fractal image list](../assets/blogs/fractal_flexibility/dataset_creation.png)
+![Fractal image list](../assets/blogs/fractal_project_sharing/dataset_creation.png)
 
 To enable these new data streaming services, we've **revamped the project directory logic**: Fractal used to default to put your OME-Zarrs in your (single) project directory. With the new update, we now enforce that all Fractal output go into a project directory. This both simplified the dataset creation options (users don't need to know the base paths to the zarr directory anymore to modify the target location of their dataset zarr directories) and ensures that we can safely use project directories for streaming authentication. To handle complex use-cases, we now support multiple project directories for a single user.
 
 TODO: Image sharing options
-![Fractal image list](../assets/blogs/fractal_flexibility/sharing_options.png)
+![Fractal image list](../assets/blogs/fractal_project_sharing/sharing_options.png)
 
 We wanted to support a variety of use-cases for project sharing: from easily showing images and quantification results to a colleague in the lab or collaborating on creating workflows, to members of core facilities supporting users by setting up initial workflows for them or helping them with existing workflows in their projects. To enable this, project sharing permissions are granular: 
 - Share a project in **read-only mode** to gives access to view the workflows and stream the OME-Zarrs (see above): This ensures your collaborator can see how you processed your data and can see the data itself.
