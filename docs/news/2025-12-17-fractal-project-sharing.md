@@ -20,7 +20,6 @@ The ability for project sharing comes together with an **improved [fractal-data]
 
 To enable these new data streaming services, we've **revamped the project directory logic**: Fractal used to default to put your OME-Zarrs in your (single) project directory. With the new update, we now enforce that all Fractal output go into a project directory. This both simplified the dataset creation options (users don't need to know the base paths to the zarr directory anymore to modify the target location of their dataset zarr directories) and ensures that we can safely use project directories for streaming authentication. To handle complex use-cases, we now support multiple project directories for a single user.
 
-TODO: Image sharing options
 ![Fractal image list](../assets/blogs/fractal_project_sharing/sharing_options.png)
 
 We wanted to support a variety of use-cases for project sharing: from easily showing images and quantification results to a colleague in the lab or collaborating on creating workflows, to members of core facilities supporting users by setting up initial workflows for them or helping them with existing workflows in their projects. To enable this, project sharing permissions are granular: 
