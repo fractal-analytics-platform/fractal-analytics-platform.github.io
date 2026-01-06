@@ -755,7 +755,7 @@ the othe names must follow the following format:
 If the scene is a multi-position image, the positions must be named \`Position\` followed by a space and a positive integer. Valid examples are \`Position 1\`, \`Position 2\`, \`Position 3\`, \`Position 12\` etc.
 
 Moreover, if the lif file contains scans that do not follow the above formats, the converter will ignore them.
-`,type:"compound",authors:"Fractal Core Team",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-lif-converters` and package version `0.5.0`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-lif-converters==0.5.0"`\n```\n'}]}]],["fractal_ome_zarr_hcs_stitching",[{pkg_name:"fractal_ome_zarr_hcs_stitching",version:"0.0.10",task_list:[{version:"0.0.10",name:"Stitching Task",category:"Registration",modality:null,tags:["multiview-stitcher","Fusion","Registration","Stitching","2D","3D"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/m-albert/fractal-ome-zarr-hcs-stitching",docs_info:`## stitching_task
+`,type:"compound",authors:"Fractal Core Team",install_instructions:'**How to add this task to a Fractal instance:**\n\nTrigger a PyPI task collection with package `fractal-lif-converters` and package version `0.5.0`\n\n**How to install this task in a Python environment:**\n\nRun `pip install "fractal-lif-converters==0.5.0"`\n```\n'}]}]],["fractal_ome_zarr_hcs_stitching",[{pkg_name:"fractal_ome_zarr_hcs_stitching",version:"0.1.12",task_list:[{version:"0.1.12",name:"Stitching Task",category:"Registration",modality:null,tags:["multiview-stitcher","Fusion","Registration","Stitching","2D","3D"],input_types:{stitched:!1},output_types:{stitched:!0},docs_link:"https://github.com/m-albert/fractal-ome-zarr-hcs-stitching",docs_info:`## stitching_task
 Stitches FOVs from an OME-Zarr image.
 
 Performs registration and fusion of FOVs indicated
@@ -770,13 +770,13 @@ Todo:
     registration pair finding for "grid" (?) mode
 `,type:"parallel",authors:"Marvin Albert, Joel Luethi, Nicole Repina",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the wheel file from [this link](https://github.com/m-albert/fractal-ome-zarr-hcs-stitching/releases/download/v0.0.11/fractal_ome_zarr_hcs_stitching-0.0.10-py3-none-any.whl)
+1. Download the wheel file from [this link](https://github.com/m-albert/fractal-ome-zarr-hcs-stitching/releases/download/v0.1.12/fractal_ome_zarr_hcs_stitching-0.1.12-py3-none-any.whl)
 2. Trigger a local task collection by uploading the wheel file
 
 **How to install this task in a Python environment:**
 
-1. Download the wheel file from [this link](https://github.com/m-albert/fractal-ome-zarr-hcs-stitching/releases/download/v0.0.11/fractal_ome_zarr_hcs_stitching-0.0.10-py3-none-any.whl)
-2. Run \`pip install fractal_ome_zarr_hcs_stitching-0.0.10-py3-none-any.whl\`
+1. Download the wheel file from [this link](https://github.com/m-albert/fractal-ome-zarr-hcs-stitching/releases/download/v0.1.12/fractal_ome_zarr_hcs_stitching-0.1.12-py3-none-any.whl)
+2. Run \`pip install fractal_ome_zarr_hcs_stitching-0.1.12-py3-none-any.whl\`
 `}]}]],["fractal_tasks_core",[{pkg_name:"fractal_tasks_core",version:"1.5.6",task_list:[{version:"1.5.6",name:"Convert Cellvoyager to OME-Zarr",category:"Conversion",modality:"HCS",tags:["Yokogawa","Cellvoyager","2D","3D"],input_types:{},output_types:{},docs_link:"https://fractal-analytics-platform.github.io/fractal-tasks-core",docs_info:`### Purpose
 - Converts **2D and 3D images from CellVoyager CV7000/8000** systems into OME-Zarr format, creating OME-Zarr HCS plates and combining all fields of view in a well into a single image.
 - Saves Fractal **region-of-interest (ROI) tables** for both individual fields of view and the entire well.
