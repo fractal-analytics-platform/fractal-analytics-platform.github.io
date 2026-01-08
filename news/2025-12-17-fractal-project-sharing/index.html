@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../2025-04-28-fractal-flexibility/">
+      
       
       
       <link rel="icon" href="../../assets/fractal_favicon.png">
@@ -350,17 +352,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           
@@ -382,7 +386,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             News
@@ -405,6 +409,37 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Fractal Project Sharing
+  </span>
+  
+
+      </a>
+      
     </li>
   
 
@@ -459,7 +494,7 @@
 <p>Project sharing allows users within a given Fractal server to collaborate granularly on their projects. Users can give access for collaborators to see their projects, stream the processed image data or collaborate on building and running workflows.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_XE5hy46iPI?si=l-kTmALk-us0Obj1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<p>The ability for project sharing comes together with an <strong>improved <a href="https://github.com/fractal-analytics-platform/fractal-data">fractal-data</a> service</strong>. Fractal-data allows authenticated streaming of OME-Zarrs to viewers like <a href="https://github.com/hms-dbmi/vizarr">ViZarr</a> and analysis environments like the <a href="https://github.com/fractal-analytics-platform/fractal-feature-explorer">Fractal feature explorer</a>. As part of this effort, we have simplified the authentication logic to follow project directories &amp; dataset Zarr directories. This allowed us to add support for data streaming of any datasets in shared projects: If your colleague processed OME-Zarrs in a project shared with you, you now also have access to visualise the images directly in a web viewer like ViZarr or browse the measurements in the Fractal feature explorer.</p>
+<p>The ability for project sharing comes together with an <strong>improved <a href="https://github.com/fractal-analytics-platform/fractal-data">fractal-data</a> service</strong>. Fractal-data allows authenticated streaming of OME-Zarrs to viewers like <a href="https://github.com/hms-dbmi/vizarr">ViZarr</a> and analysis environments like the <a href="https://github.com/fractal-analytics-platform/fractal-feature-explorer">Fractal feature explorer</a>. As part of this effort, we have simplified the authorization logic to follow project directories &amp; dataset Zarr directories. This allowed us to add support for data streaming of any datasets in shared projects: If your colleague processed OME-Zarrs in a project shared with you, you now also have access to visualise the images directly in a web viewer like ViZarr or browse the measurements in the Fractal feature explorer.</p>
 <p><img alt="Fractal image list" src="../../assets/blogs/fractal_project_sharing/dataset_creation.png" /></p>
 <p>To enable these new data streaming services, we've <strong>revamped the project directory logic</strong>: Fractal used to default to put your OME-Zarrs in your (single) project directory. With the new update, we now enforce that all Fractal output go into a project directory. This both simplified the dataset creation options (users don't need to know the base paths to the zarr directory anymore to modify the target location of their dataset zarr directories) and ensures that we can safely use project directories for streaming authentication. To handle complex use-cases, we now support multiple project directories for a single user.</p>
 <p><img alt="Fractal image list" src="../../assets/blogs/fractal_project_sharing/sharing_options.png" /></p>
