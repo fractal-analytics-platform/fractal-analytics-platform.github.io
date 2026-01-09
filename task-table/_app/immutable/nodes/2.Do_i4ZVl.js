@@ -989,7 +989,7 @@ The following directory structure is expected:
 
 1. Download the wheel file from [this link](https://github.com/fractal-analytics-platform/fractal-uzh-converters/releases/download/v0.3.3/fractal_uzh_converters-0.3.3-py3-none-any.whl)
 2. Run \`pip install fractal_uzh_converters-0.3.3-py3-none-any.whl\`
-`}]}]],["ilastik_tasks",[{pkg_name:"ilastik_tasks",version:"0.3.0",task_list:[{version:"0.3.0",name:"Ilastik Pixel Classification Segmentation",category:"Segmentation",modality:null,tags:["Pixel Classifier"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-ilastik-tasks",docs_info:`### Purpose
+`}]}]],["ilastik_tasks",[{pkg_name:"ilastik_tasks",version:"0.3.1",task_list:[{version:"0.3.1",name:"Ilastik Pixel Classification Segmentation",category:"Segmentation",modality:null,tags:["Pixel Classifier"],input_types:{},output_types:{},docs_link:"https://github.com/fractal-analytics-platform/fractal-ilastik-tasks",docs_info:`### Purpose
 
 This task is used to apply a ilastik pixel classifier to an image.
 
@@ -1001,12 +1001,12 @@ This task is used to apply a ilastik pixel classifier to an image.
 
 - The task can only be used with single and dual channels pixel classifiers models.`,type:"parallel",authors:"Lorenzo Cerrone, Ruth Hornbachner",install_instructions:`**How to add this task to a Fractal instance:**
 
-1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.3.0/ilastik_tasks-0.3.0.tar.gz)
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.3.1/ilastik_tasks-0.3.1.tar.gz)
 2. Trigger a pixi task collection by uploading the tar.gz file to the pixi collection mode
 
 **How to install this task in a Python environment:**
 
-1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.3.0/ilastik_tasks-0.3.0.tar.gz)
+1. Download the tar.gz file from [this link](https://github.com/fractal-analytics-platform/fractal-ilastik-tasks/releases/download/v0.3.1/ilastik_tasks-0.3.1.tar.gz)
 2. Unpack the tar.gz archive
 3. Run the task from the archive via pixi
 `}]}]],["nd2_omezarr_converter",[{pkg_name:"nd2_omezarr_converter",version:"0.1.2",task_list:[{version:"0.1.2",name:"Convert nd2 to OME-Zarr",category:"Conversion",modality:null,tags:["Nikon","ND2","Converter"],input_types:{},output_types:{},docs_link:null,docs_info:`### Purpose
