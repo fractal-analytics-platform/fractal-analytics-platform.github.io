@@ -88,9 +88,9 @@ The compute part takes the `zarr_url` argument and an extra `init_args` dictiona
 
 The parameters of a Fractal non-parallel converter task must include the `zarr_dir` argument, which is the base directory into which OME-Zarr files will be written by tasks.
 
-### Compount converter tasks
+### Compound converter tasks
 
-FIXME
+Compound converter tasks have the same structure as compound tasks, with the difference that they do not require a `zarr_urls` parameter. The initialization part requires the `zarr_dir` argument, and it provides the parallelization list for the compute part as an output. The compute part requires the `zarr_url` argument and an extra `init_args` dictionary argument (which is coming from the `parallelization_list` provided by the init task).
 
 ## Output metadata
 
