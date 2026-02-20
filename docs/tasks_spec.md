@@ -4,7 +4,8 @@ layout: default
 
 # Fractal Tasks Specification
 
-Fractal tasks are modular and interoperable processing units that handle data in OME-Zarr containers. Each task is an executable that runs on a single OME-Zarr image or a collection of OME-Zarr images. In Fractal, we the OME-Zarrs to be processed by giving the tasks the zarr_urls(s), the paths to a given OME-Zarr image on disk or in the cloud. All tasks load data from an OME-Zarr on disk and store their processing results in an OME-Zarr (the same or a new one) on disk again. The parameters and metadata of tasks are described in a [Fractal manifest in json form](#task-list-and-manifest). This page contains an overview of the Fractal task specification, the [types of Fractal tasks](#task-types), the [manifest](#task-list-and-manifest) that specifies task metadata as well as their [input](#input-api) & [output](#output-api) API.
+Fractal tasks are modular and interoperable processing units that handle data in OME-Zarr containers. Each task is an executable that runs on a single OME-Zarr image or a collection of OME-Zarr images.
+In Fractal, we determine the OME-Zarrs to be processed by giving the tasks the zarr_urls(s), the paths to a given OME-Zarr image on disk or in the cloud. All tasks load data from an OME-Zarr on disk and store their processing results in an OME-Zarr (the same or a new one) on disk again. The parameters and metadata of tasks are described in a [Fractal manifest in json form](#task-list-and-manifest). This page contains an overview of the Fractal task specification, the [types of Fractal tasks](#task-types), the [manifest](#task-list-and-manifest) that specifies task metadata as well as their [input](#input-api) & [output](#output-api) API.
 
 ![Fractal task model](assets/fractal_tasks_model.png)
 
@@ -22,6 +23,8 @@ There are three types of tasks in Fractal V2: parallel tasks, non-parallel tasks
 	- The initialization task runs in the same way as a non-parallel task and generates a custom parallelization list of zarr_urls & parameters to be used in the compute task.
 	- The compute tasks are run in parallel for each entry of the parallelization list and use the `init_args` dictionary as an extra input from the initialization task.
 	- Compound tasks can often be specific to given collection types like OME-Zarr HCS plates. A typical example are multiplexing-related tasks that use `acquisition` metadata on the well level to decide which pairs of images need to be processed.
+4. A **non-parallel converter task** converts raw microscope images to OME-Zarr image(s), and it only runs as a single job.
+5. A **compound converter task** converts raw microscope images to OME-Zarr image(s), and it has the same initialization/compute structure as a compound task.
 
 
 ## Task list and manifest
