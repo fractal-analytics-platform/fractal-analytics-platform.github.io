@@ -12,7 +12,7 @@ Each entry in the image list is defined by a unique `zarr_url` property (the ful
 
 ### Image types
 
-Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both [through the task manifest](#output-filters) (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False`) as well as from within an individual task (see [task-API/output section](./tasks_spec.md#output-api)).
+Image types are boolean properties that allow to split the image list into different sub-lists (e.g. the `is_3D` type for 3D/2D images, or the `illumination_corrected` type for raw/corrected images when illumination correction was not run in-place). Types can be set both [through the task manifest](#output-filters) (e.g. after an MIP task, the resulting images always have the type `is_3D` set to `False`) as well as from within an individual task.
 
 Note: when applying filters to the image list, the absence of a type corresponds to false by default.
 

@@ -10,7 +10,7 @@ All tasks load data from an OME-Zarr on disk (with the exception of tasks that c
 
 ![Fractal task model](assets/fractal_tasks_model.png)
 
-The parameters and metadata of tasks are described in a [Fractal manifest in JSON form](#task-list-and-manifest). This page contains an overview of the Fractal task specification, the [types of Fractal tasks](#task-types), the [manifest](#task-list-and-manifest) that specifies task metadata as well as their [parameters](#task-parameters) & [output metadata](#output-metadata). The `fractal-task-tools` documentation has additional details about [the manifest](https://fractal-analytics-platform.github.io/fractal-task-tools/usage/manifest/) and about [task types](https://fractal-analytics-platform.github.io/fractal-task-tools/usage/task_types).
+The parameters and metadata of tasks are described in a [Fractal manifest in JSON form](#task-list-and-manifest). This page contains an overview of the Fractal task specification. The `fractal-task-tools` documentation has additional details about [the tasks manifest](https://fractal-analytics-platform.github.io/fractal-task-tools/usage/manifest/) and about [task types](https://fractal-analytics-platform.github.io/fractal-task-tools/usage/task_types).
 
 
 There are five types of Fractal tasks:
