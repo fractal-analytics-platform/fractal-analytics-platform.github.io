@@ -14,6 +14,7 @@ The parameters and metadata of tasks are described in a [Fractal manifest in JSO
 
 
 There are five types of Fractal tasks:
+
 1. _parallel_ tasks,
 2. _non-parallel_ tasks,
 3. _compound_ tasks,
