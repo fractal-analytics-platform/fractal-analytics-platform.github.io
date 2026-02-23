@@ -1,4 +1,4 @@
-mkdocs==1.5.3
-mkdocs-material==9.5.17
-mkdocs-literate-nav==0.6.1
-mkdocs-section-index==0.3.8
+mkdocs==1.6.1
+mkdocs-material==9.7.1
+mkdocs-literate-nav==0.6.2
+mkdocs-section-index==0.3.10
