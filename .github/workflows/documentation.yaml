@@ -40,6 +40,7 @@ jobs:
           sparse-checkout: |
             components
             tasks-list
+            templates-list
           persist-credentials: false
  
       - uses: actions/setup-python@v5
@@ -73,6 +74,10 @@ jobs:
           cache: npm
           cache-dependency-path: WEB/package-lock.json
 
+      # Retrieve remote template-list data
+      #  FIXME
+
+      #  Fractal Web
       - name: Install main fractal-web dependencies
         run: |
           cd WEB
@@ -82,7 +87,9 @@ jobs:
         run: |
           cd WEB/components
           npm install
-
+      
+      # Tasks list
+      
       - name: Install tasks-list dependencies
         run: |
           cd WEB/tasks-list
@@ -98,6 +105,26 @@ jobs:
 
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ site/task-table
+      
+      # Templates list
+
+      - name: Install templates-list dependencies
+        run: |
+          cd WEB/templates-list
+          npm install
+
+      - name: Move templates JSON files to templates-list/src
+        run: mv MAIN/templates_data_retrieval/* WEB/templates-list/static/
+
+      - name: Build templates-list page
+        run: |
+          cd WEB/templates-list
+          npm run build
+
+      - name: Move templates-list built files in docs site
+        run: mv WEB/templates-list/build/ site/template-table
+
+      #  Timestamp
 
       - name: Set last-updated timestamp
         env:
