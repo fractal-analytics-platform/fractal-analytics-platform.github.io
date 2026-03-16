@@ -77,7 +77,7 @@ jobs:
       # Retrieve remote template-list data
       #  FIXME
 
-      #  Fractal Web
+      #  Fractal Web components
       - name: Install main fractal-web dependencies
         run: |
           cd WEB
