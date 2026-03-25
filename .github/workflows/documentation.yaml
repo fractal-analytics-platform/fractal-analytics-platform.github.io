@@ -13,14 +13,9 @@ on:
   # Re-run on demand:
   workflow_dispatch:
 
-permissions: {}
-
 jobs:
 
   build-and-deploy:
-    permissions:
-      id-token: write
-      
 
     runs-on: ubuntu-24.04
 
