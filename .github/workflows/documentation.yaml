@@ -121,6 +121,8 @@ jobs:
             EVENT_REF: ${{github.event.ref}}
 
       - run: pwd
+      - run: ls
+      - run: ls mkdocs.yml
 
       - name: Deploy docs
         if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
