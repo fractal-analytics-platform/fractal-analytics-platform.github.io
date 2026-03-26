@@ -21,7 +21,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
         with:
           path: MAIN
           persist-credentials: false
@@ -30,9 +30,8 @@ jobs:
         run: |
           FRACTAL_WEB_REFERENCE=$(cat MAIN/fractal-web-reference.txt)
           echo "FRACTAL_WEB_REFERENCE=$FRACTAL_WEB_REFERENCE" >> $GITHUB_ENV
-
  
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
         with:
           repository: fractal-analytics-platform/fractal-web
           ref: ${{ env.FRACTAL_WEB_REFERENCE }}
@@ -43,7 +42,7 @@ jobs:
             templates-list
           persist-credentials: false
  
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@28f2168f4d98ee0445e3c6321f6e6616c83dd5ec
         with:
           python-version: '3.11'
           cache: pip
@@ -68,7 +67,7 @@ jobs:
 
       - run: cat MAIN/tasks_data_retrieval/tasks.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
         with:
           node-version: 20
           cache: npm
@@ -138,7 +137,10 @@ jobs:
 
       - run: ls -lh site/*
 
-      - run: echo "event_name=${{github.event_name}} event_ref=${{github.event.ref}}"
+      - run: echo "event_name=${EVENT_NAME} event_ref=${EVENT_REF}"
+        env:
+            EVENT_NAME: ${{github.event_name}}
+            EVENT_REF: ${{github.event.ref}}
 
       - name: Deploy docs
         if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
