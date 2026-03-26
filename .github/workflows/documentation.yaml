@@ -46,7 +46,7 @@ jobs:
  
       - uses: actions/setup-python@28f2168f4d98ee0445e3c6321f6e6616c83dd5ec
         with:
-          python-version: '3.11'
+          python-version: '3.12'
           cache: pip
 
       # MKDocs build
@@ -120,7 +120,7 @@ jobs:
 
       - name: Deploy docs
         if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@aa83d0c2cfc3d813560e13068d3152aa21490171
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
