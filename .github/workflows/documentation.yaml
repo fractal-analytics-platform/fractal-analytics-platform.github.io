@@ -16,8 +16,11 @@ on:
 jobs:
 
   build-and-deploy:
-
     runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+      issues: write
 
     steps:
 
@@ -117,7 +120,7 @@ jobs:
 
       - name: Deploy docs
         if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@aa83d0c2cfc3d813560e13068d3152aa21490171
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
