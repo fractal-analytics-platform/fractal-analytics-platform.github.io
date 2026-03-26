@@ -15,7 +15,7 @@ on:
 
 jobs:
 
-  build-and-deploy:
+  build:
     runs-on: ubuntu-24.04
 
     permissions:
@@ -113,14 +113,29 @@ jobs:
 
       - run: ls -lh site/*
 
+      - name: Setup Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
+
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          path: "site"
+
+
+  # Deployment job
+  deploy:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
       - run: echo "event_name=${EVENT_NAME} event_ref=${EVENT_REF}"
         env:
             EVENT_NAME: ${{github.event_name}}
             EVENT_REF: ${{github.event.ref}}
+      - if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
+        uses: actions/deploy-pages@v4
 
-      - name: Deploy docs
-        if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+    # - name: Deploy docs
+    #   if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
+    #   uses: peaceiris/actions-gh-pages@v4
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./site
