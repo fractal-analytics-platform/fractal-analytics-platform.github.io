@@ -78,7 +78,7 @@ def load_manifest_from_zip(wheel_path: str) -> dict[str, Any]:
 
 def download_file(url: str) -> str:
     file_name = url.split("/")[-1]
-    response = requests.get(url, stream=True)
+    response = requests.get(url, stream=True, timeout=30)
     file_path = (DOWNLOAD_FOLDER / file_name).as_posix()
     with open(file_path, "wb") as f:
         for data in response.iter_content():
@@ -102,7 +102,7 @@ def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
 
     # Fetch and parse PyPI information
     pypi_api_url = f"https://pypi.org/pypi/{project_name}/json"
-    res = requests.get(pypi_api_url)
+    res = requests.get(pypi_api_url, timeout=30)
     response_data = res.json()
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {pypi_api_url}: {res}")
@@ -161,7 +161,7 @@ def handle_github_repository(github_url: str) -> dict[str, Any]:
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
-    res = requests.get(github_api_url, headers=headers)
+    res = requests.get(github_api_url, headers=headers, timeout=30)
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {github_api_url}: {res}")
     assets = res.json()["assets"]
@@ -277,7 +277,7 @@ for source in sources:
         f"END processing {source=} - "
         f"version={pkg_version}' - "
         f"added {ntasks} tasks - "
-        f"elapsed {t_end-t_start:.3f} s."
+        f"elapsed {t_end - t_start:.3f} s."
     )
     print()
 
@@ -286,7 +286,10 @@ for source in sources:
 GROUPED_RESULT = []
 
 for task_group in task_groups:
-    if any(existing_pkg_name == task_group["pkg_name"] for existing_pkg_name, _ in GROUPED_RESULT):
+    if any(
+        existing_pkg_name == task_group["pkg_name"]
+        for existing_pkg_name, _ in GROUPED_RESULT
+    ):
         raise ValueError(f"Duplicate package name found: {task_group['pkg_name']}")
 
     GROUPED_RESULT.append((task_group["pkg_name"], [task_group]))

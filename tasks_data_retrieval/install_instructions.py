@@ -11,7 +11,7 @@ def _get_default_template_pypi() -> str:
         "Trigger a PyPI task collection with package `__PROJECT_NAME__` and package version `__VERSION__`",
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
-        "Run `pip install \"__PROJECT_NAME__==__VERSION__\"`",
+        'Run `pip install "__PROJECT_NAME__==__VERSION__"`',
         "```",
     ]
     template = "\n".join(lines) + "\n"
@@ -24,7 +24,7 @@ def _get_default_template_pypi_with_extra(extra: str) -> str:
         f"Trigger a PyPI task collection for package `__PROJECT_NAME__`, package version `__VERSION__` and package extras `{extra}`",
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
-        f"Run `pip install \"__PROJECT_NAME__[{extra}]==__VERSION__\"`",
+        f'Run `pip install "__PROJECT_NAME__[{extra}]==__VERSION__"`',
     ]
     template = "\n".join(lines) + "\n"
     return template
@@ -52,10 +52,11 @@ def _get_default_template_wheel_url_with_extra(extra: str) -> str:
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
         "1. Download the wheel file from [this link](__WHEEL_URL__)",
-        f"2. Run `pip install \"__WHEEL_NAME__[{extra}]\"`",
+        f'2. Run `pip install "__WHEEL_NAME__[{extra}]"`',
     ]
     template = "\n".join(lines) + "\n"
     return template
+
 
 def wheel_to_targz(url: str) -> str:
     parsed = urlparse(url)
@@ -107,7 +108,9 @@ def get_github_install_instructions(*, wheel_name: str, wheel_url: str) -> str:
         instructions = _get_default_template_wheel_url_with_extra(extra="fractal-tasks")
     instructions = instructions.replace("__WHEEL_NAME__", wheel_name)
     instructions = instructions.replace("__WHEEL_URL__", wheel_url)
-    if wheel_name.startswith("fractal_cellpose_sam") or wheel_name.startswith("ilastik"):
+    if wheel_name.startswith("fractal_cellpose_sam") or wheel_name.startswith(
+        "ilastik"
+    ):
         instructions = _get_default_pixi_installation_instructions(wheel_url)
     print(instructions)
     return instructions
