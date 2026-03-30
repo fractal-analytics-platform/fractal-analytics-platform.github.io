@@ -1,0 +1,168 @@
+{
+  "name": "Basic Projection, Thresholding & Measurements",
+  "version": 3,
+  "description": "Conversion, threshold-based segmentation & measurements in a small dataset of human induced pluripotent stem cells. While the initial data is in 3D, it's segmented in 2D after a maximum intensity projection.",
+  "data": {
+    "name": "Simple Workflow",
+    "description": "Conversion, threshold-based segmentation & measurements in a small dataset of human induced pluripotent stem cells. While the initial data is in 3D, it's segmented in 2D after a maximum intensity projection.",
+    "task_list": [
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": {
+          "overwrite": false,
+          "num_levels": 5,
+          "coarsening_xy": 2,
+          "image_extension": "png",
+          "allowed_channels": [
+            {
+              "color": "0000FF",
+              "label": "DAPI",
+              "active": true,
+              "window": {
+                "end": 700,
+                "start": 110
+              },
+              "inverted": false,
+              "coefficient": 1,
+              "wavelength_id": "A01_C01"
+            }
+          ]
+        },
+        "args_parallel": {
+          "chunk_sizes": {
+            "c": 1,
+            "z": 10
+          }
+        },
+        "type_filters": {},
+        "description": "Input data is available at: https://zenodo.org/records/8287221   For your dataset, switch this converter tasks with one for your microscope.",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "1.6.0",
+          "name": "Convert Cellvoyager to OME-Zarr"
+        }
+      },
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": {
+          "method": "Maximum intensity projection",
+          "overwrite": false,
+          "output_plate_name": "{plate_name}_{method}",
+          "re_initialize_plate": false
+        },
+        "args_parallel": {},
+        "type_filters": {},
+        "description": "This projection task create a fully separate 2D OME-Zarr plate. If you want to keep everything in the same OME-Zarr HCS plate, use the \"Project Image\" task instead.",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Project Image (HCS Plate)"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 8000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "channel": {
+            "mode": "label",
+            "identifier": "DAPI",
+            "skip_if_missing": false
+          },
+          "overwrite": true,
+          "level_path": null,
+          "pre_post_process": {
+            "pre_process": [
+              {
+                "type": "Gaussian Blur Filter",
+                "sigma_xy": 3
+              }
+            ],
+            "post_process": []
+          },
+          "output_label_name": "nuclei",
+          "segmentation_method": {
+            "method": "Simple Threshold",
+            "threshold": 200
+          },
+          "iterator_configuration": {
+            "masking": {
+              "mode": "No Masking"
+            },
+            "roi_table": "well_ROI_table"
+          },
+          "create_masking_roi_table": {
+            "mode": "Create Masking ROI Table",
+            "table_name": "{output_label_name}_masking_ROI_table",
+            "table_backend": "anndata"
+          }
+        },
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Threshold Segmentation"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "features": [
+            {
+              "type": "ShapeFeatures",
+              "include_convex_hull_properties": false
+            },
+            {
+              "type": "IntensityFeatures",
+              "channels": []
+            }
+          ],
+          "overwrite": true,
+          "input_roi_table": null,
+          "advanced_options": {
+            "use_cache": true,
+            "level_path": null,
+            "use_scaling": true,
+            "table_backend": "anndata"
+          },
+          "input_label_name": "nuclei",
+          "output_table_name": "region_props_features"
+        },
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Measure Features"
+        }
+      }
+    ]
+  }
+}
