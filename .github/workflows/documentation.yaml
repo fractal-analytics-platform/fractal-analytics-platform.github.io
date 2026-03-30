@@ -59,14 +59,16 @@ jobs:
       - run: mv MAIN/site ./site
 
       # Retrieve remote task-list data
-
-      - name: Install requirements
-        run: python3 -m pip install -r MAIN/tasks_data_retrieval/requirements.txt
-
-      - name: Fetch tasks data
-        run: python3 -u MAIN/tasks_data_retrieval/create_tasks_data.py
-
+      - run: python3 -m pip install -r MAIN/tasks_data_retrieval/requirements.txt
+      - run: python3 -u MAIN/tasks_data_retrieval/create_tasks_data.py
       - run: cat MAIN/tasks_data_retrieval/tasks.json
+
+      # Create templates-list data
+      - run: python3 -u MAIN/templates_data_retrieval/create_templates_data.py
+      - run: cat MAIN/templates_data_retrieval/templates.json
+      - run: cat MAIN/templates_data_retrieval/template_id_map.json
+
+      #  Fractal Web components
 
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
         with:
@@ -74,10 +76,6 @@ jobs:
           cache: npm
           cache-dependency-path: WEB/package-lock.json
 
-      # Retrieve remote template-list data
-      #  FIXME
-
-      #  Fractal Web components
       - name: Install main fractal-web dependencies
         run: |
           cd WEB
@@ -114,7 +112,7 @@ jobs:
           npm install
 
       - name: Move templates JSON files to templates-list/src
-        run: mv MAIN/templates_data_retrieval/* WEB/templates-list/static/
+        run: mv MAIN/templates_data_retrieval/{templates,template_id_map}.json WEB/templates-list/static/
 
       - name: Build templates-list page
         run: |
