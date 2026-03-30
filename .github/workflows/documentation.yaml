@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-24.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-      cancel-in-progress: true
+      cancel-in-progress: false
 
     steps:
 
@@ -127,7 +127,7 @@ jobs:
     if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-      cancel-in-progress: true
+      cancel-in-progress: false
     runs-on: ubuntu-24.04
     needs: build
     permissions:
