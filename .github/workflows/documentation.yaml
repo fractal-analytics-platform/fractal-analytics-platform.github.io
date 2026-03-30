@@ -135,6 +135,9 @@ jobs:
           sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/fractal_tasks/index.html
           sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" site/fractal_tasks/index.html
           rm site/fractal_tasks/index.html.bak1 site/fractal_tasks/index.html.bak2
+          sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/fractal_templates/index.html
+          sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" site/fractal_templates/index.html
+          rm site/fractal_templates/index.html.bak1 site/fractal_templates/index.html.bak2
 
       - run: ls -lh site/*
 
