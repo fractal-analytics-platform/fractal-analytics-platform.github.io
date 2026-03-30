@@ -27,7 +27,7 @@ python3 -m pip install -r tasks_data_retrieval/requirements.txt
 python3 -u tasks_data_retrieval/create_tasks_data.py
 ls -lh tasks_data_retrieval/tasks.json
 
-python3 -u template_data_retrieval/create_templates_data.py
+python3 -u templates_data_retrieval/create_templates_data.py
 
 
 # Build
@@ -54,9 +54,9 @@ sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/fract
 sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/$FRACTAL_WEB_REFERENCE/" "$CURRENT_DIR/site/fractal_tasks/index.html"
 rm "$CURRENT_DIR/site/fractal_tasks/index.html.bak1"
 rm "$CURRENT_DIR/site/fractal_tasks/index.html.bak2"
-sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" site/fractal_templates/index.html
-sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" site/fractal_templates/index.html
-rm site/fractal_templates/index.html.bak1 site/fractal_templates/index.html.bak2
+sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/fractal_templates/index.html"
+sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" "$CURRENT_DIR/site/fractal_templates/index.html"
+rm "$CURRENT_DIR/site/fractal_templates/index.html.bak1" "$CURRENT_DIR/site/fractal_templates/index.html.bak2"
 
 deactivate
 rm -r "$VENVDIR"
