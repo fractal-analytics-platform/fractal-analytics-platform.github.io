@@ -1,4 +1,5 @@
-import glob, json
+import glob
+import json
 from pathlib import Path
 
 
