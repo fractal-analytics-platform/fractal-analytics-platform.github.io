@@ -7,7 +7,7 @@ id_map = {}
 
 template_id = 0
 root = Path(__file__).parent
-for file in sorted(glob.glob("raw/*json", root_dir=root)):
+for file in sorted(glob.glob((root / "raw/*json").as_posix())):
     with open(file) as f:
         template_id += 1
         id_map[str(template_id)] = file
