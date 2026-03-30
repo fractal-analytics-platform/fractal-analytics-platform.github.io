@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Fractal Project Sharing"
-date: 2025-04-28
+date: 2025-12-17
 ---
 
 # Fractal Project Sharing
