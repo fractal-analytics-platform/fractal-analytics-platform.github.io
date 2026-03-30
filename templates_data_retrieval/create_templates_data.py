@@ -1,11 +1,13 @@
 import glob, json
+from pathlib import Path
 
 
 data = []
 id_map = {}
 
 template_id = 0
-for file in sorted(glob.glob("raw/*json")):
+root = Path(__file__).parent
+for file in sorted(glob.glob("raw/*json", root_dir=root)):
     with open(file) as f:
         template_id += 1
         id_map[str(template_id)] = file
@@ -47,7 +49,7 @@ for group in data:
         reverse=True,
     )
 
-with open("template_id_map.json", "w") as f:
+with open(root / "template_id_map.json", "w") as f:
     json.dump(id_map, f, indent=2)
-with open("templates.json", "w") as f:
+with open(root / "templates.json", "w") as f:
     json.dump(data, f, indent=2)
