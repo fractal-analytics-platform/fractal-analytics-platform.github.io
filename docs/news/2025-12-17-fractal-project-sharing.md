@@ -6,7 +6,7 @@ date: 2025-12-17
 
 # Fractal Project Sharing
 
-The [Fractal framework](../index.md), developed at the [BioVisionCenter](https://www.biovisioncenter.uzh.ch/en.html), allows users to build complex image processing workflows and run them on Terabytes of high-dimensional microscopy data. 
+The [Fractal framework](../index.md), developed at the [BioVisionCenter](https://www.biovisioncenter.uzh.ch/en.html), allows users to build complex image processing workflows and run them on Terabytes of high-dimensional microscopy data.
 
 With more people using Fractal and collaborating on analysis workflows, we wanted to bring more collaboration features to our users. As a first such feature, we have recently added project sharing functionality to Fractal with the 2.18 Fractal server update.
 
@@ -22,12 +22,9 @@ To enable these new data streaming services, we've **revamped the project direct
 
 ![Fractal image list](../assets/blogs/fractal_project_sharing/sharing_options.png)
 
-We wanted to support a variety of use-cases for project sharing: from easily showing images and quantification results to a colleague in the lab or collaborating on creating workflows, to members of core facilities supporting users by setting up initial workflows for them or helping them with existing workflows in their projects. To enable this, project sharing permissions are granular: 
+We wanted to support a variety of use-cases for project sharing: from easily showing images and quantification results to a colleague in the lab or collaborating on creating workflows, to members of core facilities supporting users by setting up initial workflows for them or helping them with existing workflows in their projects. To enable this, project sharing permissions are granular:
 - Share a project in **read-only mode** to gives access to view the workflows and stream the OME-Zarrs (see above): This ensures your collaborator can see how you processed your data and can see the data itself.
 - Share a project in **read + write mode** to allow editing workflows: Want your collaborator to help with workflow parameters? This gives them access to modify your workflow.
-- Share a project in **read + write + execute mode**: This gives full access to your collaborator. On top of everything above, they can now also run workflows from the shared project. Share workflow execution comes with some limitations depending on your deployments: Both users need to have data access within the linux cluster environment to modify the same files. In ssh-slurm deployments (like the UZH Science Cluster & UZH Science Cloud servers), this typically holds for users in the same research group, but not across research groups. In sudo-slurm deployments, this depends on configurations (please contact an admin for questions). 
+- Share a project in **read + write + execute mode**: This gives full access to your collaborator. On top of everything above, they can now also run workflows from the shared project. Share workflow execution comes with some limitations depending on your deployments: Both users need to have data access within the linux cluster environment to modify the same files. In ssh-slurm deployments (like the UZH Science Cluster & UZH Science Cloud servers), this typically holds for users in the same research group, but not across research groups. In sudo-slurm deployments, this depends on configurations (please contact an admin for questions).
 
-You can follow along with our ongoing Fractal developments by keeping an eye on this newly created [news section on the Fractal page](../) or by following the development process on our Github repositories.  
-
-
-
+You can follow along with our ongoing Fractal developments by keeping an eye on this newly created [news section on the Fractal page](../) or by following the development process on our Github repositories.

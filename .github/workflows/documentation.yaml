@@ -18,11 +18,15 @@ permissions: {}
 jobs:
 
   build:
+    name: Build
     runs-on: ubuntu-24.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: false
 
     steps:
 
-      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           path: MAIN
           persist-credentials: false
@@ -31,8 +35,8 @@ jobs:
         run: |
           FRACTAL_WEB_REFERENCE=$(cat MAIN/fractal-web-reference.txt)
           echo "FRACTAL_WEB_REFERENCE=$FRACTAL_WEB_REFERENCE" >> $GITHUB_ENV
- 
-      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: fractal-analytics-platform/fractal-web
           ref: ${{ env.FRACTAL_WEB_REFERENCE }}
@@ -41,8 +45,8 @@ jobs:
             components
             tasks-list
           persist-credentials: false
- 
-      - uses: actions/setup-python@28f2168f4d98ee0445e3c6321f6e6616c83dd5ec
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: '3.12'
           cache: pip
@@ -118,21 +122,22 @@ jobs:
         with:
           path: "site"
 
-  # Deployment job
   deploy:
+    name: Deploy
+    if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: false
     runs-on: ubuntu-24.04
     needs: build
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      # https://github.com/actions/deploy-pages?tab=readme-ov-file
+      # https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers#adding-permissions-settings
+      pages: write  # To create pages deployments when calling the GitHub API
+      id-token: write # To request the OIDC JWT token
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - run: echo "event_name=${EVENT_NAME} event_ref=${EVENT_REF}"
-        env:
-            EVENT_NAME: ${{github.event_name}}
-            EVENT_REF: ${{github.event.ref}}
-      - if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
+      - uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
         id: deployment

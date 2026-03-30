@@ -18,11 +18,11 @@ Fractal enables distributed workflows that convert TBs of image data into [OME-Z
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VfMHWW9nTxk?si=hcevmR9SnCVfx1uy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-The resulting pyramidal OME-Zarr files enable interactive visualization in different modern viewers like [MoBIE](https://imagej.net/plugins/mobie) and [napari](https://napari.org/stable/). 
+The resulting pyramidal OME-Zarr files enable interactive visualization in different modern viewers like [MoBIE](https://imagej.net/plugins/mobie) and [napari](https://napari.org/stable/).
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DfhRF1OW5CE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-  
+
 ## Fractal components
 
 Fractal is made of different components, including a server/client architecture, a web client and a set of core tasks for image processing.
@@ -49,7 +49,7 @@ Example datasets and workflows are publicly available:
 
 * Example output data from Fractal in the OME-Zarr format can be found here: [Small dataset: 10.5281/zenodo.10257149](https://doi.org/10.5281/zenodo.10257149), [larger dataset: 10.5281/zenodo.10257532](https://doi.org/10.5281/zenodo.10257532)
 * Example input datasets can be found here: [Small Fractal dataset for automated testing & task development](https://zenodo.org/records/8287221), [Larger example input data for Fractal](https://doi.org/10.5281/zenodo.7057076).
-* Additional example workflows can be found in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos) in the `examples` folder. 
+* Additional example workflows can be found in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos) in the `examples` folder.
 
 ## Contributors and license
 
