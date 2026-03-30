@@ -27,7 +27,7 @@ python3 -m pip install -r tasks_data_retrieval/requirements.txt
 python3 -u tasks_data_retrieval/create_tasks_data.py
 ls -lh tasks_data_retrieval/tasks.json
 
-python3 -u template_data_retrieval/create_templates_data.py
+python3 -u templates_data_retrieval/create_templates_data.py
 
 
 # Build
