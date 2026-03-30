@@ -157,10 +157,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - run: echo "event_name=${EVENT_NAME} event_ref=${EVENT_REF}"
-        env:
-            EVENT_NAME: ${{github.event_name}}
-            EVENT_REF: ${{github.event.ref}}
-      - if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
+      - uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
         id: deployment
