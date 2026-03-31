@@ -73,7 +73,6 @@ jobs:
       - run: cat MAIN/templates_data_retrieval/template_id_map.json
 
       #  Fractal Web components
-
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
         with:
           node-version: 20
@@ -89,9 +88,9 @@ jobs:
         run: |
           cd WEB/components
           npm install
-      
+
       # Tasks list
-      
+
       - name: Install tasks-list dependencies
         run: |
           cd WEB/tasks-list
@@ -107,7 +106,7 @@ jobs:
 
       - name: Move tasks-list built files in docs site
         run: mv WEB/tasks-list/build/ site/task-table
-      
+
       # Templates list
 
       - name: Install templates-list dependencies
@@ -115,8 +114,10 @@ jobs:
           cd WEB/templates-list
           npm install
 
-      - name: Move templates JSON files to templates-list/src
-        run: mv MAIN/templates_data_retrieval/{templates,template_id_map}.json WEB/templates-list/static/
+      - name: Move templates JSON files to templates-list/static
+        run: |
+          mv MAIN/templates_data_retrieval/{templates,template_id_map}.json WEB/templates-list/static/
+          mv MAIN/templates_data_retrieval/raw/*.json WEB/templates-list/static/
 
       - name: Build templates-list page
         run: |
