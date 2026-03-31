@@ -1,6 +1,6 @@
 {
   "name": "Basic Projection, Thresholding & Measurements",
-  "version": 3,
+  "version": 1,
   "description": "Conversion, threshold-based segmentation & measurements in a small dataset of human induced pluripotent stem cells. While the initial data is in 3D, it's segmented in 2D after a maximum intensity projection.",
   "data": {
     "name": "Simple Workflow",

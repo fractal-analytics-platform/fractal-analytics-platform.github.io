@@ -1,6 +1,6 @@
 {
   "name": "hiPSC Cellpose SAM & measurements",
-  "version": 3,
+  "version": 1,
   "description": "Cellpose-SAM segmentation & measurements in a small dataset of human induced pluripotent stem cells.\nWhile the initial data is in 3D, it's segmented in 2D after a maximum intensity projection.\nExample input data is available at: https://zenodo.org/records/8287221",
   "data": {
     "name": "hiPSC Cellpose SAM & measurements",
