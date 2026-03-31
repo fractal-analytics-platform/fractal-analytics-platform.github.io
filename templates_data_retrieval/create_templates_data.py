@@ -11,7 +11,7 @@ root = Path(__file__).parent
 for file in sorted(glob.glob((root / "raw/*json").as_posix())):
     with open(file) as f:
         template_id += 1
-        id_map[str(template_id)] = file
+        id_map[str(template_id)] = Path(file).name
         template = json.load(f)
         template_name: str = template["name"]
         template_version: int = template["version"]
