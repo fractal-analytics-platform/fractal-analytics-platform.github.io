@@ -124,7 +124,7 @@ jobs:
           npm run build
 
       - name: Move templates-list built files in docs site
-        run: mv WEB/templates-list/build/ site/template-table
+        run: mv WEB/templates-list/build/ site/templates-table
 
       #  Timestamp
 

@@ -139,8 +139,7 @@
               "include_convex_hull_properties": false
             },
             {
-              "type": "IntensityFeatures",
-              "channels": []
+              "type": "IntensityFeatures"
             }
           ],
           "overwrite": true,

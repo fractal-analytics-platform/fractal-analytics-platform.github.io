@@ -20,7 +20,7 @@ hide:
 }
 </style>
 
-<iframe src="../template-table/" class="templates-iframe">
+<iframe src="../templates-table/" class="templates-iframe">
 </iframe>
 
 
