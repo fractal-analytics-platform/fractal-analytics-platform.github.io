@@ -46,6 +46,7 @@ cp -r build "$CURRENT_DIR/site/task-table"
 cd "$WEBDIR/templates-list"
 npm install
 cp "$CURRENT_DIR/templates_data_retrieval/"*.json ./static/
+cp "$CURRENT_DIR/templates_data_retrieval/raw/"*.json ./static/
 npm run build
 cp -r build "$CURRENT_DIR/site/templates-table"
 
