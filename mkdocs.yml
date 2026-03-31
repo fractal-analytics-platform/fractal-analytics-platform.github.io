@@ -46,6 +46,7 @@ nav:
   - Fractal Tasks: fractal_tasks.md
   - Fractal Task Spec: tasks_spec.md
   - Create a Fractal Task: build_your_own_fractal_task.md
+  - Fractal Workflow Templates: fractal_templates.md
   - Fractal Image List: image_list.md
   - Deploy Fractal: run_fractal.md
   - News:
