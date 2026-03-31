@@ -47,7 +47,7 @@ cd "$WEBDIR/templates-list"
 npm install
 cp "$CURRENT_DIR/templates_data_retrieval/"*.json ./static/
 npm run build
-cp -r build "$CURRENT_DIR/site/template-table"
+cp -r build "$CURRENT_DIR/site/templates-table"
 
 CURRENT_DATE=$(date +"%Y-%m-%d %H:%M %Z")
 sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/fractal_tasks/index.html"
