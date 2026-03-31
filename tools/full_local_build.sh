@@ -60,8 +60,7 @@ sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" "$CUR
 rm "$CURRENT_DIR/site/fractal_templates/index.html.bak1" "$CURRENT_DIR/site/fractal_templates/index.html.bak2"
 
 deactivate
-rm -r "$VENVDIR"
-rm -rf "$WEBDIR"
+rm -r -f "$VENVDIR" "$WEBDIR"
 
 cd "$CURRENT_DIR/site"
 date
