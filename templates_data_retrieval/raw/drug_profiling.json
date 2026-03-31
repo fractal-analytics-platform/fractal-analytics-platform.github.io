@@ -1,0 +1,161 @@
+{
+  "name": "Drug profiling benchmark",
+  "version": 1,
+  "description": "Workflow for drug profiling in 2D from PerkinElmer Operetta microscope. Segmentation via Cellpose SAM isn't optimized yet => may not segment all objects optimally (e.g. oversegments nuclei in regions with increased background). Based on https://zenodo.org/records/18506825",
+  "data": {
+    "name": "Drug profiling benchmark",
+    "description": "Workflow for drug profiling in 2D from PerkinElmer Operetta microscope. Segmentation via Cellpose SAM isn't optimized yet => may not segment all objects optimally (e.g. oversegments nuclei in regions with increased background). Based on https://zenodo.org/records/18506825",
+    "task_list": [
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": {
+          "overwrite": "Overwrite",
+          "acquisitions": [
+            {
+              "advanced": {
+                "stage_corrections": {
+                  "flip_x": false,
+                  "flip_y": false,
+                  "swap_xy": false
+                }
+              },
+              "plate_name": "benchmark_plate",
+              "acquisition_id": 0
+            }
+          ],
+          "converter_options": {
+            "tiling_mode": "Auto",
+            "writer_mode": "By FOV",
+            "omezarr_options": {
+              "chunks": {
+                "mode": "Same as FOV",
+                "c_chunk": 1,
+                "t_chunk": 1,
+                "z_chunk": 10,
+                "xy_scaling": "1"
+              },
+              "num_levels": 5,
+              "ngff_version": "0.4",
+              "table_backend": "csv"
+            },
+            "tiling_tolerance": 0,
+            "temp_json_options": {
+              "temp_url": "{zarr_dir}/_tmp_json"
+            },
+            "alignment_correction": {
+              "align_t": false,
+              "align_z": false,
+              "align_xy": false
+            }
+          }
+        },
+        "args_parallel": null,
+        "type_filters": {},
+        "description": "Example input data available at https://zenodo.org/records/18506825",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-uzh-converters",
+          "version": "0.4.2",
+          "name": "Convert Operetta Plate to OME-Zarr"
+        }
+      },
+      {
+        "meta_non_parallel": null,
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000,
+          "needs_gpu": true
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "channels": {
+            "mode": "label",
+            "identifiers": [
+              "Fluorescein (FITC)"
+            ],
+            "skip_if_missing": false
+          },
+          "overwrite": true,
+          "label_name": "nuclei",
+          "advanced_parameters": {
+            "bsize": 256,
+            "do_3D": true,
+            "invert": false,
+            "augment": false,
+            "verbose": false,
+            "min_size": 15,
+            "resample": true,
+            "batch_size": 8,
+            "tile_overlap": 0.1,
+            "flow3D_smooth": 0,
+            "normalization": {
+              "mode": "default"
+            },
+            "flow_threshold": 0.4,
+            "stitch_threshold": 0,
+            "max_size_fraction": 0.4,
+            "cellprob_threshold": 0
+          },
+          "iterator_configuration": {
+            "roi_table": "FOV_ROI_table"
+          },
+          "create_masking_roi_table": {
+            "mode": "Skip Creating Masking ROI Table"
+          }
+        },
+        "type_filters": {},
+        "description": "May need either a retrained network or some hyperparameter tuning to ensure it segments all objects reliably. It currently oversegments nuclei in some regions with increased background. Also, Cellpose SAM runs ~100x faster on a GPU compared to on CPU on these 2D images",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-cellpose-sam-task",
+          "version": "0.2.0",
+          "name": "Cellpose SAM Segmentation"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "features": [
+            {
+              "type": "ShapeFeatures",
+              "include_convex_hull_properties": false
+            },
+            {
+              "type": "IntensityFeatures"
+            }
+          ],
+          "overwrite": true,
+          "input_roi_table": "FOV_ROI_table",
+          "advanced_options": {
+            "use_cache": true,
+            "level_path": null,
+            "use_scaling": true,
+            "table_backend": "parquet"
+          },
+          "input_label_name": "nuclei",
+          "output_table_name": "region_props_features"
+        },
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Measure Features"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "name": "Multiplexed cardiac differentiation analysis",
+  "version": 1,
+  "description": "Analysis of multiplexed HCS plate. Performs conversion of 2 multiplexing cycles from a Yokogawa Cellvoyager 7000 microscope, illumination correction, maximum intensity projection, registration in 2D, Cellpose SAM segmentation & measurements. Example input data available at https://zenodo.org/records/18818168.",
+  "data": {
+    "name": "multiplexed_cardiac_differentiation",
+    "description": "Analysis of multiplexed HCS plate. Performs conversion of 2 multiplexing cycles from a Yokogawa Cellvoyager 7000 microscope, illumination correction, maximum intensity projection, registration in 2D, Cellpose SAM segmentation & measurements.\nExample input data available at https://zenodo.org/records/18818168.",
+    "task_list": [
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 4,
+          "mem": 16000
+        },
+        "args_non_parallel": {
+          "overwrite": true,
+          "num_levels": 5,
+          "acquisitions": {
+            "0": {
+              "image_dir": "/shares/prbvc.biovision.uzh/users/joluet/cardio_multiplex_subset/cycle1",
+              "allowed_channels": [
+                {
+                  "color": "00FFFF",
+                  "label": "DAPI_0",
+                  "active": true,
+                  "window": {
+                    "end": 700,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A01_C01"
+                },
+                {
+                  "color": "FF00FF",
+                  "label": "nanog",
+                  "active": true,
+                  "window": {
+                    "end": 280,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A01_C02"
+                },
+                {
+                  "color": "FFFF00",
+                  "label": "Lamin B1",
+                  "active": true,
+                  "window": {
+                    "end": 1600,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A02_C03"
+                }
+              ]
+            },
+            "5": {
+              "image_dir": "/shares/prbvc.biovision.uzh/users/joluet/cardio_multiplex_subset/cycle9",
+              "allowed_channels": [
+                {
+                  "color": "00FFFF",
+                  "label": "DAPI_5",
+                  "active": true,
+                  "window": {
+                    "end": 1200,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A01_C01"
+                },
+                {
+                  "color": "FF00FF",
+                  "label": "NKX2-5",
+                  "active": true,
+                  "window": {
+                    "end": 350,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A01_C02"
+                },
+                {
+                  "color": "FFFF00",
+                  "label": "bCatenin",
+                  "active": true,
+                  "window": {
+                    "end": 1100,
+                    "start": 110
+                  },
+                  "inverted": false,
+                  "coefficient": 1,
+                  "wavelength_id": "A02_C03"
+                }
+              ]
+            }
+          },
+          "coarsening_xy": 2,
+          "image_extension": "png"
+        },
+        "args_parallel": {
+          "chunk_sizes": {
+            "c": 1,
+            "z": 10
+          }
+        },
+        "type_filters": {},
+        "description": "Edit the Image Dirs to match your data location. Example input data available at https://zenodo.org/records/18818168.",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "1.6.0",
+          "name": "Convert Cellvoyager Multiplexing to OME-Zarr"
+        }
+      },
+      {
+        "meta_non_parallel": null,
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 8000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "input_roi_table": "FOV_ROI_table",
+          "overwrite_input": true,
+          "output_image_name": "{image_name}_illum_corr",
+          "background_correction": {
+            "model": "Constant",
+            "constants": {
+              "A01_C01": 110,
+              "A01_C02": 110,
+              "A02_C03": 110
+            }
+          },
+          "illumination_profiles": {
+            "model": "Profile",
+            "folder": "/shares/prbvc.biovision.uzh/users/joluet/cardio_multiplex_subset/settings_files/illum_corr_images",
+            "profiles": {
+              "A01_C01": "20220621_UZH_manual_illumcorr_40x_A01_C01.png",
+              "A01_C02": "20220621_UZH_manual_illumcorr_40x_A01_C02.png",
+              "A02_C03": "20220621_UZH_manual_illumcorr_40x_A02_C03.png"
+            }
+          }
+        },
+        "type_filters": {},
+        "description": "Needs illumination correction profiles to be available. The ones used for the example workflow can be downloaded here: https://github.com/fractal-analytics-platform/fractal-paper-2026/tree/main/fractal_paper_2026/workflows/cardiac_diff_extra_files/illum_corr_images",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Illumination Correction"
+        }
+      },
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": {
+          "method": "Maximum intensity projection",
+          "overwrite": true,
+          "output_plate_name": "{plate_name}_{method}",
+          "re_initialize_plate": false
+        },
+        "args_parallel": null,
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Project Image (HCS Plate)"
+        }
+      },
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 1000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 8000
+        },
+        "args_non_parallel": {
+          "reference_acquisition": 0
+        },
+        "args_parallel": {
+          "method": "phase_cross_correlation",
+          "level_path": "2",
+          "wavelength_id": "A01_C01",
+          "input_roi_table": "FOV_ROI_table",
+          "lower_rescale_quantile": 0,
+          "upper_rescale_quantile": 0.99
+        },
+        "type_filters": {},
+        "description": "Calculates the 2D translation between the fields of view & saves the results into the FOV_ROI_table",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Calculate Registration (image-based)"
+        }
+      },
+      {
+        "meta_non_parallel": {
+          "cpus_per_task": 1,
+          "mem": 1000
+        },
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 1000
+        },
+        "args_non_parallel": {
+          "reference_acquisition": 0
+        },
+        "args_parallel": {
+          "input_roi_table": "FOV_ROI_table",
+          "registered_roi_table": "{input_roi_table}_registered"
+        },
+        "type_filters": {},
+        "description": "Defines a new consensus FOV_ROI_table_registered that contains aligned versions of the image for each cycle. One can apply the consensus back to the image (see following \"Apply Registration to Image\" task) or just directly work with the \"FOV_ROI_table_registered\" ROI table downstream to only analyse the aligned regions.",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Find Registration Consensus"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "overwrite_input": true,
+          "register_labels": true,
+          "registered_roi_table": "FOV_ROI_table_registered",
+          "reference_acquisition": 0
+        },
+        "type_filters": {},
+        "description": "This generates a new version of the image where you'll see black bars of the non-consensus regions between the fields of view.",
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Apply Registration to Image"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 4,
+          "mem": 16000,
+          "needs_gpu": true
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "channels": {
+            "mode": "wavelength_id",
+            "identifiers": [
+              "A01_C01"
+            ],
+            "skip_if_missing": false
+          },
+          "overwrite": true,
+          "label_name": "nuclei",
+          "level_path": null,
+          "custom_model": null,
+          "pre_post_process": {
+            "pre_process": [],
+            "post_process": []
+          },
+          "advanced_parameters": {
+            "bsize": 256,
+            "do_3D": true,
+            "niter": null,
+            "invert": false,
+            "augment": false,
+            "verbose": false,
+            "diameter": null,
+            "min_size": 15,
+            "resample": true,
+            "anisotropy": null,
+            "batch_size": 8,
+            "tile_overlap": 0.1,
+            "flow3D_smooth": 0,
+            "normalization": {
+              "mode": "default"
+            },
+            "flow_threshold": 0.4,
+            "stitch_threshold": 0,
+            "max_size_fraction": 0.4,
+            "cellprob_threshold": 0
+          },
+          "iterator_configuration": {
+            "masking": {
+              "mode": "No Masking"
+            },
+            "roi_table": "FOV_ROI_table_registered"
+          },
+          "create_masking_roi_table": {
+            "mode": "Create Masking ROI Table",
+            "table_name": "{label_name}_masking_ROI_table"
+          }
+        },
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-cellpose-sam-task",
+          "version": "0.2.2",
+          "name": "Cellpose SAM Segmentation"
+        }
+      },
+      {
+        "meta_non_parallel": {},
+        "meta_parallel": {
+          "cpus_per_task": 1,
+          "mem": 4000
+        },
+        "args_non_parallel": null,
+        "args_parallel": {
+          "features": [
+            {
+              "type": "ShapeFeatures",
+              "include_convex_hull_properties": false
+            },
+            {
+              "type": "IntensityFeatures"
+            }
+          ],
+          "overwrite": true,
+          "input_roi_table": "FOV_ROI_table_registered",
+          "advanced_options": {
+            "use_cache": true,
+            "use_scaling": true,
+            "table_backend": "anndata"
+          },
+          "input_label_name": "nuclei",
+          "output_table_name": "region_props_features"
+        },
+        "type_filters": {},
+        "description": null,
+        "alias": null,
+        "task": {
+          "pkg_name": "fractal-tasks-core",
+          "version": "2.0.0",
+          "name": "Measure Features"
+        }
+      }
+    ]
+  }
+}
