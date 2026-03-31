@@ -36,7 +36,7 @@
               },
               "plate_name": "hipsc_subset_plate",
               "acquisition_id": 0,
-              "image_extension": "png"
+              "image_extension": ".png"
             }
           ],
           "converter_options": {
@@ -71,7 +71,7 @@
         "alias": null,
         "task": {
           "pkg_name": "fractal-uzh-converters",
-          "version": "0.5.0a1",
+          "version": "0.5.0",
           "name": "Convert Yokogawa CellVoyager Plate to OME-Zarr"
         }
       },
