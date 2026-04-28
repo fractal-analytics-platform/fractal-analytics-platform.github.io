@@ -147,7 +147,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
 
-      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+      - uses: actions/upload-pages-artifact@98524323f0b914b5511bac37c114431cb6d7d086
         with:
           path: "site"
 
