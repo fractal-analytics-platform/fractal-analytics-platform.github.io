@@ -3,7 +3,6 @@ import time
 from pathlib import Path
 from typing import Any
 from typing import Literal
-from typing import Optional
 from urllib.parse import ParseResult
 from urllib.parse import urlparse
 from zipfile import ZipFile
@@ -29,22 +28,22 @@ class TaskReadV2(BaseModel):
 
     name: str
     type: Literal["parallel", "non_parallel", "compound"]
-    source: Optional[str] = None
-    version: Optional[str] = None
-    docs_info: Optional[str] = None
-    docs_link: Optional[str] = None
+    source: str | None = None
+    version: str | None = None
+    docs_info: str | None = None
+    docs_link: str | None = None
     input_types: dict[str, bool]
     output_types: dict[str, bool]
-    category: Optional[str] = None
-    modality: Optional[str] = None
-    authors: Optional[str] = None
+    category: str | None = None
+    modality: str | None = None
+    authors: str | None = None
     tags: list[str]
-    install_instructions: Optional[str] = None
+    install_instructions: str | None = None
 
 
 class TaskGroupReadV2(BaseModel):
     pkg_name: str
-    version: Optional[str] = None
+    version: str | None = None
     task_list: list[TaskReadV2]
 
 
@@ -77,6 +76,7 @@ def load_manifest_from_zip(wheel_path: str) -> dict[str, Any]:
 
 def download_file(url: str) -> str:
     file_name = url.split("/")[-1]
+    print(f"** Now get {url}.")
     response = requests.get(url, stream=True, timeout=30)
     file_path = (DOWNLOAD_FOLDER / file_name).as_posix()
     with open(file_path, "wb") as f:
@@ -95,6 +95,7 @@ def handle_pypi_project(*, parsed_url: ParseResult) -> dict[str, Any]:
 
     # Fetch and parse PyPI information
     pypi_api_url = f"https://pypi.org/pypi/{project_name}/json"
+    print(f"** Now get {pypi_api_url}.")
     res = requests.get(pypi_api_url, timeout=30)
     response_data = res.json()
     if not res.status_code == 200:
@@ -147,6 +148,7 @@ def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
+    print(f"** Now get {github_api_url}.")
     res = requests.get(github_api_url, headers=headers, timeout=30)
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {github_api_url}: {res}")
@@ -225,7 +227,7 @@ with sources_file.open("r") as f:
     sources = f.read().splitlines()
 sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
-task_groups = []
+task_groups: list[dict[str, str | None | list[dict]]] = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
@@ -249,15 +251,15 @@ for source in sources:
         TaskReadV2(**new_task)
         task_list.append(new_task)
 
-    task_group = dict(
-        pkg_name=pkg_name,
-        version=pkg_version,
-        task_list=task_list,
-    )
     ntasks = len(task_list)
-    TaskGroupReadV2(**task_group)
 
-    task_groups.append(task_group)
+    task_groups.append(
+        TaskGroupReadV2(
+            pkg_name=pkg_name,
+            version=pkg_version,
+            task_list=task_list,
+        ).model_dump()
+    )
 
     t_end = time.perf_counter()
     print(
