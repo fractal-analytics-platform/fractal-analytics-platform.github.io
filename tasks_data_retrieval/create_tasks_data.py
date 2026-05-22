@@ -76,7 +76,7 @@ def load_manifest_from_zip(wheel_path: str) -> dict[str, Any]:
 
 def download_file(url: str) -> str:
     file_name = url.split("/")[-1]
-    print(f"** Now get {url}.")
+    print(f"** Now get {url}")
     response = requests.get(url, stream=True, timeout=30)
     file_path = (DOWNLOAD_FOLDER / file_name).as_posix()
     with open(file_path, "wb") as f:
@@ -148,7 +148,7 @@ def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
-    print(f"** Now get {github_api_url}.")
+    print(f"** Now get {github_api_url}")
     res = requests.get(github_api_url, headers=headers, timeout=30)
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {github_api_url}: {res}")
