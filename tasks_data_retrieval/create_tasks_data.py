@@ -1,19 +1,18 @@
+import json
 import time
 from pathlib import Path
-import requests
-import json
-from zipfile import ZipFile
 from typing import Any
-from pydantic import BaseModel
-from typing import Optional
 from typing import Literal
+from urllib.parse import ParseResult
+from urllib.parse import urlparse
+from zipfile import ZipFile
 
-import sys
+import requests
+from pydantic import BaseModel
+from pydantic import ConfigDict
 
-sys.path.append(Path(__file__).parent)
 from install_instructions import get_github_install_instructions
 from install_instructions import get_pypi_install_instructions
-
 
 DOWNLOAD_FOLDER = Path(__file__).parent / "downloads"
 DOWNLOAD_FOLDER.mkdir(exist_ok=True)
@@ -25,27 +24,26 @@ class TaskReadV2(BaseModel):
     https://github.com/fractal-analytics-platform/fractal-server/blob/main/fractal_server/app/schemas/v2/task.py
     """
 
+    model_config = ConfigDict(extra="forbid")
+
     name: str
     type: Literal["parallel", "non_parallel", "compound"]
-    source: Optional[str] = None
-    version: Optional[str] = None
-    docs_info: Optional[str] = None
-    docs_link: Optional[str] = None
+    source: str | None = None
+    version: str | None = None
+    docs_info: str | None = None
+    docs_link: str | None = None
     input_types: dict[str, bool]
     output_types: dict[str, bool]
-    category: Optional[str] = None
-    modality: Optional[str] = None
-    authors: Optional[str] = None
+    category: str | None = None
+    modality: str | None = None
+    authors: str | None = None
     tags: list[str]
-    install_instructions: Optional[str] = None
-
-    class Config:
-        extra = "forbid"
+    install_instructions: str | None = None
 
 
 class TaskGroupReadV2(BaseModel):
     pkg_name: str
-    version: Optional[str] = None
+    version: str | None = None
     task_list: list[TaskReadV2]
 
 
@@ -78,6 +76,7 @@ def load_manifest_from_zip(wheel_path: str) -> dict[str, Any]:
 
 def download_file(url: str) -> str:
     file_name = url.split("/")[-1]
+    print(f"** Now get {url}")
     response = requests.get(url, stream=True, timeout=30)
     file_path = (DOWNLOAD_FOLDER / file_name).as_posix()
     with open(file_path, "wb") as f:
@@ -86,22 +85,17 @@ def download_file(url: str) -> str:
     return file_path
 
 
-def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
+def handle_pypi_project(*, parsed_url: ParseResult) -> dict[str, Any]:
     """
     Example: https://pypi.org/project/fractal-tasks-core
     """
 
     # Extract project_name
-    parts = pypi_project_url.split("/")
-    if parts[:4] != ["https:", "", "pypi.org", "project"]:
-        raise ValueError(
-            f"Invalid {pypi_project_url=}.\n"
-            "Valid example: https://pypi.org/project/fractal-tasks-core"
-        )
-    project_name = parts[4]
+    project_name = parsed_url.path.strip("/").split("/")[1]
 
     # Fetch and parse PyPI information
     pypi_api_url = f"https://pypi.org/pypi/{project_name}/json"
+    print(f"** Now get {pypi_api_url}.")
     res = requests.get(pypi_api_url, timeout=30)
     response_data = res.json()
     if not res.status_code == 200:
@@ -137,21 +131,14 @@ def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
     )
 
 
-def handle_github_repository(github_url: str) -> dict[str, Any]:
+def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
     """
     Example:
     https://github.com/fractal-analytics-platform/fractal-lif-converters/
     """
 
     # Extract owner and repository
-    parts = github_url.split("/")
-    if parts[:3] != ["https:", "", "github.com"]:
-        print(parts)
-        raise ValueError(
-            f"Invalid {github_url=}.\n"
-            "Valid example: https://github.com/fractal-analytics-platform/fractal-lif-converters"
-        )
-    owner, repository = parts[3:5]
+    owner, repository = parsed_url.path.strip("/").split("/")
 
     # Fetch and parse GitHub information
     github_api_url = (
@@ -161,6 +148,7 @@ def handle_github_repository(github_url: str) -> dict[str, Any]:
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
+    print(f"** Now get {github_api_url}")
     res = requests.get(github_api_url, headers=headers, timeout=30)
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {github_api_url}: {res}")
@@ -190,10 +178,11 @@ def handle_github_repository(github_url: str) -> dict[str, Any]:
 
 
 def get_package_info(source: str) -> dict[str, Any]:
-    if source.startswith("https://github.com"):
-        return handle_github_repository(source)
-    elif source.startswith("https://pypi.org"):
-        return handle_pypi_project(source)
+    parsed_url = urlparse(source)
+    if parsed_url.hostname == "github.com" and parsed_url.scheme == "https":
+        return handle_github_repository(parsed_url=parsed_url)
+    elif parsed_url.hostname == "pypi.org" and parsed_url.scheme == "https":
+        return handle_pypi_project(parsed_url=parsed_url)
     else:
         raise ValueError(f"Invalid {source=}.")
 
@@ -238,7 +227,7 @@ with sources_file.open("r") as f:
     sources = f.read().splitlines()
 sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
-task_groups = []
+task_groups: list[dict[str, str | None | list[dict]]] = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
@@ -262,15 +251,15 @@ for source in sources:
         TaskReadV2(**new_task)
         task_list.append(new_task)
 
-    task_group = dict(
-        pkg_name=pkg_name,
-        version=pkg_version,
-        task_list=task_list,
-    )
     ntasks = len(task_list)
-    TaskGroupReadV2(**task_group)
 
-    task_groups.append(task_group)
+    task_groups.append(
+        TaskGroupReadV2(
+            pkg_name=pkg_name,
+            version=pkg_version,
+            task_list=task_list,
+        ).model_dump()
+    )
 
     t_end = time.perf_counter()
     print(
