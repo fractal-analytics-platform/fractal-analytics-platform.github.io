@@ -1,19 +1,19 @@
+import json
 import time
 from pathlib import Path
-import requests
-import json
-from zipfile import ZipFile
 from typing import Any
-from pydantic import BaseModel
-from typing import Optional
 from typing import Literal
+from typing import Optional
+from urllib.parse import ParseResult
+from urllib.parse import urlparse
+from zipfile import ZipFile
 
-import sys
+import requests
+from pydantic import BaseModel
+from pydantic import ConfigDict
 
-sys.path.append(Path(__file__).parent)
 from install_instructions import get_github_install_instructions
 from install_instructions import get_pypi_install_instructions
-
 
 DOWNLOAD_FOLDER = Path(__file__).parent / "downloads"
 DOWNLOAD_FOLDER.mkdir(exist_ok=True)
@@ -24,6 +24,8 @@ class TaskReadV2(BaseModel):
     Customization of
     https://github.com/fractal-analytics-platform/fractal-server/blob/main/fractal_server/app/schemas/v2/task.py
     """
+
+    model_config = ConfigDict(extra="forbid")
 
     name: str
     type: Literal["parallel", "non_parallel", "compound"]
@@ -38,9 +40,6 @@ class TaskReadV2(BaseModel):
     authors: Optional[str] = None
     tags: list[str]
     install_instructions: Optional[str] = None
-
-    class Config:
-        extra = "forbid"
 
 
 class TaskGroupReadV2(BaseModel):
@@ -86,19 +85,13 @@ def download_file(url: str) -> str:
     return file_path
 
 
-def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
+def handle_pypi_project(*, parsed_url: ParseResult) -> dict[str, Any]:
     """
     Example: https://pypi.org/project/fractal-tasks-core
     """
 
     # Extract project_name
-    parts = pypi_project_url.split("/")
-    if parts[:4] != ["https:", "", "pypi.org", "project"]:
-        raise ValueError(
-            f"Invalid {pypi_project_url=}.\n"
-            "Valid example: https://pypi.org/project/fractal-tasks-core"
-        )
-    project_name = parts[4]
+    project_name = parsed_url.path.strip("/").split("/")[1]
 
     # Fetch and parse PyPI information
     pypi_api_url = f"https://pypi.org/pypi/{project_name}/json"
@@ -137,21 +130,14 @@ def handle_pypi_project(pypi_project_url: str) -> dict[str, Any]:
     )
 
 
-def handle_github_repository(github_url: str) -> dict[str, Any]:
+def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
     """
     Example:
     https://github.com/fractal-analytics-platform/fractal-lif-converters/
     """
 
     # Extract owner and repository
-    parts = github_url.split("/")
-    if parts[:3] != ["https:", "", "github.com"]:
-        print(parts)
-        raise ValueError(
-            f"Invalid {github_url=}.\n"
-            "Valid example: https://github.com/fractal-analytics-platform/fractal-lif-converters"
-        )
-    owner, repository = parts[3:5]
+    owner, repository = parsed_url.path.strip("/").split("/")
 
     # Fetch and parse GitHub information
     github_api_url = (
@@ -190,10 +176,11 @@ def handle_github_repository(github_url: str) -> dict[str, Any]:
 
 
 def get_package_info(source: str) -> dict[str, Any]:
-    if source.startswith("https://github.com"):
-        return handle_github_repository(source)
-    elif source.startswith("https://pypi.org"):
-        return handle_pypi_project(source)
+    parsed_url = urlparse(source)
+    if parsed_url.hostname == "github.com" and parsed_url.scheme == "https":
+        return handle_github_repository(parsed_url=parsed_url)
+    elif parsed_url.hostname == "pypi.org" and parsed_url.scheme == "https":
+        return handle_pypi_project(parsed_url=parsed_url)
     else:
         raise ValueError(f"Invalid {source=}.")
 
