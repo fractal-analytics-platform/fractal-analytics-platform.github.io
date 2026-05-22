@@ -8,7 +8,10 @@ INSTALL_INSTRUCTIONS_TITLE_2 = "**How to install this task in a Python environme
 def _get_default_template_pypi() -> str:
     lines = [
         INSTALL_INSTRUCTIONS_TITLE_1,
-        "Trigger a PyPI task collection with package `__PROJECT_NAME__` and package version `__VERSION__`",
+        (
+            "Trigger a PyPI task collection with package `__PROJECT_NAME__` "
+            "and package version `__VERSION__`"
+        ),
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
         'Run `pip install "__PROJECT_NAME__==__VERSION__"`',
@@ -21,7 +24,10 @@ def _get_default_template_pypi() -> str:
 def _get_default_template_pypi_with_extra(extra: str) -> str:
     lines = [
         INSTALL_INSTRUCTIONS_TITLE_1,
-        f"Trigger a PyPI task collection for package `__PROJECT_NAME__`, package version `__VERSION__` and package extras `{extra}`",
+        (
+            "Trigger a PyPI task collection for package `__PROJECT_NAME__`, "
+            f"package version `__VERSION__` and package extras `{extra}`"
+        ),
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
         f'Run `pip install "__PROJECT_NAME__[{extra}]==__VERSION__"`',
@@ -48,7 +54,10 @@ def _get_default_template_wheel_url_with_extra(extra: str) -> str:
     lines = [
         INSTALL_INSTRUCTIONS_TITLE_1,
         "1. Download the wheel file from [this link](__WHEEL_URL__)",
-        f"2. Trigger a local task collection by uploading the wheel file, with package extras `{extra}`",
+        (
+            "2. Trigger a local task collection by uploading the wheel file, "
+            f"with package extras `{extra}`"
+        ),
         "",
         INSTALL_INSTRUCTIONS_TITLE_2,
         "1. Download the wheel file from [this link](__WHEEL_URL__)",
