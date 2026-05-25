@@ -6,3 +6,8 @@ updates:
       interval: "monthly"
     cooldown:
       default-days: 7
+    groups:
+      gha-updates:
+        applies-to: version-updates
+        patterns:
+          - '*'
