@@ -1,0 +1,16 @@
+[project]
+name = "fractal-analytics-platform-github-io"
+version = "0.0.1"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # Build
+    "mkdocs==1.6.1",
+    "mkdocs-material==9.7.6",
+    "mkdocs-literate-nav==0.6.2",
+    "mkdocs-section-index==0.3.10",
+    # Tasks-info retrieval
+    "requests==2.34.2",
+    "pydantic==2.13.4",
+    "ruff==0.15.4",
+    ]
