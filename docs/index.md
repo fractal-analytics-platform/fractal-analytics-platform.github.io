@@ -46,11 +46,9 @@ You can easily add your own task to Fractal. Fractal can run Linux executables t
 
 ## Examples
 
-Example datasets and workflows are publicly available:
+Example OME-Zarr datasets are publicly available in the [Zenodo Fractal OME-Zarrs collection](https://zenodo.org/communities/fractal/records?q=&l=list&p=1&s=10&sort=newest). A broadly used example is [this tiny OME-Zarr](https://zenodo.org/records/13305156) used in automated testing.
 
-* Example output data from Fractal in the OME-Zarr format can be found here: [Small dataset: 10.5281/zenodo.10257149](https://doi.org/10.5281/zenodo.10257149), [larger dataset: 10.5281/zenodo.10257532](https://doi.org/10.5281/zenodo.10257532)
-* Example input datasets can be found here: [Small Fractal dataset for automated testing & task development](https://zenodo.org/records/8287221), [Larger example input data for Fractal](https://doi.org/10.5281/zenodo.7057076).
-* Additional example workflows can be found in the [fractal-demos repository](https://github.com/fractal-analytics-platform/fractal-demos) in the `examples` folder.
+Example workflows are available in the [Fractal Workflow Templates page](fractal_templates.md).
 
 ## Contributors and license
 
