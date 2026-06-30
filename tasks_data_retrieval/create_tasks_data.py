@@ -8,11 +8,10 @@ from urllib.parse import urlparse
 from zipfile import ZipFile
 
 import requests
-from pydantic import BaseModel
-from pydantic import ConfigDict
-
 from install_instructions import get_github_install_instructions
 from install_instructions import get_pypi_install_instructions
+from pydantic import BaseModel
+from pydantic import ConfigDict
 
 DOWNLOAD_FOLDER = Path(__file__).parent / "downloads"
 DOWNLOAD_FOLDER.mkdir(exist_ok=True)
