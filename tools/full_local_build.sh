@@ -8,26 +8,18 @@ FRACTAL_WEB_REFERENCE=$(cat fractal-web-reference.txt)
 
 CURRENT_DIR=$(pwd)
 WEBDIR="/tmp/WEB"
-VENVDIR="/tmp/venv-for-landing-page"
 rm -rf "$WEBDIR"
-rm -rf "$VENVDIR"
 rm -rf site
 
 
-python3 -m venv "$VENVDIR"
-# shellcheck disable=SC1091
-source "$VENVDIR/bin/activate"
-
-# MKDocs
-python3 -m pip install -r requirements.txt
-mkdocs build --config-file mkdocs.yml --strict --site-dir ./site
+uv sync
+uv run zensical build --strict
 
 # Parse packages
-python3 -m pip install -r tasks_data_retrieval/requirements.txt
-python3 -u tasks_data_retrieval/create_tasks_data.py
+uv run python3 -u tasks_data_retrieval/create_tasks_data.py
 ls -lh tasks_data_retrieval/tasks.json
 
-python3 -u templates_data_retrieval/create_templates_data.py
+uv run python3 -u templates_data_retrieval/create_templates_data.py
 
 
 # Build
@@ -59,8 +51,7 @@ sed -i'.bak1' "s/LASTUPDATEDPLACEHOLDER/$CURRENT_DATE/" "$CURRENT_DIR/site/fract
 sed -i'.bak2' "s/FRACTALWEBREFERENCEPLACEHOLDER/${FRACTAL_WEB_REFERENCE}/" "$CURRENT_DIR/site/fractal_templates/index.html"
 rm "$CURRENT_DIR/site/fractal_templates/index.html.bak1" "$CURRENT_DIR/site/fractal_templates/index.html.bak2"
 
-deactivate
-rm -r -f "$VENVDIR" "$WEBDIR"
+rm -r -f "$WEBDIR"
 
 cd "$CURRENT_DIR/site"
 date

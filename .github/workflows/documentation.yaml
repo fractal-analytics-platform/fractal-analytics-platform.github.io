@@ -47,7 +47,7 @@ jobs:
             templates-list
           persist-credentials: false
 
-      # MKDocs build
+      # Build
 
       - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
@@ -58,7 +58,7 @@ jobs:
       - run: uv sync --frozen
         working-directory: MAIN
 
-      - run: uv run --frozen mkdocs build --config-file mkdocs.yml --strict --site-dir ./site
+      - run: uv run --frozen zensical build --strict
         working-directory: MAIN
 
       - run: mv MAIN/site ./site
