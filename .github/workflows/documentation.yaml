@@ -72,7 +72,7 @@ jobs:
         working-directory: MAIN
 
       # Create templates-list data
-      - run: uv run --frozen python3 -u MAIN/templates_data_retrieval/create_templates_data.py
+      - run: uv run --frozen python3 -u templates_data_retrieval/create_templates_data.py
         working-directory: MAIN
 
       - run: cat templates_data_retrieval/templates.json
