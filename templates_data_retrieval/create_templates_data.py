@@ -2,7 +2,6 @@ import glob
 import json
 from pathlib import Path
 
-
 data = []
 id_map = {}
 
