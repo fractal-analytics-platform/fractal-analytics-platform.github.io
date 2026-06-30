@@ -1,0 +1,27 @@
+line-length = 88
+target-version = "py312"
+
+[lint]
+select = [
+    "E",    # style errors
+    "W",    # style warnings
+    "F",    # flakes
+    "D",    # pydocstyle
+    "I",    # isort
+    "UP",   # pyupgrade
+    "C4",   # flake8-comprehensions
+    "B",    # flake8-bugbear
+    "A001", # flake8-builtins
+    "RUF",  # ruff-specific rules
+    "TCH",  # flake8-type-checking
+    "TID",  # flake8-tidy-imports
+]
+ignore = [
+    "D401", # First line should be in imperative mood (remove to opt in)
+    "D203",
+    "D212",
+    "D212",
+]
+
+[lint.isort]
+force-single-line = true

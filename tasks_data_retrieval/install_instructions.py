@@ -1,3 +1,4 @@
+# noqa: D100
 import os
 from urllib.parse import urlparse
 
@@ -67,7 +68,7 @@ def _get_default_template_wheel_url_with_extra(extra: str) -> str:
     return template
 
 
-def wheel_to_targz(url: str) -> str:
+def wheel_to_targz(url: str) -> str:  # noqa: D103
     parsed = urlparse(url)
     dirname, filename = os.path.split(parsed.path)
 
@@ -101,7 +102,7 @@ def _get_default_pixi_installation_instructions(wheel_url: str) -> str:
     return template
 
 
-def get_pypi_install_instructions(*, project_name: str, version: str) -> str:
+def get_pypi_install_instructions(*, project_name: str, version: str) -> str:  # noqa: D103
     instructions = _get_default_template_pypi()
     if project_name == "fractal-tasks-core":
         instructions = _get_default_template_pypi_with_extra(extra="fractal-tasks")
@@ -111,7 +112,7 @@ def get_pypi_install_instructions(*, project_name: str, version: str) -> str:
     return instructions
 
 
-def get_github_install_instructions(*, wheel_name: str, wheel_url: str) -> str:
+def get_github_install_instructions(*, wheel_name: str, wheel_url: str) -> str:  # noqa: D103
     instructions = _get_default_template_wheel_url()
     if wheel_name.startswith("scmultiplex"):
         instructions = _get_default_template_wheel_url_with_extra(extra="fractal-tasks")
