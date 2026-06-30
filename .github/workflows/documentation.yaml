@@ -57,16 +57,16 @@ jobs:
 
       - run: uv sync --frozen --project MAIN
 
-      - run: uv run --frozen mkdocs build --config-file MAIN/mkdocs.yml --strict --site-dir ./site
+      - run: uv run --frozen --project MAIN mkdocs build --config-file MAIN/mkdocs.yml --strict --site-dir ./site
 
       - run: mv MAIN/site ./site
 
       # Retrieve remote task-list data
-      - run: uv run python3 -u MAIN/tasks_data_retrieval/create_tasks_data.py
+      - run: uv run --frozen --project MAIN python3 -u MAIN/tasks_data_retrieval/create_tasks_data.py
       - run: cat MAIN/tasks_data_retrieval/tasks.json
 
       # Create templates-list data
-      - run: uv run python3 -u MAIN/templates_data_retrieval/create_templates_data.py
+      - run: uv run --frozen --project MAIN python3 -u MAIN/templates_data_retrieval/create_templates_data.py
       - run: cat MAIN/templates_data_retrieval/templates.json
       - run: cat MAIN/templates_data_retrieval/template_id_map.json
 
