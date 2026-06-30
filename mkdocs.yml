@@ -51,6 +51,7 @@ nav:
   - Deploy Fractal: run_fractal.md
   - News:
       - news/index.md
+      - news/2026-06-30-napari-plugins-for-ome-zarr.md
       - news/2026-03-31-fractal-workflow-templates.md
       - news/2025-12-17-fractal-project-sharing.md
       - news/2025-04-28-fractal-flexibility.md
