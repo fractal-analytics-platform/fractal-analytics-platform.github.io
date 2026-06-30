@@ -1,3 +1,4 @@
+# noqa: D100
 import glob
 import json
 from pathlib import Path
@@ -24,22 +25,22 @@ for file in sorted(glob.glob((root / "raw/*json").as_posix())):
         )
         if data_index is None:
             data.append(
-                dict(
-                    template_name=template_name,
-                    templates=[
-                        dict(
-                            template_id=template_id,
-                            template_version=template_version,
-                        )
+                {
+                    "template_name": template_name,
+                    "templates": [
+                        {
+                            "template_id": template_id,
+                            "template_version": template_version,
+                        }
                     ],
-                )
+                }
             )
         else:
             data[data_index]["templates"].append(
-                dict(
-                    template_id=template_id,
-                    template_version=template_version,
-                )
+                {
+                    "template_id": template_id,
+                    "template_version": template_version,
+                }
             )
 
 for group in data:

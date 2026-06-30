@@ -1,3 +1,4 @@
+# noqa: D100
 import json
 import time
 from pathlib import Path
@@ -18,10 +19,7 @@ DOWNLOAD_FOLDER.mkdir(exist_ok=True)
 
 
 class TaskReadV2(BaseModel):
-    """
-    Customization of
-    https://github.com/fractal-analytics-platform/fractal-server/blob/main/fractal_server/app/schemas/v2/task.py
-    """
+    """Customization of https://github.com/fractal-analytics-platform/fractal-server/blob/main/fractal_server/app/schemas/v2/task.py."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -40,40 +38,36 @@ class TaskReadV2(BaseModel):
     install_instructions: str | None = None
 
 
-class TaskGroupReadV2(BaseModel):
+class TaskGroupReadV2(BaseModel):  # noqa: D101
     pkg_name: str
     version: str | None = None
     task_list: list[TaskReadV2]
 
 
 def parse_wheel_filename(wheel_path: str) -> dict[str, str]:
-    """
-    Given a wheel-file name or path, extract distribution and version.
-    """
+    """Given a wheel-file name or path, extract distribution and version."""
     wheel_filename = wheel_path.split("/")[-1]
     parts = wheel_filename.split("-")
-    return dict(name=parts[0], version=parts[1])
+    return {"name": parts[0], "version": parts[1]}
 
 
 def load_manifest_from_zip(wheel_path: str) -> dict[str, Any]:
-    """
-    Given a wheel file on-disk, extract the Fractal manifest.
-    """
+    """Given a wheel file on-disk, extract the Fractal manifest."""
     with ZipFile(wheel_path) as wheel:
         namelist = wheel.namelist()
         try:
             manifest = next(
                 name for name in namelist if "__FRACTAL_MANIFEST__.json" in name
             )
-        except StopIteration:
+        except StopIteration as e:
             msg = f"{wheel_path} does not include __FRACTAL_MANIFEST__.json"
-            raise ValueError(msg)
+            raise ValueError(msg) from e
         with wheel.open(manifest) as manifest_fd:
             manifest_dict = json.load(manifest_fd)
     return manifest_dict
 
 
-def download_file(url: str) -> str:
+def download_file(url: str) -> str:  # noqa: D103
     file_name = url.split("/")[-1]
     print(f"** Now get {url}")
     response = requests.get(url, stream=True, timeout=30)
@@ -85,10 +79,7 @@ def download_file(url: str) -> str:
 
 
 def handle_pypi_project(*, parsed_url: ParseResult) -> dict[str, Any]:
-    """
-    Example: https://pypi.org/project/fractal-tasks-core
-    """
-
+    """Example: https://pypi.org/project/fractal-tasks-core."""
     # Extract project_name
     project_name = parsed_url.path.strip("/").split("/")[1]
 
@@ -131,11 +122,7 @@ def handle_pypi_project(*, parsed_url: ParseResult) -> dict[str, Any]:
 
 
 def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
-    """
-    Example:
-    https://github.com/fractal-analytics-platform/fractal-lif-converters/
-    """
-
+    """Example: https://github.com/fractal-analytics-platform/fractal-lif-converters/."""
     # Extract owner and repository
     owner, repository = parsed_url.path.strip("/").split("/")
 
@@ -176,7 +163,7 @@ def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
     )
 
 
-def get_package_info(source: str) -> dict[str, Any]:
+def get_package_info(source: str) -> dict[str, Any]:  # noqa: D103
     parsed_url = urlparse(source)
     if parsed_url.hostname == "github.com" and parsed_url.scheme == "https":
         return handle_github_repository(parsed_url=parsed_url)
@@ -238,7 +225,7 @@ for source in sources:
     install_instructions = data.get("install_instructions")
     pkg_task_list = data["manifest"]["task_list"]
     for task in pkg_task_list:
-        new_task = dict()
+        new_task = {}
         for column_name in COLUMN_NAMES:
             new_task[column_name] = task.get(
                 column_name, COLUMN_DEFAULTS.get(column_name, None)
