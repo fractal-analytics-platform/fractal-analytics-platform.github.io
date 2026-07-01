@@ -1,0 +1,68 @@
+[project]
+site_name = "Fractal Analytics Platform"
+site_url = "https://fractal-analytics-platform.github.io/"
+repo_url = "https://github.com/fractal-analytics-platform/"
+repo_name = "fractal-analytics-platform/fractal-web"
+extra_css = ["extra.css"]
+copyright = """
+Copyright 2026 (C) BioVisionCenter (University of Zurich) - see
+<u><a href="https://github.com/fractal-analytics-platform/fractal-analytics-platform.github.io/blob/main/LICENSE">LICENSE</a></u>.
+"""
+
+nav = [
+  { "Fractal" = "index.md" },
+  { "Fractal Tasks" = "fractal_tasks.md" },
+  { "Fractal Workflow Templates" = "fractal_templates.md" },
+  { "Fractal Task Spec" = "tasks_spec.md" },
+  { "Create a Fractal Task" = "build_your_own_fractal_task.md" },
+  { "Fractal Image List" = "image_list.md" },
+  { "Deploy Fractal" = "run_fractal.md" },
+  { "News" = [
+      "news/index.md",
+      "news/2026-06-30-napari-plugins-for-ome-zarr.md",
+      "news/2026-03-31-fractal-workflow-templates.md",
+      "news/2025-12-17-fractal-project-sharing.md",
+      "news/2025-04-28-fractal-flexibility.md",
+  ]
+  },
+]
+
+[project.theme]
+variant = "classic"
+language = "en"
+logo = "https://raw.githubusercontent.com/fractal-analytics-platform/fractal-logos/refs/heads/main/common/fractal_logo.png"
+favicon = "https://raw.githubusercontent.com/fractal-analytics-platform/fractal-logos/refs/heads/main/common/fractal_favicon.png"
+custom_dir = "docs/overrides"
+navigation = {"expand" = true}
+
+features = [
+    "announce.dismiss",
+    "content.code.annotate",
+    "content.code.copy",
+    "content.tabs.link",
+    "content.tooltips",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.instant.progress",
+    "navigation.path",
+    "navigation.sections",
+    "navigation.tabs",
+    "navigation.tabs.sticky",
+    "search.highlight",
+    "toc.follow",
+    "toc.integrate",
+]
+
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "white"
+accent = "light blue"
+# toggle.icon = "material/weather-night"
+# toggle.name = "Switch to dark mode"
+
+[project.plugins.search]
+[project.plugins.section-index]
