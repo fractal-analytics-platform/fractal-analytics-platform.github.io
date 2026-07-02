@@ -158,13 +158,14 @@ jobs:
         with:
           path: "site"
 
+
   deploy:
-    name: Deploy
+    name: "Deploy docs"
+    runs-on: ubuntu-24.04
     if: ${{ ( ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && ( github.event.ref == 'refs/heads/main' ) ) || ( github.event_name == 'schedule' )}}
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: false
-    runs-on: ubuntu-24.04
     needs: build
     permissions:
       # https://github.com/actions/deploy-pages?tab=readme-ov-file
@@ -175,5 +176,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v3.0.2-node.24
+      - uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
         id: deployment
