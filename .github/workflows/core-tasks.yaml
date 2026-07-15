@@ -6,13 +6,6 @@ on:
   pull_request:
     branches: ["main"]
 
-  # Re-run on a regular schedule
-  schedule:
-    - cron: "17 10 * * *"
-
-  # Re-run on demand:
-  workflow_dispatch:
-
 permissions: {}
 
 jobs:
