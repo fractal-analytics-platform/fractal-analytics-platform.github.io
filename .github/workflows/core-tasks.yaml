@@ -1,4 +1,4 @@
-name: Core-tasks
+name: Core tasks
 
 on:
   push:
@@ -10,8 +10,8 @@ permissions: {}
 
 jobs:
 
-  core-tasks:
-    name: Core tasks validation
+  validate:
+    name: Validate core-tasks list
     runs-on: ubuntu-24.04
 
     steps:
