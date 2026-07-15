@@ -39,13 +39,25 @@ def _read_set_from_file(path: Path | None) -> _SetThreeStringsTuple:
 
 
 json_path = Path(__file__).parent / "list.json"
+
 print(f"Reading core-tasks list from {json_path}.")
 text_content = json_path.read_text()
+
+print(f"Loading JSON from {json_path}")
 json_content = json.loads(text_content)
+
+print(f"Validating contents of {json_path}")
 validated_core_info_set = _CoreInfoSet(json_content)
-print("All good.")
-post_validation_list = json.dumps(sorted(validated_core_info_set.root), sort_keys=True)
-if post_validation_list != json.dumps(sorted(json_content), sort_keys=True):
-    print(json.dumps(post_validation_list, indent=2, sort_keys=True))
-    print(json.dumps(json_content, indent=2, sort_keys=True))
-    raise ValueError
+
+
+print("Validate round trip")
+pre = json.dumps(sorted(json_content))
+post = json.dumps(sorted(validated_core_info_set.root))
+if pre != post:
+    print("Pre:")
+    print(json.dumps(sorted(json_content), indent=2))
+    print("Post:")
+    print(json.dumps(sorted(validated_core_info_set.root), indent=2))
+    raise ValueError("Inconsistent round trip.")
+
+print("All OK.")
