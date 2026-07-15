@@ -32,12 +32,6 @@ class _CoreInfoSet(RootModel):
     root: _SetThreeStringsTuple
 
 
-def _read_set_from_file(path: Path | None) -> _SetThreeStringsTuple:
-    """Read a file (if any) and parse into a set of core-task info items."""
-    json_data = path.read_text() if path else "[]"
-    return _CoreInfoSet.model_validate_json(json_data).root
-
-
 json_path = Path(__file__).parent / "list.json"
 
 print(f"Reading core-tasks list from {json_path}.")
@@ -47,7 +41,7 @@ print(f"Loading JSON from {json_path}")
 json_content = json.loads(text_content)
 
 print(f"Validating contents of {json_path}")
-validated_core_info_set = _CoreInfoSet(json_content)
+validated_core_info_set = _CoreInfoSet.model_validate(json_content)
 
 
 print("Validate round trip")
@@ -58,6 +52,7 @@ if pre != post:
     print(json.dumps(sorted(json_content), indent=2))
     print("Post:")
     print(json.dumps(sorted(validated_core_info_set.root), indent=2))
+    print()
     raise ValueError("Inconsistent round trip.")
 
 print("All OK.")
