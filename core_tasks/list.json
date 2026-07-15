@@ -1,5 +1,5 @@
 [
-    ["some-task-group", "1.2.3", "Task Name ABC"],
+    ["some-task-group", "1.2.3", "Task Name ABC"]
     ["some-task-group", "1.2.3", "Task Name XYZ"],
     ["another-task-group", "3.2.1", "Another Task Name"]
 ]
