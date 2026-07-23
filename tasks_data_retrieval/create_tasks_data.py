@@ -11,7 +11,6 @@ from zipfile import ZipFile
 import requests
 from install_instructions import get_github_install_instructions
 from install_instructions import get_pypi_install_instructions
-from core_tasks.validate_list import _CoreInfoSet
 from pydantic import BaseModel
 from pydantic import ConfigDict
 
@@ -217,11 +216,7 @@ sources = [source for source in sources if not (source.startswith("#") or source
 
 core_json_file = Path(__file__).parent / "core_tasks" / "list.json"
 with core_json_file.open("r") as f:
-    json_content: list[list[str]] = json.load(f)
-    core_task_list: list[tuple[str, str, str]] = (
-        _CoreInfoSet.model_validate(json_content)
-    )
-
+    core_task_list = json.load(f)
 
 task_groups: list[dict[str, str | None | list[dict]]] = []
 for source in sources:
