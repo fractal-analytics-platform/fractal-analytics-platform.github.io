@@ -25,4 +25,4 @@ jobs:
           version: "0.11.25"
           python-version: "3.12"
 
-      - run: uv run --frozen core_tasks/validate_list.py
+      - run: uv run --frozen tasks_data_retrieval/core_tasks/validate_list.py
