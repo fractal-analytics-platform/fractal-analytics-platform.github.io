@@ -11,6 +11,7 @@ from zipfile import ZipFile
 import requests
 from install_instructions import get_github_install_instructions
 from install_instructions import get_pypi_install_instructions
+from core_tasks.validate_list import _CoreInfoSet
 from pydantic import BaseModel
 from pydantic import ConfigDict
 
@@ -36,6 +37,7 @@ class TaskReadV2(BaseModel):
     authors: str | None = None
     tags: list[str]
     install_instructions: str | None = None
+    is_core: bool
 
 
 class TaskGroupReadV2(BaseModel):  # noqa: D101
@@ -213,6 +215,14 @@ with sources_file.open("r") as f:
     sources = f.read().splitlines()
 sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
+core_json_file = Path(__file__).parent / "core_tasks" / "list.json"
+with core_json_file.open("r") as f:
+    json_content: list[list[str]] = json.load(f)
+    core_task_list: list[tuple[str, str, str]] = (
+        _CoreInfoSet.model_validate(json_content)
+    )
+
+
 task_groups: list[dict[str, str | None | list[dict]]] = []
 for source in sources:
     t_start = time.perf_counter()
@@ -234,6 +244,14 @@ for source in sources:
         new_task["type"] = _get_task_type(task)
         new_task["authors"] = authors
         new_task["install_instructions"] = install_instructions
+        new_task["is_core"] = next(
+            (
+                True
+                for task_core in core_task_list
+                if task_core == [pkg_name, pkg_version, new_task["name"]]
+            ),
+            False
+        )
         TaskReadV2(**new_task)
         task_list.append(new_task)
 
