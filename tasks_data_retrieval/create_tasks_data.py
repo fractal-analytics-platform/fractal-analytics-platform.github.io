@@ -217,6 +217,9 @@ sources = [source for source in sources if not (source.startswith("#") or source
 core_json_file = Path(__file__).parent / "core_tasks" / "list.json"
 with core_json_file.open("r") as f:
     core_task_list = json.load(f)
+core_tasks = set(
+    tuple(core_task) for core_task in core_task_list
+)
 
 task_groups: list[dict[str, str | None | list[dict]]] = []
 for source in sources:
@@ -239,13 +242,8 @@ for source in sources:
         new_task["type"] = _get_task_type(task)
         new_task["authors"] = authors
         new_task["install_instructions"] = install_instructions
-        new_task["is_core"] = next(
-            (
-                True
-                for task_core in core_task_list
-                if task_core == [pkg_name, pkg_version, new_task["name"]]
-            ),
-            False
+        new_task["is_core"] = (
+            (pkg_name, pkg_version, new_task["name"]) in core_tasks
         )
         TaskReadV2(**new_task)
         task_list.append(new_task)
