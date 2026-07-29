@@ -214,7 +214,7 @@ with sources_file.open("r") as f:
     sources = f.read().splitlines()
 sources = [source for source in sources if not (source.startswith("#") or source == "")]
 
-core_json_file = Path(__file__).parent / "core_tasks" / "list.json"
+core_json_file = Path(__file__).parent.parent / "core_tasks" / "list.json"
 with core_json_file.open("r") as f:
     core_task_list = json.load(f)
 core_tasks = set(
