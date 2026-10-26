@@ -64,5 +64,8 @@ accent = "light blue"
 # toggle.icon = "material/weather-night"
 # toggle.name = "Switch to dark mode"
 
+[project.plugins.privacy]
+
 [project.plugins.search]
+
 [project.plugins.section-index]
