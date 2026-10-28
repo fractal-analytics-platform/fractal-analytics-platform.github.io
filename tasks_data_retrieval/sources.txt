@@ -20,3 +20,4 @@ https://github.com/fractal-analytics-platform/fractal-microsam-segmentation-task
 https://github.com/fractal-analytics-platform/fractal-cellpose-2-segmentation-task
 https://github.com/fractal-analytics-platform/fractal-stardist-segmentation-task
 https://github.com/fractal-analytics-platform/fractal-napari-workflows
+https://github.com/ZMB-UZH/zmb-fractal-registration
