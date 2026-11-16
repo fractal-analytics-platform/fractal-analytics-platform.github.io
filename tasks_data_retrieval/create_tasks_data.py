@@ -1,5 +1,6 @@
 # noqa: D100
 import json
+import os
 import time
 from pathlib import Path
 from typing import Any
@@ -135,7 +136,11 @@ def handle_github_repository(*, parsed_url: ParseResult) -> dict[str, Any]:
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
-    print(f"** Now get {github_api_url}")
+    using_gh_token = False
+    if (gh_token := os.getenv("GH_TOKEN")) is not None:
+        using_gh_token = True
+        headers["Authorization"] = f"Bearer {gh_token}"
+    print(f"** Now get {github_api_url} ({using_gh_token=})")
     res = requests.get(github_api_url, headers=headers, timeout=30)
     if not res.status_code == 200:
         raise RuntimeError(f"Invalid response from {github_api_url}: {res}")
@@ -217,11 +222,9 @@ sources = [source for source in sources if not (source.startswith("#") or source
 core_json_file = Path(__file__).parent.parent / "core_tasks" / "list.json"
 with core_json_file.open("r") as f:
     core_task_list = json.load(f)
-core_tasks = set(
-    tuple(core_task) for core_task in core_task_list
-)
+core_tasks = {tuple(core_task) for core_task in core_task_list}
 
-task_groups: list[dict[str, str | None | list[dict]]] = []
+task_groups: list[dict[str, str | list[dict] | None]] = []
 for source in sources:
     t_start = time.perf_counter()
     print(f"START processing {source=}")
@@ -242,9 +245,7 @@ for source in sources:
         new_task["type"] = _get_task_type(task)
         new_task["authors"] = authors
         new_task["install_instructions"] = install_instructions
-        new_task["is_core"] = (
-            (pkg_name, pkg_version, new_task["name"]) in core_tasks
-        )
+        new_task["is_core"] = (pkg_name, pkg_version, new_task["name"]) in core_tasks
         TaskReadV2(**new_task)
         task_list.append(new_task)
 
