@@ -66,6 +66,8 @@ jobs:
 
       # Retrieve remote task-list data
       - run: uv run --frozen python3 -u tasks_data_retrieval/create_tasks_data.py
+        env:
+          GH_TOKEN: ${{ github.token }}
         working-directory: MAIN
 
       - run: cat tasks_data_retrieval/tasks.json
